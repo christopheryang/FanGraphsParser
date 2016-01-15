@@ -71,7 +71,6 @@ dependencies {
 	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 	compile 'joda-time:joda-time'
 	
-	
 	// ======= Override the transitive dependencies from common-dto =======
 	compile 'com.fasterxml.jackson.core:jackson-annotations'
 	compile 'com.fasterxml.jackson.core:jackson-core'
@@ -81,6 +80,7 @@ dependencies {
 	runtime 'org.slf4j:jcl-over-slf4j'
 	
 	// ======= Non-Spring boot managed dependencies =======
+	compile 'org.jsoup:jsoup:1.8.3'
 	runtime 'mysql:mysql-connector-java:5.1.25'
 	compile 'com.google.guava:guava:18.0'
 	compile 'com.opencsv:opencsv:3.6'

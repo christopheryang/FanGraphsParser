@@ -1,0 +1,775 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><title>
+	Baseball Player Search | Fan Graphs
+</title><meta name="description" content="Search and listings for all Major League and Minor League baseball players" /><meta name="keywords" content="baseball players, baseball player statistics, baseball player search" />
+<link href="http://cdn.fangraphs.com/fangraphs.css?version=201512111244" rel="stylesheet" type="text/css" />
+<link href="http://cdn.fangraphs.com/Skins/FanGraphs/TabStrip.FanGraphs.css?version=201512111244" rel="stylesheet"
+    type="text/css" />
+<link href="http://cdn.fangraphs.com/Skins/FanGraphs/Grid.FanGraphs.css?version=201512111244" rel="stylesheet" type="text/css" />
+<link href="http://cdn.fangraphs.com/Skins/FanGraphs/Menu.FanGraphs.css?version=201512111244" rel="stylesheet" type="text/css" />
+<link href="http://cdn.fangraphs.com/Skins/FanGraphs/Menu.DepthChart.css?version=201512111244" rel="stylesheet" type="text/css" />
+<link href="http://cdn.fangraphs.com/Skins/FanGraphs/ComboBox.FanGraphs.css?version=201512111244" rel="stylesheet" type="text/css" />
+<link href="http://cdn.fangraphs.com/javascript/jquery/jquery.qtip.min.css?version=201512111244" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+<script src="http://cdn.fangraphs.com/javascript/jquery/highcharts/highcharts.js?version=201509251110" type="text/javascript"></script>
+<script src="http://cdn.fangraphs.com/javascript/jquery/highcharts/modules/exporting.js?version=201509251110" type="text/javascript"></script>
+<script src="http://cdn.fangraphs.com/javascript/jquery/jquery.qtip.min.js?version=201512111244" type="text/javascript"></script>
+<script src="http://cdn.fangraphs.com/javascript/jquery/jquery.tablesorter.min.js" type="text/javascript" ></script>
+<script src="http://cdn.fangraphs.com/javascript/fangraphs/head.js?version=201512111244" type="text/javascript" ></script>
+<link rel="shortcut icon" href="http://cdn.fangraphs.com/favicon.ico" />
+<meta name="viewport" content="width=1000">
+<link rel="search" type="application/opensearchdescription+xml" href="http://cdn.fangraphs.com/opensearch.xml" title="FanGraphs Search" /></head>
+<body>
+    <form method="post" action="./players.aspx?letter=Vi" id="form1">
+<input type="hidden" name="RadScriptManager1_TSM" id="RadScriptManager1_TSM" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEwMTI3MjkyNDcPZBYCAgMPZBYCAgUPZBYCAgMPZBYEAgEPFgIeBFRleHQF9io8YnIgLz48ZGl2IGNsYXNzPSJzZWFyY2giPjx0YWJsZSBjZWxsc3BhY2luZz0iMCIgY2VsbHBhZGRpbmc9IjJweCIgc3R5bGU9IndpZHRoOiAzNTBweDsgYm9yZGVyOiAwcHg7IG1hcmdpbi1sZWZ0OiAxMHB4OyI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD0xMDEzNDIwJnBvc2l0aW9uPVAiPkxlZSBWaWF1PC9hPjwvdGQ+PHRkPjE4ODggLSAxODkyPC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTM5MTcmcG9zaXRpb249T0YiPkRheWFuIFZpY2llZG88L2E+PC90ZD48dGQ+MjAxMCAtIDIwMTQ8L3RkPjx0ZD5PRjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTEwMTM0MjEmcG9zaXRpb249QyI+RXJuaWUgVmljazwvYT48L3RkPjx0ZD4xOTIyIC0gMTkyNjwvdGQ+PHRkPkM8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD0xMDEzNDI0JnBvc2l0aW9uPU9GIj5TYW1teSBWaWNrPC9hPjwvdGQ+PHRkPjE5MTcgLSAxOTIxPC90ZD48dGQ+T0Y8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD0xMDEzNDIyJnBvc2l0aW9uPVAiPlJ1YmUgVmlja2VyczwvYT48L3RkPjx0ZD4xOTAyIC0gMTkwOTwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD0xMDEzNDIzJnBvc2l0aW9uPVAiPlRvbSBWaWNrZXJ5PC9hPjwvdGQ+PHRkPjE4OTAgLSAxODkzPC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTEwMTM0MjUmcG9zaXRpb249MUIiPkdlb3JnZSBWaWNvPC9hPjwvdGQ+PHRkPjE5NDggLSAxOTQ5PC90ZD48dGQ+MUI8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD0xNjc3JnBvc2l0aW9uPU9GIj5TaGFuZSBWaWN0b3Jpbm88L2E+PC90ZD48dGQ+MjAwMyAtIDIwMTU8L3RkPjx0ZD5PRjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTEwMTM0MjYmcG9zaXRpb249T0YiPkpvc2UgVmlkYWw8L2E+PC90ZD48dGQ+MTk2NiAtIDE5Njk8L3RkPjx0ZD5PRjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTgwMiZwb3NpdGlvbj0yQiI+Sm9zZSBWaWRybzwvYT48L3RkPjx0ZD4xOTk3IC0gMjAwODwvdGQ+PHRkPjJCPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9MTkyMiZwb3NpdGlvbj1QIj5FZHVhcmRvIFZpbGxhY2lzPC9hPjwvdGQ+PHRkPjIwMDQgLSAyMDA0PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTEwNTkmcG9zaXRpb249UCI+QnJhbmRvbiBWaWxsYWZ1ZXJ0ZTwvYT48L3RkPjx0ZD4yMDAwIC0gMjAwNDwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD00MTM4JnBvc2l0aW9uPVAiPkNhcmxvcyBWaWxsYW51ZXZhPC9hPjwvdGQ+PHRkPjIwMDYgLSAyMDE1PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTg3OTYmcG9zaXRpb249UCI+RWxpaCBWaWxsYW51ZXZhPC9hPjwvdGQ+PHRkPjIwMTEgLSAyMDExPC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTEwMTM0MjcmcG9zaXRpb249QyI+SGVjdG9yIFZpbGxhbnVldmE8L2E+PC90ZD48dGQ+MTk5MCAtIDE5OTM8L3RkPjx0ZD5DPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9MTAwNzEmcG9zaXRpb249U1MiPkpvbmF0aGFuIFZpbGxhcjwvYT48L3RkPjx0ZD4yMDEzIC0gMjAxNTwvdGQ+PHRkPlNTPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9NTM2MCZwb3NpdGlvbj1QIj5IZW5yeSBWaWxsYXI8L2E+PC90ZD48dGQ+MjAxMCAtIDIwMTA8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9NTE4MCZwb3NpdGlvbj1QIj5CcmF5YW4gVmlsbGFycmVhbDwvYT48L3RkPjx0ZD4yMDExIC0gMjAxMzwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD0xNjU0JnBvc2l0aW9uPVAiPk9zY2FyIFZpbGxhcnJlYWw8L2E+PC90ZD48dGQ+MjAwMyAtIDIwMDg8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9OTkwNCZwb3NpdGlvbj1QIj5QZWRybyBWaWxsYXJyZWFsPC9hPjwvdGQ+PHRkPjIwMTIgLSAyMDE1PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTEwMTM0MjgmcG9zaXRpb249UCI+SXNtYWVsIFZpbGxlZ2FzPC9hPjwvdGQ+PHRkPjIwMDAgLSAyMDAwPC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTEwMTAmcG9zaXRpb249UCI+Um9uIFZpbGxvbmU8L2E+PC90ZD48dGQ+MTk5NSAtIDIwMDk8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9MTE4OSZwb3NpdGlvbj0yQiI+RmVybmFuZG8gVmluYTwvYT48L3RkPjx0ZD4xOTkzIC0gMjAwNDwvdGQ+PHRkPjJCPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9NzU1NSZwb3NpdGlvbj1QIj5OaWNrIFZpbmNlbnQ8L2E+PC90ZD48dGQ+MjAxMiAtIDIwMTU8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9MTAxMzQyOSZwb3NpdGlvbj1QIj5Cb2IgVmluZXM8L2E+PC90ZD48dGQ+MTkyNCAtIDE5MjU8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9MTAxMzQzMCZwb3NpdGlvbj1QIj5EYXZlIFZpbmV5YXJkPC9hPjwvdGQ+PHRkPjE5NjQgLSAxOTY0PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTEwMTM0MzEmcG9zaXRpb249UCI+S2VuIFZpbmluZzwvYT48L3RkPjx0ZD4yMDAxIC0gMjAwMTwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD0xMDEzNDMyJnBvc2l0aW9uPTFCIj5DaGFybGllIFZpbnNvbjwvYT48L3RkPjx0ZD4xOTY2IC0gMTk2NjwvdGQ+PHRkPjFCPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9MTAxMzQzMyZwb3NpdGlvbj1PRiI+UnViZSBWaW5zb248L2E+PC90ZD48dGQ+MTkwNCAtIDE5MDY8L3RkPjx0ZD5PRjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTEwMTM0MzQmcG9zaXRpb249UCI+QmlsbCBWaW50b248L2E+PC90ZD48dGQ+MTg4NCAtIDE4ODU8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9NTk3MSZwb3NpdGlvbj1QIj5QZWRybyBWaW9sYTwvYT48L3RkPjx0ZD4yMDA5IC0gMjAxMTwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD0xMDEzNDM1JnBvc2l0aW9uPVAiPkZyYW5rIFZpb2xhPC9hPjwvdGQ+PHRkPjE5ODIgLSAxOTk2PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTEwMTM0MzYmcG9zaXRpb249MkIiPkppbSBWaW94PC9hPjwvdGQ+PHRkPjE5MTIgLSAxOTE2PC90ZD48dGQ+MkI8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD0xMDEzNDM3JnBvc2l0aW9uPU9GIj5CaWxsIFZpcmRvbjwvYT48L3RkPjx0ZD4xOTU1IC0gMTk2ODwvdGQ+PHRkPk9GPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9MTAxMzQzOCZwb3NpdGlvbj0zQiI+T3p6aWUgVmlyZ2lsPC9hPjwvdGQ+PHRkPjE5NTYgLSAxOTY5PC90ZD48dGQ+M0I8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD0xMDEzNDM5JnBvc2l0aW9uPUMiPk96emllIFZpcmdpbDwvYT48L3RkPjx0ZD4xOTgwIC0gMTk5MDwvdGQ+PHRkPkM8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD0xMDEzNDQwJnBvc2l0aW9uPTFCIj5KYWtlIFZpcnR1ZTwvYT48L3RkPjx0ZD4xODkwIC0gMTg5NDwvdGQ+PHRkPjFCPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9MTAxMzQ0MSZwb3NpdGlvbj1PRiI+Sm9lIFZpc25lcjwvYT48L3RkPjx0ZD4xODg1IC0gMTg5MTwvdGQ+PHRkPk9GPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9MTAxMzQ0MiZwb3NpdGlvbj1QIj5Kb2UgVml0ZWxsaTwvYT48L3RkPjx0ZD4xOTQ0IC0gMTk0NTwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD0xNzQ4JnBvc2l0aW9uPTFCL0RIIj5Kb2UgVml0aWVsbG88L2E+PC90ZD48dGQ+MTk5NSAtIDIwMDM8L3RkPjx0ZD4xQi9ESDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTEwMTM0NDMmcG9zaXRpb249UCI+Sm9lIFZpdGtvPC9hPjwvdGQ+PHRkPjE5OTIgLSAxOTkyPC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTEwMTM0NDQmcG9zaXRpb249M0IiPk9zc2llIFZpdHQ8L2E+PC90ZD48dGQ+MTkxMiAtIDE5MjE8L3RkPjx0ZD4zQjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPTQ2MjMmcG9zaXRpb249M0IiPkpvc2ggVml0dGVyczwvYT48L3RkPjx0ZD4yMDEyIC0gMjAxMjwvdGQ+PHRkPjNCPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9NTc3JnBvc2l0aW9uPTJCL1NTIj5Kb3NlIFZpemNhaW5vPC9hPjwvdGQ+PHRkPjE5ODkgLSAyMDA2PC90ZD48dGQ+MkIvU1M8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD01NDk4JnBvc2l0aW9uPVAiPkFyb2R5cyBWaXpjYWlubzwvYT48L3RkPjx0ZD4yMDExIC0gMjAxNTwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD03MTQmcG9zaXRpb249UCI+THVpcyBWaXpjYWlubzwvYT48L3RkPjx0ZD4xOTk5IC0gMjAwOTwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD00MTEmcG9zaXRpb249U1MiPk9tYXIgVml6cXVlbDwvYT48L3RkPjx0ZD4xOTg5IC0gMjAxMjwvdGQ+PHRkPlNTPC90ZD48L3RyPjwvdGFibGU+PC9kaXY+ZAIDDxYCHwAFnm88YnIgLz48ZGl2IGNsYXNzPSJzZWFyY2giPjx0YWJsZSBjZWxsc3BhY2luZz0iMCIgY2VsbHBhZGRpbmc9IjJweCIgc3R5bGU9IndpZHRoOiAzMjVweDsgYm9yZGVyOiAwcHg7IG1hcmdpbi1sZWZ0OiA1MHB4OyI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTQwMDk4NCZwb3NpdGlvbj1QIj5NaWtlIFZpY2FybzwvYT48L3RkPjx0ZD44LzEzLzE5ODM8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E4Mjg4NjAmcG9zaXRpb249Qy8xQiI+Sm9zZSBWaWNlbnRlPC9hPjwvdGQ+PHRkPjExLzEzLzE5OTU8L3RkPjx0ZD5DLzFCPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E1MDM4NjAmcG9zaXRpb249QyI+RGFubnkgVmljaW9zbzwvYT48L3RkPjx0ZD4xMC8yNy8xOTg4PC90ZD48dGQ+QzwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTc5NzgwJnBvc2l0aW9uPU9GIj5Mb2dhbiBWaWNrPC9hPjwvdGQ+PHRkPjEwLzIyLzE5OTA8L3RkPjx0ZD5PRjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhMjkxMTA1JnBvc2l0aW9uPTJCIj5IdW50ZXIgVmljazwvYT48L3RkPjx0ZD40LzEyLzE5ODI8L3RkPjx0ZD4yQjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTk4MzQyJnBvc2l0aW9uPTNCIj5OaWNrIFZpY2tlcnNvbjwvYT48L3RkPjx0ZD43LzgvMTk4OTwvdGQ+PHRkPjNCPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E1MDYyNzMmcG9zaXRpb249T0YiPkpvc2UgVmljdG9yPC9hPjwvdGQ+PHRkPjUvMjUvMTk5MDwvdGQ+PHRkPk9GPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E4NzI0NjYmcG9zaXRpb249U1MiPktldmluIFZpY3VuYTwvYT48L3RkPjx0ZD4xLzE0LzE5OTg8L3RkPjx0ZD5TUzwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTQ4NDcwJnBvc2l0aW9uPTNCIj5EYXZpZCBWaWRhbDwvYT48L3RkPjx0ZD4xMC8yMy8xOTg5PC90ZD48dGQ+M0I8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTQ1NjM1MyZwb3NpdGlvbj1QIj5QZWRybyBWaWRhbDwvYT48L3RkPjx0ZD43LzMxLzE5ODc8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E4Mjg3MTUmcG9zaXRpb249T0YiPkNhcmxvcyBWaWRhbDwvYT48L3RkPjx0ZD4xMS8yOS8xOTk1PC90ZD48dGQ+T0Y8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTczNTg2NyZwb3NpdGlvbj1QIj5NYXVybyBWaWRlczwvYT48L3RkPjx0ZD4xMC8xOS8xOTk1PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNDU3MTU1JnBvc2l0aW9uPVAiPk1hdHQgVmllaXJhPC9hPjwvdGQ+PHRkPjgvOS8xOTg1PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTk2MzY2JnBvc2l0aW9uPVAiPlRoeWFnbyBWaWVpcmE8L2E+PC90ZD48dGQ+MS83LzE5OTM8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E4NzU4NjkmcG9zaXRpb249UCI+SXZhbiBWaWVpdGV6PC9hPjwvdGQ+PHRkPjUvOC8xOTkzPC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNzM4NzI2JnBvc2l0aW9uPVNTIj5KdXN0aW4gVmllbGU8L2E+PC90ZD48dGQ+MTEvMTgvMTk5MDwvdGQ+PHRkPlNTPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E1OTcwMjQmcG9zaXRpb249UCI+R2lsYmVydG8gVmllbG1hPC9hPjwvdGQ+PHRkPjExLzIzLzE5OTM8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E2NTc0MTYmcG9zaXRpb249U1MiPkVuZ2VsYiBWaWVsbWE8L2E+PC90ZD48dGQ+Ni8yMi8xOTk0PC90ZD48dGQ+U1M8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU0NzgxOCZwb3NpdGlvbj1DIj5Sb2RyaWdvIFZpZ2lsPC9hPjwvdGQ+PHRkPjEvMy8xOTkzPC90ZD48dGQ+QzwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTAyMDg5JnBvc2l0aW9uPU9GIj5CcmlhbiBWaWdvPC9hPjwvdGQ+PHRkPjEyLzEyLzE5OTE8L3RkPjx0ZD5PRjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTI2MjI5JnBvc2l0aW9uPUMiPkplZmYgVmlndXJzPC9hPjwvdGQ+PHRkPjMvMTAvMTk4ODwvdGQ+PHRkPkM8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTUwNDk1MiZwb3NpdGlvbj1QIj5GcmFuY2lzY28gVmlsY2hlejwvYT48L3RkPjx0ZD4xMi8yOC8xOTkwPC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhODI4MjI4JnBvc2l0aW9uPVAiPkdlcmFyZG8gVmlsY2hlejwvYT48L3RkPjx0ZD42LzYvMTk5NzwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU0NDk3NCZwb3NpdGlvbj1QIj5Kb3NlIEFuZ2VsIFZpbGxhPC9hPjwvdGQ+PHRkPjExLzUvMTk5MDwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU0MTg0NiZwb3NpdGlvbj1QIj5KdWFuIFZpbGxhPC9hPjwvdGQ+PHRkPjEyLzYvMTk3NzwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTY1NTk3OCZwb3NpdGlvbj1PRiI+SGlsYXJpbyBWaWxsYTwvYT48L3RkPjx0ZD43LzEvMTk5MjwvdGQ+PHRkPk9GPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E1MDYxMjQmcG9zaXRpb249UCI+QWxlamFuZHJvIFZpbGxhPC9hPjwvdGQ+PHRkPjUvMjkvMTk5MjwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTI1NDc5NyZwb3NpdGlvbj1QIj5LZWx2aW4gVmlsbGE8L2E+PC90ZD48dGQ+MTIvMTQvMTk4NTwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTg0MTYwMCZwb3NpdGlvbj1DIj5Kb25hdGhhbiBWaWxsYTwvYT48L3RkPjx0ZD4yLzIvMTk5NjwvdGQ+PHRkPkM8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU5OTkxMCZwb3NpdGlvbj1QIj5GcmFuY2lzY28gVmlsbGE8L2E+PC90ZD48dGQ+NC8xLzE5OTI8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E4Mjg1MTEmcG9zaXRpb249UCI+RWR1aW4gVmlsbGE8L2E+PC90ZD48dGQ+My8xMi8xOTk2PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhMzI4NjAwJnBvc2l0aW9uPUMiPkl2YW4gVmlsbGFlc2N1c2E8L2E+PC90ZD48dGQ+MTAvMTMvMTk4NjwvdGQ+PHRkPkM8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTE4NTQyMyZwb3NpdGlvbj1PRiI+RmVybmFuZG8gVmlsbGFlc2N1c2E8L2E+PC90ZD48dGQ+MS83LzE5ODU8L3RkPjx0ZD5PRjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhODM1NDkxJnBvc2l0aW9uPVAiPkpvc3VlIFZpbGxhZnJhbmNhPC9hPjwvdGQ+PHRkPjEwLzMvMTk5NzwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU1MDY1OCZwb3NpdGlvbj1QIj5MdWlzIFZpbGxhbGJhPC9hPjwvdGQ+PHRkPjEwLzI4LzE5OTI8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E4NzI1MTAmcG9zaXRpb249MkIvM0IiPkFuZHJlcyBWaWxsYWxvYm9zPC9hPjwvdGQ+PHRkPjEvMTQvMTk5ODwvdGQ+PHRkPjJCLzNCPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E1MDkyODUmcG9zaXRpb249UCI+RmVybmFuZG8gVmlsbGFsb2JvczwvYT48L3RkPjx0ZD4xMi83LzE5ODQ8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E0NTYwOTYmcG9zaXRpb249QyI+QW5kcmljayBWaWxsYWxvYm9zPC9hPjwvdGQ+PHRkPjYvMzAvMTk4NjwvdGQ+PHRkPkM8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU1NDk4NyZwb3NpdGlvbj0yQiI+QWxlamFuZHJvIFZpbGxhbG9ib3M8L2E+PC90ZD48dGQ+OC8yMC8xOTkxPC90ZD48dGQ+MkI8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTE5OTkxMyZwb3NpdGlvbj1QIj5KdWxpbyBWaWxsYWxvbjwvYT48L3RkPjx0ZD41LzExLzE5Nzg8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2EyNDQyODEmcG9zaXRpb249UCI+QnJ5YW4gVmlsbGFsb25hPC9hPjwvdGQ+PHRkPjkvMTUvMTk4MjwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTM5Mjg3NCZwb3NpdGlvbj0xQiI+QW5nZWwgVmlsbGFsb25hPC9hPjwvdGQ+PHRkPjgvMTMvMTk5MDwvdGQ+PHRkPjFCPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E4MjgxNzAmcG9zaXRpb249UCI+SnVsaWFuIFZpbGxhbWFyPC9hPjwvdGQ+PHRkPjQvMjMvMTk5NDwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTUwNDczMSZwb3NpdGlvbj1QIj5EYWlsIFZpbGxhbnVldmE8L2E+PC90ZD48dGQ+MS8yMy8xOTkwPC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTA1OTkzJnBvc2l0aW9uPTNCIj5DaHJpc3RpYW4gVmlsbGFudWV2YTwvYT48L3RkPjx0ZD42LzE5LzE5OTE8L3RkPjx0ZD4zQjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhODc4NDI1JnBvc2l0aW9uPU9GIj5CcmFuZG9uIFZpbGxhcnJlYWw8L2E+PC90ZD48dGQ+MTEvMjUvMTk5NDwvdGQ+PHRkPk9GPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E4NzM1MzkmcG9zaXRpb249QyI+R3VpbGxlcm1vIFZpbGxhcnJlYWw8L2E+PC90ZD48dGQ+PC90ZD48dGQ+QzwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhMjAyMDExJnBvc2l0aW9uPVAiPkx1aXMgVmlsbGFycmVhbDwvYT48L3RkPjx0ZD4xMi8yMC8xOTc5PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNjU3NTM2JnBvc2l0aW9uPVAiPkVkd2luIFZpbGxhcnJvZWw8L2E+PC90ZD48dGQ+NS8xOC8xOTk1PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNjU3OTA3JnBvc2l0aW9uPVAiPkhlY3RvciBWaWxsYXJyb2VsPC9hPjwvdGQ+PHRkPjgvMTIvMTk5NTwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTgyODM5NyZwb3NpdGlvbj0xQi9ESCI+WWxleGFuZGVyIFZpbGxhcnJvZWw8L2E+PC90ZD48dGQ+Ni80LzE5OTc8L3RkPjx0ZD4xQi9ESDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhODM3NDA4JnBvc2l0aW9uPVAiPkNlc2FyIFZpbGxhcnJvZWw8L2E+PC90ZD48dGQ+Ny8yNy8xOTk0PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTA2NzkyJnBvc2l0aW9uPVAiPk9ybGFuZG8gVmlsbGFycm9lbDwvYT48L3RkPjx0ZD4zLzE4LzE5OTA8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E1NDgxMzMmcG9zaXRpb249UCI+RWxpYXMgVmlsbGFzYW5hPC9hPjwvdGQ+PHRkPjMvMjIvMTk5MzwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTczNjcwMiZwb3NpdGlvbj1QIj5Sb2RvbGZvIFZpbGxhc21pbDwvYT48L3RkPjx0ZD4xLzIwLzE5OTU8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E1MDQ4NDcmcG9zaXRpb249UCI+RWRpb2dsaXMgVmlsbGFzbWlsPC9hPjwvdGQ+PHRkPjQvMTAvMTk5MjwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU5OTgxMSZwb3NpdGlvbj1DIj5EYXZpZCBWaWxsYXN1c288L2E+PC90ZD48dGQ+MTIvMzEvMTk4OTwvdGQ+PHRkPkM8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTYwMTUzMCZwb3NpdGlvbj0xQiI+R2FicmllbCBWaWxsYXZpY2VuY2lvPC9hPjwvdGQ+PHRkPjEwLzMvMTk5MjwvdGQ+PHRkPjFCPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E3Mzc1NzEmcG9zaXRpb249UCI+R2lvdmFubnkgVmlsbGF2aWNlbmNpbzwvYT48L3RkPjx0ZD4yLzI3LzE5ODg8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E2NTI2ODAmcG9zaXRpb249UCI+RGF2aWQgVmlsbGVnYXM8L2E+PC90ZD48dGQ+OS8yNi8xOTkyPC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTA0ODY4JnBvc2l0aW9uPTFCL0RIIj5FbmRlcnNvbiBWaWxsZWdhczwvYT48L3RkPjx0ZD4xLzMxLzE5OTI8L3RkPjx0ZD4xQi9ESDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhMzkzMDQ4JnBvc2l0aW9uPVAiPkp1YW4gVmlsbGVnYXM8L2E+PC90ZD48dGQ+MS8yMC8xOTg3PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTAyNjAyJnBvc2l0aW9uPVNTIj5ZZHdpbiBWaWxsZWdhczwvYT48L3RkPjx0ZD45LzEvMTk5MDwvdGQ+PHRkPlNTPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E1OTMwNDcmcG9zaXRpb249UCI+U2F1bCBWaWxsZWdhczwvYT48L3RkPjx0ZD40LzI2LzE5OTI8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E1MDc3MTgmcG9zaXRpb249MkIiPkx1aXMgVmlsbGVnYXM8L2E+PC90ZD48dGQ+NS8yNC8xOTkyPC90ZD48dGQ+MkI8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTczODI4MSZwb3NpdGlvbj1QIj5NSiBWaWxsZWdhczwvYT48L3RkPjx0ZD45LzYvMTk5NDwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU0Nzk0NCZwb3NpdGlvbj1DIj5MdWlzIFZpbGxlZ2FzPC9hPjwvdGQ+PHRkPjEyLzIvMTk5MjwvdGQ+PHRkPkM8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU0NjQ2NyZwb3NpdGlvbj1QIj5LZW5kZXIgVmlsbGVnYXM8L2E+PC90ZD48dGQ+Ni84LzE5OTM8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2EyMDI4NTUmcG9zaXRpb249UCI+RnJhbmNpc2NvIFZpbGxlZ2FzPC9hPjwvdGQ+PHRkPjMvMjMvMTk3ODwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTM5MjkzNSZwb3NpdGlvbj1TUyI+SmVzdXMgVmlsbGVnYXMtQW5kaW5vPC9hPjwvdGQ+PHRkPjkvMjEvMTk4NjwvdGQ+PHRkPlNTPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2EzMjgxODQmcG9zaXRpb249MkIvU1MiPk1hcmNvcyBWaWxsZXpjYXM8L2E+PC90ZD48dGQ+MTIvMTAvMTk4MzwvdGQ+PHRkPjJCL1NTPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E4MzAxODImcG9zaXRpb249Qy9ESCI+TWVpYnJ5cyBWaWxvcmlhPC9hPjwvdGQ+PHRkPjIvMTUvMTk5NzwvdGQ+PHRkPkMvREg8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTYzNTQzMyZwb3NpdGlvbj1QIj5BbGVqYW5kcm8gVmlsb3JpYTwvYT48L3RkPjx0ZD42LzE1LzE5OTU8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2EzOTM0MTgmcG9zaXRpb249UCI+RXVjbGlkZXMgVmlsb3JpYTwvYT48L3RkPjx0ZD45LzkvMTk4OTwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTgyODU2MSZwb3NpdGlvbj1QIj5GZWxpeCBWaWxvcmlhPC9hPjwvdGQ+PHRkPjEyLzIvMTk5NjwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTczOTg3NiZwb3NpdGlvbj1QIj5Jc21hZWwgVmlsb3JpYTwvYT48L3RkPjx0ZD4zLzMxLzE5OTU8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E3NTQ2NzkmcG9zaXRpb249QyI+THVpcyBWaWxvcmlvPC9hPjwvdGQ+PHRkPjgvMjgvMTk5MzwvdGQ+PHRkPkM8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTgyOTE2NCZwb3NpdGlvbj0zQiI+TmljayBWaWx0ZXI8L2E+PC90ZD48dGQ+MTAvNi8xOTkzPC90ZD48dGQ+M0I8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU5ODYyOSZwb3NpdGlvbj1QIj5MZW9uZWwgVmluYXM8L2E+PC90ZD48dGQ+OC8yNy8xOTkxPC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNjIxNzkwJnBvc2l0aW9uPVNTIj5aYWNoIFZpbmNlajwvYT48L3RkPjx0ZD41LzEvMTk5MTwvdGQ+PHRkPlNTPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2EzMjc4MjAmcG9zaXRpb249T0YiPkplZmYgVmluY2VudDwvYT48L3RkPjx0ZD40LzE1LzE5ODQ8L3RkPjx0ZD5PRjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNjU3ODM0JnBvc2l0aW9uPVAiPkp1bmlvciBWaW5jZW50PC9hPjwvdGQ+PHRkPjIvMjgvMTk5NTwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTIzNjQ1NCZwb3NpdGlvbj1QIj5DaHJpcyBWaW5lczwvYT48L3RkPjx0ZD4yLzI2LzE5ODU8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2EzODk4MzcmcG9zaXRpb249UCI+TmF0aGFuIFZpbmV5YXJkPC9hPjwvdGQ+PHRkPjEwLzMvMTk4ODwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU0OTUzOCZwb3NpdGlvbj1TUyI+Sm9zZSBWaW5pY2lvPC9hPjwvdGQ+PHRkPjcvMTAvMTk5MzwvdGQ+PHRkPlNTPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E4MjgxNjcmcG9zaXRpb249REgvT0YiPkZlbGl4IFZpbmljaW88L2E+PC90ZD48dGQ+MTAvMjgvMTk5NDwvdGQ+PHRkPkRIL09GPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E4MzAyMzcmcG9zaXRpb249UCI+VGhvbnkgVmluaWNpbzwvYT48L3RkPjx0ZD4zLzI1LzE5OTQ8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E1NzcwMTYmcG9zaXRpb249T0YiPk1hdHQgVmluc29uPC9hPjwvdGQ+PHRkPjEwLzE2LzE5OTA8L3RkPjx0ZD5PRjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhODc1NDA5JnBvc2l0aW9uPVAiPk1pY2hhZWwgVmluc29uPC9hPjwvdGQ+PHRkPjIvOS8xOTk0PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhMzI2MTA5JnBvc2l0aW9uPTFCL0RIIj5DaHJpcyBWaW55YXJkPC9hPjwvdGQ+PHRkPjEyLzE1LzE5ODU8L3RkPjx0ZD4xQi9ESDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhMzg5MzcwJnBvc2l0aW9uPVAiPkplcmVteSBWaW55YXJkPC9hPjwvdGQ+PHRkPjgvMTAvMTk4ODwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTI5NDkxOSZwb3NpdGlvbj1QIj5GcmFuayBWaW9sYTwvYT48L3RkPjx0ZD42LzE5LzE5ODQ8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2EzOTA2NTEmcG9zaXRpb249UCI+TWFydGluIFZpcmFtb250ZXM8L2E+PC90ZD48dGQ+Ny8xMi8xOTg5PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTk4OTg4JnBvc2l0aW9uPVAiPkFuZHJldyBWaXJnaWxpPC9hPjwvdGQ+PHRkPjEvMzAvMTk5MDwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTc0MTQ3OSZwb3NpdGlvbj1PRiI+Sm9zZSBWaXRhbDwvYT48L3RkPjx0ZD4zLzI1LzE5OTY8L3RkPjx0ZD5PRjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTQ2NjMxJnBvc2l0aW9uPUMiPkNhcnNvbiBWaXRhbGU8L2E+PC90ZD48dGQ+OC8yNS8xOTg4PC90ZD48dGQ+QzwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTUzMzc0JnBvc2l0aW9uPVAiPk1pY2hhZWwgVml0YWxlPC9hPjwvdGQ+PHRkPjExLzI2LzE5ODc8L3RkPjx0ZD5QPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E1NDgxODcmcG9zaXRpb249M0IvREgiPktvbGJyaW4gVml0ZWs8L2E+PC90ZD48dGQ+NC8xLzE5ODk8L3RkPjx0ZD4zQi9ESDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNDU2NTk4JnBvc2l0aW9uPUMvREgiPkpvc2ggVml0dGVrPC9hPjwvdGQ+PHRkPjQvOS8xOTg2PC90ZD48dGQ+Qy9ESDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhMzI3MTIwJnBvc2l0aW9uPTNCIj5DaHJpc3RpYW4gVml0dGVyczwvYT48L3RkPjx0ZD42LzI2LzE5ODU8L3RkPjx0ZD4zQjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTk2Mjg0JnBvc2l0aW9uPVAiPkp1bGlvIFZpdmFzPC9hPjwvdGQ+PHRkPjEwLzEvMTk5MzwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTUwODM1MSZwb3NpdGlvbj0yQiI+V2lsZnJlZCBWaXZhczwvYT48L3RkPjx0ZD4xMS84LzE5ODk8L3RkPjx0ZD4yQjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhODI3OTU3JnBvc2l0aW9uPVAiPlNhbWlyIFZpdmFzPC9hPjwvdGQ+PHRkPjIvMS8xOTk1PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTQ4MTE2JnBvc2l0aW9uPUMiPkVueWVsYmVyIFZpdmFzPC9hPjwvdGQ+PHRkPjgvMjYvMTk5MjwvdGQ+PHRkPkM8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU5NzEwNSZwb3NpdGlvbj1DLzFCIj5GZXJuYW5kbyBWaXZpbGk8L2E+PC90ZD48dGQ+MS85LzE5OTQ8L3RkPjx0ZD5DLzFCPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E3Mzg2MTAmcG9zaXRpb249UCI+VHlsZXIgVml6YTwvYT48L3RkPjx0ZD4xMC8yMS8xOTk0PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhODcyNTU5JnBvc2l0aW9uPU9GIj5FZGR5IFZpemNhaW5vPC9hPjwvdGQ+PHRkPjcvMTkvMTk5NjwvdGQ+PHRkPk9GPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E4NzMyMDkmcG9zaXRpb249UCI+RGVtYmVyIFZpemNhaW5vPC9hPjwvdGQ+PHRkPjUvMTIvMTk5NTwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU1MDYzNiZwb3NpdGlvbj1QIj5FZHVhcmRvIFZpemNhaW5vPC9hPjwvdGQ+PHRkPjEvMjMvMTk4ODwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU1MTI3NiZwb3NpdGlvbj1ESC9PRiI+S2VsdmluIFZpemNhaW5vPC9hPjwvdGQ+PHRkPjkvMzAvMTk5MjwvdGQ+PHRkPkRIL09GPC90ZD48L3RyPjx0cj48dGQ+PGEgaHJlZj0ic3RhdHNzLmFzcHg/cGxheWVyaWQ9c2E1MDcwNDEmcG9zaXRpb249UCI+RnJhbmNpc2NvIFZpemNhaW5vPC9hPjwvdGQ+PHRkPjcvMjYvMTk4ODwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTczNjc0OCZwb3NpdGlvbj0yQi8zQiI+TWFudWVsIFZpemNhaW5vPC9hPjwvdGQ+PHRkPjEvOC8xOTk2PC90ZD48dGQ+MkIvM0I8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTMyOTMwOCZwb3NpdGlvbj1PRiI+RnJhbmNpc2NvIFZpemNhaW5vPC9hPjwvdGQ+PHRkPjExLzI4LzE5ODQ8L3RkPjx0ZD5PRjwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhODI4MzcyJnBvc2l0aW9uPVAiPkdhYnJpZWwgVml6Y2Fpbm88L2E+PC90ZD48dGQ+My8yNi8xOTk0PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNzM2NzQyJnBvc2l0aW9uPVAiPlJhZmZpIFZpemNhaW5vPC9hPjwvdGQ+PHRkPjEyLzIvMTk5NTwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTgyODk3MyZwb3NpdGlvbj1DIj5GYWJpYW4gVml6Y2Fpbm88L2E+PC90ZD48dGQ+NS8yNy8xOTk1PC90ZD48dGQ+QzwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNTA2NjQ3JnBvc2l0aW9uPVAiPkpvYW4gVml6Y2Fpbm88L2E+PC90ZD48dGQ+NC8yNS8xOTg5PC90ZD48dGQ+UDwvdGQ+PC90cj48dHI+PHRkPjxhIGhyZWY9InN0YXRzcy5hc3B4P3BsYXllcmlkPXNhNjU5MDQzJnBvc2l0aW9uPTNCIj5Kb3NlIFZpemNhaW5vPC9hPjwvdGQ+PHRkPjQvNS8xOTk0PC90ZD48dGQ+M0I8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTU0MzUxNiZwb3NpdGlvbj1QIj5XaWxsaWFtIFZpemNhcnJhPC9hPjwvdGQ+PHRkPjUvMTUvMTk4NDwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTUwOTcwNyZwb3NpdGlvbj1QIj5Fcm5lc3RvIFZpemNhcnJhPC9hPjwvdGQ+PHRkPjUvMjkvMTk3NjwvdGQ+PHRkPlA8L3RkPjwvdHI+PHRyPjx0ZD48YSBocmVmPSJzdGF0c3MuYXNweD9wbGF5ZXJpZD1zYTY1NzY4OSZwb3NpdGlvbj1QIj5BbnRob255IFZpemNheWE8L2E+PC90ZD48dGQ+MTAvMjQvMTk5MzwvdGQ+PHRkPlA8L3RkPjwvdHI+PC90YWJsZT48L2Rpdj5kGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYBBQ5IZWFkZXIxJHJkTWVudVInmQ3GxEQgd1oIF8i59K8mmMjJ" />
+
+
+<script src="http://ajax.aspnetcdn.com/ajax/4.5.1/1/MicrosoftAjax.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+(window.Sys && Sys._Application && Sys.Observer)||document.write('<script type="text/javascript" src="/ScriptResource.axd?d=p9mqTehpNnW4Ng4qP2akHL8YAQo3nBfFajEIsM_t4c3Wu3VOlQpV1KgkmRsJF3NiZHwk0dk4WOJFNRF7JL0xB0oPHK0Xgwgby7XjOfibqcrAlpw-a-VQK1bwvC8jQZSXW3uhH98nPWcL2_Bqvmx9I8y19DR1I8t5TXbjaNEFQ0Gbx6yQ0&t=72e85ccd"><\/script>');//]]>
+</script>
+
+<script src="http://aspnet-scripts.telerikstatic.com/ajax/2014.3.1209/Common/Core.js" type="text/javascript"></script>
+<script src="http://aspnet-scripts.telerikstatic.com/ajax/2014.3.1209/Common/jQuery.js" type="text/javascript"></script>
+<script src="http://aspnet-scripts.telerikstatic.com/ajax/2014.3.1209/Common/jQueryPlugins.js" type="text/javascript"></script>
+<script src="http://aspnet-scripts.telerikstatic.com/ajax/2014.3.1209/Common/Scrolling/ScrollingScripts.js" type="text/javascript"></script>
+<script src="http://aspnet-scripts.telerikstatic.com/ajax/2014.3.1209/Common/Navigation/OData/OData.js" type="text/javascript"></script>
+<script src="http://aspnet-scripts.telerikstatic.com/ajax/2014.3.1209/Common/AnimationFramework/AnimationFramework.js" type="text/javascript"></script>
+<script src="http://aspnet-scripts.telerikstatic.com/ajax/2014.3.1209/Common/Navigation/OverlayScript.js" type="text/javascript"></script>
+<script src="http://aspnet-scripts.telerikstatic.com/ajax/2014.3.1209/Common/Navigation/NavigationScripts.js" type="text/javascript"></script>
+<script src="http://aspnet-scripts.telerikstatic.com/ajax/2014.3.1209/Menu/RadMenuScripts.js" type="text/javascript"></script>
+<script src="http://aspnet-scripts.telerikstatic.com/ajax/2014.3.1209/Menu/MenuItem/RadMenuItem.js" type="text/javascript"></script>
+<script src="http://aspnet-scripts.telerikstatic.com/ajax/2014.3.1209/Menu/Views/ClassicView.js" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="8DA45D4D" />
+    
+    <div id="wrapper">
+        <div id="top">
+            
+<script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function () {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+'//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+    })();
+</script>
+<script type='text/javascript'>
+    googletag.cmd.push(function () {
+        googletag.defineSlot('/1128006/Home_160x600', [160, 600], 'div-gpt-ad-1349421924281-0').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/Home_300x250', [300, 250], 'div-gpt-ad-1349421924281-1').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/Home_728x90', [728, 90], 'div-gpt-ad-1349421924281-2').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/HouseBTF', [300, 250], 'div-gpt-ad-1349421924281-3').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/HouseHP', [300, 250], 'div-gpt-ad-1349421924281-4').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/HP-BTF-2', [300, 250], 'div-gpt-ad-1349421924281-5').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/HP-footer', [728, 90], 'div-gpt-ad-1349421924281-6').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/PBT_ad.com_300x250', [300, 250], 'div-gpt-ad-1349421924281-7').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/PBT_ad.com_728x90', [728, 90], 'div-gpt-ad-1349421924281-8').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/ROS-BTF-2', [300, 250], 'div-gpt-ad-1349421924281-9').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/ROS-Footer', [728, 90], 'div-gpt-ad-1349421924281-10').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/ROS_160x600', [160, 600], 'div-gpt-ad-1349421924281-11').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/ROS_160x600_BTF', [160, 600], 'div-gpt-ad-1349421924281-12').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/RoS_300x250', [300, 250], 'div-gpt-ad-1349421924281-13').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/ROS_728x90', [728, 90], 'div-gpt-ad-1349421924281-14').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/Scotts_Lawn', [1, 1], 'div-gpt-ad-1349421924281-15').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/Special_Ad', [400, 168], 'div-gpt-ad-1349421924281-16').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/Special_Ad_BTF', [400, 168], 'div-gpt-ad-1349421924281-17').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/Stats-footer', [728, 90], 'div-gpt-ad-1349421924281-18').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/PBT_ad.com_300x250', [300, 250], 'div-gpt-ad-1349421924281-19').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/PBT_ad.com_728x90', [728, 90], 'div-gpt-ad-1349421924281-20').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/House-Special', [320, 170], 'div-gpt-ad-1349421924281-21').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/HP_300x600', [300, 600], 'div-gpt-ad-1349421924281-22').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/ROS_300x600_BTF', [300, 600], 'div-gpt-ad-1349421924281-23').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/Adiply_stats_skin', [3, 3], 'div-gpt-ad-1349421924281-24').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/AdiplyT_300x250_1_', [300, 250], 'div-gpt-ad-1349421924281-25').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/AdiplyT_300x250_2', [300, 250], 'div-gpt-ad-1349421924281-26').addService(googletag.pubads());
+        googletag.defineSlot('/1128006/WAB', [980, 50], 'div-gpt-ad-1349421924281-27').addService(googletag.pubads());
+        googletag.enableServices();
+    });
+</script>
+
+
+
+
+
+
+<div id="Header1_panBlogHead">
+	
+    <div id="top_logo">
+        <a href="http://www.fangraphs.com/" target="_top">
+        <img id="Header1_imgLogo" src="images/247_90_fangraphs.png" alt="FanGraphs Logo" height="90" width="247" /></a>
+    </div>
+    <div id="top_ad">
+        <div id="Header1_panROS">
+		
+            <!-- ROS_728x90 -->
+            <div id='div-gpt-ad-1349421924281-14' style='width: 728px; height: 90px; overflow: hidden;'>
+                <script type='text/javascript'>
+                    googletag.cmd.push(function () { googletag.display('div-gpt-ad-1349421924281-14'); });
+                </script>
+            </div>
+
+        
+	</div>
+        
+    </div>
+    <div class="spacer_5">
+    </div>
+
+</div>
+<div id="Header1_rdMenu" class="RadMenu RadMenu_FanGraphs rmSized">
+	<!-- 2014.3.1209.45 --><ul class="rmRootGroup rmHorizontal">
+		<li class="rmItem rmFirst rmTemplate"><div class="rmText">
+			
+                <input type="text" id="psbox" style="padding: 2px 1px 3px 5px; vertical-align: middle; position: relative; font: 12px segoe ui ,arial,sans-serif; margin: 0; width: 150px;"
+                    onkeydown="KeyIt(event);" autocomplete="off" placeholder="Player & Blog Search" />
+            
+		</div><div class="rmSlide">
+			<ul class="rmVertical rmGroup rmLevel1">
+				<li class="rmItem rmFirst rmLast rmTemplate"><div class="rmText">
+					
+                        <div class="megabar">
+                            <div id="psearch" class="megabar_mid">
+                                <table cellspacing="0" cellpadding="0" style="font-size: 10pt; border: 0px; width:450px;">      <tr>         <td width="215px">             <center><b>Major League Players</b></center><br />         </td>         <td style="" width="10px">&nbsp;&nbsp;&nbsp;</td><td width="10px">&nbsp;&nbsp;&nbsp;</td>        <td width="215px">             <center><b>Minor League Players</b></center><br />         </td>     </tr>     <tr>         <td style="vertical-align: top;">             <span class="search"><table cellspacing="0" cellpadding="0" style="font-size: 10pt; border: 0px; width:215px;"><tr><td><a href="/statss.aspx?playerid=375&position=P">Bartolo Colon</a></td><td>&nbsp;&nbsp;</td><td align="right">1997 - 2015</td></tr><tr><td><a href="/statss.aspx?playerid=2036&position=P">Clayton Kershaw</a></td><td>&nbsp;&nbsp;</td><td align="right">2008 - 2015</td></tr><tr><td><a href="/statss.aspx?playerid=11200&position=OF">Kole Calhoun</a></td><td>&nbsp;&nbsp;</td><td align="right">2012 - 2015</td></tr><tr><td><a href="/statss.aspx?playerid=1943&position=P">Zack Greinke</a></td><td>&nbsp;&nbsp;</td><td align="right">2004 - 2015</td></tr><tr><td><a href="/statss.aspx?playerid=13110&position=OF">Yoenis Cespedes</a></td><td>&nbsp;&nbsp;</td><td align="right">2012 - 2015</td></tr><tr><td><a href="/statss.aspx?playerid=841&position=C">Jorge Posada</a></td><td>&nbsp;&nbsp;</td><td align="right">1995 - 2011</td></tr><tr><td><a href="/statss.aspx?playerid=10155&position=OF">Mike Trout</a></td><td>&nbsp;&nbsp;</td><td align="right">2011 - 2015</td></tr><tr><td><a href="/statss.aspx?playerid=1177&position=1B">Albert Pujols</a></td><td>&nbsp;&nbsp;</td><td align="right">2001 - 2015</td></tr><tr><td><a href="/statss.aspx?playerid=1109&position=OF">Barry Bonds</a></td><td>&nbsp;&nbsp;</td><td align="right">1986 - 2007</td></tr><tr><td><a href="/statss.aspx?playerid=8027&position=1B/DH">Adam Lind</a></td><td>&nbsp;&nbsp;</td><td align="right">2006 - 2015</td></tr></table></span></td>         <td style="border-right:1px solid black;">&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td>        <td style="vertical-align: top;">             <span class="search"><table cellspacing="0" cellpadding="0" style="font-size: 10pt; border: 0px; width:215px;"><tr><td><a href="/statss.aspx?playerid=sa599279&position=1B/DH">A.J. Reed</a></td><td>&nbsp;&nbsp;</td><td align="right">5/10/1993</td></tr><tr><td><a href="/statss.aspx?playerid=sa864590&position=2B">Yoan Moncada</a></td><td>&nbsp;&nbsp;</td><td align="right">5/27/1995</td></tr><tr><td><a href="/statss.aspx?playerid=sa501726&position=P">Mark Appel</a></td><td>&nbsp;&nbsp;</td><td align="right">7/15/1991</td></tr><tr><td><a href="/statss.aspx?playerid=sa657908&position=P">Lucas Giolito</a></td><td>&nbsp;&nbsp;</td><td align="right">7/14/1994</td></tr><tr><td><a href="/statss.aspx?playerid=sa737507&position=SS">J.P. Crawford</a></td><td>&nbsp;&nbsp;</td><td align="right">1/11/1995</td></tr><tr><td><a href="/statss.aspx?playerid=sa659453&position=OF">Nomar Mazara</a></td><td>&nbsp;&nbsp;</td><td align="right">4/26/1995</td></tr><tr><td><a href="/statss.aspx?playerid=sa597835&position=P">Tyler Glasnow</a></td><td>&nbsp;&nbsp;</td><td align="right">8/23/1993</td></tr><tr><td><a href="/statss.aspx?playerid=sa657859&position=OF">Albert Almora</a></td><td>&nbsp;&nbsp;</td><td align="right">4/16/1994</td></tr><tr><td><a href="/statss.aspx?playerid=sa657852&position=P">Jose Berrios</a></td><td>&nbsp;&nbsp;</td><td align="right">5/27/1994</td></tr><tr><td><a href="/statss.aspx?playerid=sa596917&position=SS">Orlando Arcia</a></td><td>&nbsp;&nbsp;</td><td align="right">8/4/1994</td></tr></table></span></td>     </tr> <tr><td colspan="4" align="center"><br /><a href="http://www.fangraphs.com/players.aspx"><b>List All Players by Letter</b></td></tr></table>
+                            </div>
+                        </div>
+                    
+				</div></li>
+			</ul>
+		</div></li><li class="rmItem "><a class="rmLink rmRootLink" target="_top" href="http://www.fangraphs.com" style="font-variant: small-caps; font-size: 10pt; font-family: Arial; padding-top: 2px;"><span class="rmText">Home</span></a><div class="rmSlide">
+			<ul class="rmVertical rmGroup rmLevel1">
+				<li class="rmItem rmFirst rmLast rmTemplate"><div class="rmText">
+					
+                        <div class="megabar">
+                            <div class="megabar_mid">
+                                <a href="http://www.fangraphs.com/plus/shop/"><b>FanGraphs T-Shirts</b></a>
+                            </div>
+                        </div>
+                    
+				</div></li>
+			</ul>
+		</div></li><li class="rmItem "><a class="rmLink rmRootLink" target="_top" href="http://www.fangraphs.com/thegame/" style="font-variant: small-caps; font-size: 10pt; font-family: Arial; padding-top: 2px;"><span class="rmText">Games</span></a><div class="rmSlide">
+			<ul class="rmVertical rmGroup rmLevel1">
+				<li class="rmItem rmFirst rmLast rmTemplate"><div class="rmText">
+					
+                        <div class="megabar">
+                            <div class="megabar_mid">
+                                <a href="http://www.fangraphs.com/thegame/"><b>The Game: Baseball</b></a>
+                            </div>
+                            <div class="megabar_mid">
+                                <a href="http://www.fangraphs.com/thegame/fbpicker.aspx"><b>The Game: Football</b></a>
+                            </div>
+                        </div>
+                    
+				</div></li>
+			</ul>
+		</div></li><li class="rmItem "><a class="rmLink rmRootLink" target="_top" href="http://www.fangraphs.com/plus/" style="font-variant: small-caps; font-size: 10pt; font-family: Arial; padding-top: 2px;"><span class="rmText">FG+</span></a><div class="rmSlide">
+			<ul class="rmVertical rmGroup rmLevel1">
+				<li class="rmItem rmFirst rmLast rmTemplate"><div class="rmText">
+					
+                        <div class="megabar">
+                            <div class="megabar_mid">
+                                <b><a href="http://www.fangraphs.com/plus/product/fangraphs-subscription/">Signup for FanGraphs+</a></b>
+                            </div>
+                            <div class="megabar_mid">
+                                <b><a href="http://www.fangraphs.com/plus/" style="color: Green;">2015 Articles</a></b>
+                            </div>
+                            <div class="megabar_mid">
+                                <b>Batter Profiles</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/plus/2015-batter-profiles-a-b/">A - B</a>,
+                            <a href="http://www.fangraphs.com/plus/2015-batter-profiles-c/">C</a>,
+                            <a href="http://www.fangraphs.com/plus/2015-batter-profiles-d-f/">D - F</a>,
+                            <a href="http://www.fangraphs.com/plus/2015-batter-profiles-g-h/">G - H</a>,
+                            <a href="http://www.fangraphs.com/plus/2015-batter-profiles-i-l/">I - L</a>,<br />
+                            <a href="http://www.fangraphs.com/plus/2015-batter-profiles-m-o/">M - O</a>,
+                            <a href="http://www.fangraphs.com/plus/2015-batter-profiles-p-r/">P - R</a>,
+                            <a href="http://www.fangraphs.com/plus/2015-batter-profiles-s-t/">S - T</a>,
+                            <a href="http://www.fangraphs.com/plus/2015-batter-profiles-u-z/">U - Z</a>
+                            <div class="megabar_mid">
+                                <b>Pitcher Profiles</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/plus/2015-pitcher-profiles-a-b/">A - B</a>,
+                            <a href="http://www.fangraphs.com/plus/2015-pitcher-profiles-c-e/">C - E</a>,
+                            <a href="http://www.fangraphs.com/plus/2015-pitcher-profiles-f-j/">F - J</a>,
+                            <a href="http://www.fangraphs.com/plus/2015-pitcher-profiles-k-o/">K - O</a>,
+                            <a href="http://www.fangraphs.com/plus/2015-pitcher-profiles-p-t/">P - T</a>,
+                            <a href="http://www.fangraphs.com/plus/2015-pitcher-profiles-u-z/">U - Z</a>
+                            <div class="megabar_mid">
+                                <b><a href="http://www.fangraphs.com/plus/2015-prospect-profiles/"
+                                    style="color: Green;">Prospect Profiles</a></b>
+                            </div>
+                        </div>
+                    
+				</div></li>
+			</ul>
+		</div></li><li class="rmItem "><a class="rmLink rmRootLink" target="_top" href="http://www.fangraphs.com/blogroll.aspx" style="font-variant: small-caps; font-size: 10pt; font-family: Arial; padding-top: 2px;"><span class="rmText">Blogs</span></a><div class="rmSlide">
+			<ul class="rmVertical rmGroup rmLevel1">
+				<li class="rmItem rmFirst rmLast rmTemplate"><div class="rmText">
+					
+                        <div class="megabar">
+                            <div id="menublog" class="megabar_mid">
+                                <div style="width: 350px; white-space: normal;"><div style="color: Green; padding-top: 5px;"><b><a href="http://www.fangraphs.com/blogs/" style="color: Green; font-size:12pt;">FanGraphs</a></b></div><a href="http://www.fangraphs.com/blogs/fangraphs-audio-doctor-of-jurisprudence-nathaniel-grow/">FanGraphs Audio: Doctor of Jurisprudence Nathaniel Grow</a><br /><a href="http://www.fangraphs.com/blogs/the-other-weapon-in-the-marlins-bullpen/">The Other Weapon In the Marlins Bullpen</a><br /><a href="http://www.fangraphs.com/blogs/still-on-the-board-for-now-ian-kennedy/">Still on the Board (for Now): Ian Kennedy</a><br /><a href="http://www.fangraphs.com/blogs/players-with-abnormally-strong-walk-years-get-paid-more/">Players with Abnormally Strong Walk Years Get Paid More</a><br /><div style="color: #825a3f; padding-top: 5px;"><b><a href="http://www.fangraphs.com/fantasy/" style="color: #825a3f; font-size:12pt;">RotoGraphs</a></b></div><a href="http://www.fangraphs.com/fantasy/the-orioles-elite-zach-britton-and-darren-oday/">The Orioles' Elite: Zach Britton and Darren O'Day</a><br /><a href="http://www.fangraphs.com/fantasy/mash-report-11416-tommy-john-surgery-extravaganza/">MASH Report (1/14/16) - Tommy John Surgery Extravaganza</a><br /><div style="color: #7c4d85; padding-top: 5px;"><b><a href="http://www.fangraphs.com/not/" style="color: #7c4d85; font-size:12pt;">NotGraphs</a></b></div><a href="http://www.fangraphs.com/not/notgraphs-a-valedictory-statement/">NotGraphs: A Valedictory Statement</a><br /><a href="http://www.fangraphs.com/not/so-long/">So long.</a><br /><div style="color: #336699; padding-top: 5px;"><b><a href="http://www.fangraphs.com/community/" style="color: #336699; font-size:12pt;">Community Research</a></b></div><a href="http://www.fangraphs.com/community/started-from-the-bottom-now-were-average/">Started From the Bottom, Now We're...Average</a><br /><div style="color: Green; padding-top: 5px;"><b><a href="http://www.fangraphs.com/plus/" style="color: Green; font-size:12pt;">FanGraphs+</a></b></div><a href="http://www.fangraphs.com/plus/matt-carpenter-must-be-more-aggressive/">Matt Carpenter Must Be More Aggressive</a><br /><a href="http://www.fangraphs.com/plus/five-breakout-candidates-for-2015/">Five Breakout Candidates For 2015</a><br /></div>
+                            </div>
+                        </div>
+                    
+				</div></li>
+			</ul>
+		</div></li><li class="rmItem "><a class="rmLink rmRootLink" target="_top" href="http://www.fangraphs.com/projections.aspx" style="font-variant: small-caps; font-size: 10pt; font-family: Arial; padding-top: 2px;"><span class="rmText">Projections</span></a><div class="rmSlide">
+			<ul class="rmVertical rmGroup rmLevel1">
+				<li class="rmItem rmFirst rmLast rmTemplate"><div class="rmText">
+					
+                        <div class="megabar">
+                            <div class="megabar_mid">
+                                <b>2016 Pre-Season Projections</b>
+                            </div>
+                            
+                            <a href="http://www.fangraphs.com/projections.aspx?pos=all&stats=bat&type=fan">FANS</a>,
+                            <a href="http://www.fangraphs.com/projections.aspx?pos=all&stats=bat&type=zips">ZiPS</a>,
+                            <a href="http://www.fangraphs.com/projections.aspx?pos=all&stats=bat&type=steamer">Steamer</a>,
+                            <a href="http://www.fangraphs.com/projections.aspx?pos=all&stats=bat&type=fangraphsdc">Depth Charts</a>
+                            
+                            <div class="megabar_mid">
+                                <b>2016 600 PA / 200 IP Projections</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/projections.aspx?pos=all&stats=bat&type=steamer600">Steamer600</a>
+                            <div class="megabar_mid">
+                                <b>2016 Updated In-Season Projections</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/projections.aspx?pos=all&stats=bat&type=rzips">ZiPS
+                                (RoS)</a>, <a href="http://www.fangraphs.com/projections.aspx?pos=all&stats=bat&type=uzips">ZiPS (Update)</a><br />
+                            <a href="http://www.fangraphs.com/projections.aspx?pos=all&stats=bat&type=steamerr">Steamer
+                                (RoS)</a>, <a href="http://www.fangraphs.com/projections.aspx?pos=all&stats=bat&type=steameru">Steamer (Update)</a>
+                            <div class="megabar_mid">
+                                <b>DFS Projections</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/dailyprojections.aspx?pos=all&stats=bat&type=sabersim">SaberSim</a>
+                            <div class="megabar_mid">
+                                <a href="http://www.fangraphs.com/auctiontool.aspx"><b>Auction Calculator</b></a>
+                            </div>
+                            <div class="megabar_mid">
+                                <a href="http://www.fangraphs.com/steamersplitsviz.aspx"><b>Steamer Splits Tool</b></a>
+                            </div>
+                        </div>
+                    
+				</div></li>
+			</ul>
+		</div></li><li class="rmItem "><a class="rmLink rmRootLink" target="_top" href="http://ottoneu.fangraphs.com" style="font-variant: small-caps; font-size: 10pt; font-family: Arial; padding-top: 2px;"><span class="rmText">OTTONEU</span></a><div class="rmSlide">
+			<ul class="rmVertical rmGroup rmLevel1">
+				<li class="rmItem rmFirst rmLast rmTemplate"><div class="rmText">
+					
+                        <div class="megabar">
+                            <div class="megabar_mid">
+                                <b><a href="http://ottoneu.fangraphs.com/" style="color: Green;">Fantasy Baseball</a></b>
+                            </div>
+                            <a href="http://ottoneu.fangraphs.com/">Signup</a>, <a href="http://ottoneu.fangraphs.com/support">FAQ</a>, <a href="http://www.fangraphs.com/fantasy/category/ottoneu/">Blog
+                                    Posts</a>
+                        </div>
+                    
+				</div></li>
+			</ul>
+		</div></li><li class="rmItem "><a class="rmLink rmRootLink" target="_top" href="http://www.fangraphs.com/livescoreboard.aspx" style="font-size: 10pt; font-family: Arial; padding-top: 2px;"><span class="rmText">Scores</span></a><div class="rmSlide">
+			<ul class="rmVertical rmGroup rmLevel1">
+				<li class="rmItem rmFirst rmLast rmTemplate"><div class="rmText">
+					
+                        <div class="megabar">
+
+                            <div class="megabar_mid">
+                                <b>Win Probability & Box Scores</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/scoreboard.aspx">2015</a>, 
+                            <a href="http://www.fangraphs.com/scoreboard.aspx?date=2014-10-29">2014</a>, 
+                            <a href="http://www.fangraphs.com/scoreboard.aspx?date=2013-10-30">2013</a>, 
+                            <a href="http://www.fangraphs.com/scoreboard.aspx?date=2012-10-28">2012</a>, <a href="http://www.fangraphs.com/scoreboard.aspx?date=2011-10-28">2011</a>, <a href="http://www.fangraphs.com/scoreboard.aspx?date=2010-11-01">2010</a>,
+                            <a href="http://www.fangraphs.com/scoreboard.aspx?date=2009-11-04">2009</a>, <a href="http://www.fangraphs.com/scoreboard.aspx?date=2008-10-27">2008</a>, 
+                            <a href="http://www.fangraphs.com/scoreboard.aspx?date=2007-10-28">2007</a> ...
+                            <div id="menugames">
+                                <table cellpadding="0" cellspacing="0" border="0" style="font-size: 9pt;"><tr><td valign="top"><div style="color: Green; padding-top: 5px;"><b>AL Games</b></div><table cellpadding="0" cellspacing="0" border="0" width="150px"></table></td><td width="15px">&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="top"><div style="color: Green; padding-top: 5px;"><b>NL Games</b></div><table cellpadding="0" cellspacing="0" border="0" width="150px"><tr><td><a href="http://www.fangraphs.com/wins.aspx?date=2015-11-01&team=Mets&dh=0&season=2015">KCR (7) @ NYM (2)</a></td><td align="right">F - 12th</td></tr></table></td></tr></table>
+                            </div>
+                        </div>
+                    
+				</div></li>
+			</ul>
+		</div></li><li class="rmItem "><a class="rmLink rmRootLink" target="_top" href="http://www.fangraphs.com/depthcharts.aspx" style="font-variant: small-caps; font-size: 10pt; font-family: Arial; padding-top: 2px;"><span class="rmText">Standings</span></a><div class="rmSlide">
+			<ul class="rmVertical rmGroup rmLevel1">
+				<li class="rmItem rmFirst rmLast rmTemplate"><div class="rmText">
+					
+                        <div class="megabar">
+                            <div class="megabar_mid">
+                                <b><a href="http://www.fangraphs.com/coolstandings.aspx">2015 Playoff Odds</a></b>, <b><a href="http://www.fangraphs.com/coolgraphs.aspx">Playoff Odds Graphs</a></b>
+                            </div>
+                            <div class="megabar_mid">
+                                <b><a href="http://www.fangraphs.com/depthcharts.aspx?position=Standings">2015 Projected Standings</a></b>
+                            </div>
+                            <div id="menuteams">
+                                <table cellpadding="0" cellspacing="0" border="0" style="font-size: 9pt;"><tr><td valign="top"><div style="color: Green; padding-top: 5px;"><b>AL East</b></div><table cellpadding="0" cellspacing="0" border="0" width="150px"><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Blue Jays">Blue Jays</a></td><td align="right" width="25px">93</td><td align="right" width="25px">69</td><td align="right">----</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Yankees">Yankees</a></td><td align="right" width="25px">87</td><td align="right" width="25px">75</td><td align="right">6.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Orioles">Orioles</a></td><td align="right" width="25px">81</td><td align="right" width="25px">81</td><td align="right">12.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Rays">Rays</a></td><td align="right" width="25px">80</td><td align="right" width="25px">82</td><td align="right">13.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Red Sox">Red Sox</a></td><td align="right" width="25px">78</td><td align="right" width="25px">84</td><td align="right">15.0</td></tr></table><div style="color: Green; padding-top: 5px;"><b>AL Central</b></div><table cellpadding="0" cellspacing="0" border="0" width="150px"><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Royals">Royals</a></td><td align="right" width="25px">95</td><td align="right" width="25px">67</td><td align="right">----</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Twins">Twins</a></td><td align="right" width="25px">83</td><td align="right" width="25px">79</td><td align="right">12.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Indians">Indians</a></td><td align="right" width="25px">81</td><td align="right" width="25px">80</td><td align="right">13.5</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=White Sox">White Sox</a></td><td align="right" width="25px">76</td><td align="right" width="25px">86</td><td align="right">19.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Tigers">Tigers</a></td><td align="right" width="25px">74</td><td align="right" width="25px">87</td><td align="right">20.5</td></tr></table><div style="color: Green; padding-top: 5px;"><b>AL West</b></div><table cellpadding="0" cellspacing="0" border="0" width="150px"><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Rangers">Rangers</a></td><td align="right" width="25px">88</td><td align="right" width="25px">74</td><td align="right">----</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Astros">Astros</a></td><td align="right" width="25px">86</td><td align="right" width="25px">76</td><td align="right">2.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Angels">Angels</a></td><td align="right" width="25px">85</td><td align="right" width="25px">77</td><td align="right">3.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Mariners">Mariners</a></td><td align="right" width="25px">76</td><td align="right" width="25px">86</td><td align="right">12.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Athletics">Athletics</a></td><td align="right" width="25px">68</td><td align="right" width="25px">94</td><td align="right">20.0</td></tr></table><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td valign="top"><div style="color: Green; padding-top: 5px;"><b>NL East</b></div><table cellpadding="0" cellspacing="0" border="0" width="150px"><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Mets">Mets</a></td><td align="right" width="25px">90</td><td align="right" width="25px">72</td><td align="right">----</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Nationals">Nationals</a></td><td align="right" width="25px">83</td><td align="right" width="25px">79</td><td align="right">7.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Marlins">Marlins</a></td><td align="right" width="25px">71</td><td align="right" width="25px">91</td><td align="right">19.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Braves">Braves</a></td><td align="right" width="25px">67</td><td align="right" width="25px">95</td><td align="right">23.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Phillies">Phillies</a></td><td align="right" width="25px">63</td><td align="right" width="25px">99</td><td align="right">27.0</td></tr></table><div style="color: Green; padding-top: 5px;"><b>NL Central</b></div><table cellpadding="0" cellspacing="0" border="0" width="150px"><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Cardinals">Cardinals</a></td><td align="right" width="25px">100</td><td align="right" width="25px">62</td><td align="right">----</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Pirates">Pirates</a></td><td align="right" width="25px">98</td><td align="right" width="25px">64</td><td align="right">2.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Cubs">Cubs</a></td><td align="right" width="25px">97</td><td align="right" width="25px">65</td><td align="right">3.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Brewers">Brewers</a></td><td align="right" width="25px">68</td><td align="right" width="25px">94</td><td align="right">32.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Reds">Reds</a></td><td align="right" width="25px">64</td><td align="right" width="25px">98</td><td align="right">36.0</td></tr></table><div style="color: Green; padding-top: 5px;"><b>NL West</b></div><table cellpadding="0" cellspacing="0" border="0" width="150px"><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Dodgers">Dodgers</a></td><td align="right" width="25px">92</td><td align="right" width="25px">70</td><td align="right">----</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Giants">Giants</a></td><td align="right" width="25px">84</td><td align="right" width="25px">78</td><td align="right">8.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Diamondbacks">D-backs</a></td><td align="right" width="25px">79</td><td align="right" width="25px">83</td><td align="right">13.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Padres">Padres</a></td><td align="right" width="25px">74</td><td align="right" width="25px">88</td><td align="right">18.0</td></tr><tr><td width="65px"><a href="http://www.fangraphs.com/winss.aspx?team=Rockies">Rockies</a></td><td align="right" width="25px">68</td><td align="right" width="25px">94</td><td align="right">24.0</td></tr></table></td></tr></table>
+                            </div>
+                        </div>
+                    
+				</div></li>
+			</ul>
+		</div></li><li class="rmItem "><a class="rmLink rmRootLink" target="_top" href="http://www.fangraphs.com/leaders.aspx" style="font-variant: small-caps; font-size: 10pt; font-family: Arial; padding-top: 2px;"><span class="rmText">Leaders</span></a><div class="rmSlide">
+			<ul class="rmVertical rmGroup rmLevel1">
+				<li class="rmItem rmFirst rmLast rmTemplate"><div class="rmText">
+					
+                        <div class="megabar">
+                            <div class="megabar_mid">
+                                <b>Batting Leaders</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2015&month=0&season1=2015&ind=0">2015</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2014&month=0&season1=2014&ind=0">2014</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2013&month=0&season1=2013&ind=0">2013</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2012&month=0&season1=2012&ind=0">2012</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2015&month=0&season1=1871&ind=0&team=0&rost=0&players=0">Career</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2015&month=0&season1=2010&ind=0">10's</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2009&month=0&season1=2000&ind=0">00's</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=1999&month=0&season1=1990&ind=0">90's</a>
+                            <div class="megabar_mid">
+                                <b>Pitching Leaders</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=8&season=2015&month=0&season1=2015&ind=0">2015</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=8&season=2014&month=0&season1=2014&ind=0">2014</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=8&season=2013&month=0&season1=2013&ind=0">2013</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=8&season=2012&month=0&season1=2012&ind=0">2012</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=8&season=2015&month=0&season1=1871&ind=0&team=0&rost=0&players=0">Career</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=8&season=2015&month=0&season1=2010&ind=0">10's</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=8&season=2009&month=0&season1=2000&ind=0">00's</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=8&season=1999&month=0&season1=1990&ind=0">90's</a>
+                            <div class="megabar_mid">
+                                <b>Minor League Leaders</b>
+                            </div>
+                            AAA: <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=2&qual=y&type=0&season=2015">International</a>, <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=4&qual=y&type=0&season=2015">Pacific Coast</a>, <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=31&qual=y&type=0&season=2015">Mexican</a><br />
+                            AA: <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=5&qual=y&type=0&season=2015">Eastern</a>, <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=6&qual=y&type=0&season=2015">Southern</a>, <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=7&qual=y&type=0&season=2015">Texas</a><br />
+                            A+: <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=8&qual=y&type=0&season=2015">California</a>, <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=9&qual=y&type=0&season=2015">Carolina</a>, <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=10&qual=y&type=0&season=2015">Florida State</a><br />
+                            A: <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=11&qual=y&type=0&season=2015">Midwest</a>, <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=14&qual=y&type=0&season=2015">South Atlantic</a><br />
+                            A-: <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=12&qual=y&type=0&season=2015">New York-Penn</a>, <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=13&qual=y&type=0&season=2015">Northwest</a><br />
+                            R: <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=15&qual=y&type=0&season=2015">Appalachian</a>, <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=17&qual=y&type=0&season=2015">Gulf Coast</a>, <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=18&qual=y&type=0&season=2015">Pioneer</a>, <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=16&qual=y&type=0&season=2015">Arizona</a><br />
+                            R: <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=30&qual=y&type=0&season=2015">Dominican</a>, <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=32&qual=y&type=0&season=2015">Venezuelan</a>, <a href="http://www.fangraphs.com/minorleaders.aspx?pos=all&stats=bat&lg=33&qual=y&type=0&season=2015">Arizona Fall</a>
+                            <div class="megabar_mid">
+                                <b>WAR Tools</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/warleaders.aspx">Combined WAR Leaderboards</a><br />
+                            <a href="http://www.fangraphs.com/graphsw.aspx">WAR Graphs</a>, <a href="http://www.fangraphs.com/graphswd.aspx">WAR Grid</a>
+                            <div class="megabar_mid">
+                                <b>Rookie Leaders</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2015&month=0&season1=2015&ind=2">Batters 2015</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=8&season=2015&month=0&season1=2015&ind=2">Pitchers 2015</a>
+                            <div class="megabar_mid">
+                                <b>Splits Leaders</b>
+                            </div>
+                            Batters: <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=1&season=2015&month=13&season1=2015&ind=0">vs L</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=1&season=2015&month=14&season1=2015&ind=0">vs R</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=1&season=2015&month=15&season1=2015&ind=0">Home</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=1&season=2015&month=16&season1=2015&ind=0">Away</a><br />
+                            Pitchers: <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=1&season=2015&month=13&season1=2015&ind=0">vs L</a> , <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=1&season=2015&month=14&season1=2015&ind=0">vs R</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=1&season=2015&month=15&season1=2015&ind=0">Home</a>, <a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual=y&type=1&season=2015&month=16&season1=2015&ind=0">Away</a>
+                            <div class="megabar_mid">
+                                <b>League Average Heatmaps</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/zonegridbase.aspx?playerid=&position=&ss=2015&se=2015&type=0&hand=all&count=all&blur=0&grid=10&view=bat">2015</a>, 
+                            <a href="http://www.fangraphs.com/zonegridbase.aspx?playerid=&position=&ss=2014&se=2014&type=0&hand=all&count=all&blur=0&grid=10&view=bat">2014</a>, 
+                            <a href="http://www.fangraphs.com/zonegridbase.aspx?playerid=&position=&ss=2013&se=2013&type=0&hand=all&count=all&blur=0&grid=10&view=bat">2013</a>, 
+                            <a href="http://www.fangraphs.com/zonegridbase.aspx?playerid=&position=&ss=2012&se=2012&type=0&hand=all&count=all&blur=0&grid=10&view=bat">2012</a>, 
+                            <a href="http://www.fangraphs.com/zonegridbase.aspx?playerid=&position=&ss=2011&se=2011&type=0&hand=all&count=all&blur=0&grid=10&view=bat">2011</a>
+                        </div>
+                    
+				</div></li>
+			</ul>
+		</div></li><li class="rmItem "><a class="rmLink rmRootLink" target="_top" href="http://www.fangraphs.com/teams.aspx" style="font-variant: small-caps; font-size: 10pt; font-family: Arial; padding-top: 2px;"><span class="rmText">Teams</span></a><div class="rmSlide">
+			<ul class="rmVertical rmGroup rmLevel1">
+				<li class="rmItem rmFirst rmLast rmTemplate"><div class="rmText">
+					
+                        <div class="megabar">
+                            <div class="megabar_mid">
+                                <b>Team Batting Stats</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/teams.aspx?pos=all&stats=bat&lg=all&type=8&season=2015&month=0">2015</a>, <a href="http://www.fangraphs.com/teams.aspx?pos=all&stats=bat&lg=all&type=8&season=2014&month=0">2014</a>, <a href="http://www.fangraphs.com/teams.aspx?pos=all&stats=bat&lg=all&type=8&season=2013&month=0">2013</a>, <a href="http://www.fangraphs.com/teams.aspx?pos=all&stats=bat&lg=all&type=8&season=2012&month=0">2012</a>, <a href="http://www.fangraphs.com/teams.aspx?pos=all&stats=bat&lg=all&type=8&season=2011&month=0">2011</a>, <a href="http://www.fangraphs.com/teams.aspx?pos=all&stats=bat&lg=all&type=8&season=2010&month=0&season1=2010">2010</a>, <a href="http://www.fangraphs.com/teams.aspx?pos=all&lg=all&stats=bat&type=8&season=2009&month=0&season1=2009">2009</a>, <a href="http://www.fangraphs.com/teams.aspx?pos=all&stats=bat&lg=all&type=8&season=2008&month=0&season1=2008">2008</a> ...
+                            <div class="megabar_mid">
+                                <b>Team Pitching Stats</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/teams.aspx?pos=all&stats=pit&lg=all&type=8&season=2015&month=0&season1=2015">2015</a>, <a href="http://www.fangraphs.com/teams.aspx?pos=all&stats=pit&lg=all&type=8&season=2014&month=0&season1=2014">2014</a>, <a href="http://www.fangraphs.com/teams.aspx?pos=all&stats=pit&lg=all&type=8&season=2013&month=0&season1=2013">2013</a>, <a href="http://www.fangraphs.com/teams.aspx?pos=all&stats=pit&lg=all&type=8&season=2012&month=0&season1=2012">2012</a>, <a href="http://www.fangraphs.com/teams.aspx?pos=all&stats=pit&lg=all&type=8&season=2011&month=0&season1=2011">2011</a>, <a href="http://www.fangraphs.com/teams.aspx?pos=all&lg=all&stats=pit&type=8&season=2010&month=0&season1=2010">2010</a>, <a href="http://www.fangraphs.com/teams.aspx?pos=all&stats=pit&lg=all&type=8&season=2009&month=0&season1=2009">2009</a>, <a href="http://www.fangraphs.com/teams.aspx?pos=all&lg=all&stats=pit&type=8&season=2008&month=0&season1=2008">2008</a> ...
+
+                             <div class="megabar_mid">
+                                 <b><a href="http://www.fangraphs.com/depthcharts.aspx?position=Team">Team WAR Totals (RoS)</a></b>
+                             </div>
+                            <div class="megabar_mid">
+                                <b>Team Depth Charts</b>
+                            </div>
+                            <table cellpadding="0" cellspacing="0" border="0" style="font-size: 9pt; width: 300px;">
+                                <tr>
+                                    <td>
+                                        <div class="megabar_mid"><b>AL East</b></div>
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=14">Blue Jays</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=2">Orioles</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=12">Rays</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=3">Red Sox</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=9">Yankees</a><br />
+
+                                    </td>
+                                    <td>
+                                        <div class="megabar_mid"><b>AL Central</b></div>
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=5">Indians</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=7">Royals</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=6">Tigers</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=8">Twins</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=4">White Sox</a><br />
+                                    </td>
+                                    <td>
+                                        <div class="megabar_mid"><b>AL West</b></div>
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=1">Angels</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=21">Astros</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=10">Athletics</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=11">Mariners</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=13">Rangers</a><br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="megabar_mid" style="padding-top: 5px;"><b>NL East</b></div>
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=16">Braves</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=20">Marlins</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=25">Mets</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=24">Nationals</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=26">Phillies</a></td>
+                                    <td>
+                                        <div class="megabar_mid" style="padding-top: 5px;"><b>NL Central</b></div>
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=23">Brewers</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=28">Cardinals</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=17">Cubs</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=27">Pirates</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=18">Reds</a></td>
+                                    <td>
+                                        <div class="megabar_mid" style="padding-top: 5px;"><b>NL West</b></div>
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=15">D-backs</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=22">Dodgers</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=30">Giants</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=29">Padres</a><br />
+                                        <a href="http://www.fangraphs.com/depthcharts.aspx?position=ALL&teamid=19">Rockies</a></td>
+                                </tr>
+                            </table>
+                            <div class="megabar_mid">
+                                <b>Positional Depth Charts</b>
+                            </div>
+                            Batters: <a href="http://www.fangraphs.com/depthcharts.aspx?position=C">C</a>,
+                            <a href="http://www.fangraphs.com/depthcharts.aspx?position=1B">1B</a>,
+                            <a href="http://www.fangraphs.com/depthcharts.aspx?position=2B">2B</a>,
+                            <a href="http://www.fangraphs.com/depthcharts.aspx?position=SS">SS</a>,
+                            <a href="http://www.fangraphs.com/depthcharts.aspx?position=3B">3B</a>,
+                            <a href="http://www.fangraphs.com/depthcharts.aspx?position=LF">LF</a>,
+                            <a href="http://www.fangraphs.com/depthcharts.aspx?position=CF">CF</a>,
+                            <a href="http://www.fangraphs.com/depthcharts.aspx?position=RF">RF</a>,
+                            <a href="http://www.fangraphs.com/depthcharts.aspx?position=DH">DH</a><br />
+                            Pitchers: <a href="http://www.fangraphs.com/depthcharts.aspx?position=SP">SP</a>,
+                            <a href="http://www.fangraphs.com/depthcharts.aspx?position=RP">RP</a>
+
+                        </div>
+                    
+				</div></li>
+			</ul>
+		</div></li><li class="rmItem rmLast"><a class="rmLink rmRootLink" target="_top" href="http://www.fangraphs.com/library/" style="font-variant: small-caps; font-size: 10pt; font-family: Arial; padding-top: 2px;"><span class="rmText">Glossary</span></a><div class="rmSlide">
+			<ul class="rmVertical rmGroup rmLevel1">
+				<li class="rmItem rmFirst rmLast rmTemplate"><div class="rmText">
+					
+                        <div class="megabar">
+                            <div class="megabar_mid">
+                                <b>Batting Stats</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/library/offense/woba/">wOBA</a>, <a href="http://www.fangraphs.com/library/offense/wrc/">wRC+</a>, <a href="http://www.fangraphs.com/library/offense/iso/">ISO</a>,
+                            <a href="http://www.fangraphs.com/library/offense/rate-stats/">K% & BB%</a>,
+                            <a href="http://www.fangraphs.com/library/offense/">more...</a>
+                            <br />
+                            <div class="megabar_mid">
+                                <b>Pitching Stats</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/library/pitching/fip/">FIP</a>, <a href="http://www.fangraphs.com/library/pitching/xfip/">xFIP</a>, <a href="http://www.fangraphs.com/library/pitching/babip/">BABIP</a>,
+                            <a href="http://www.fangraphs.com/library/pitching/rate-stats/">K/9 & BB/9</a>,
+                            <a href="http://www.fangraphs.com/library/pitching/">more...</a>
+                            <br />
+                            <div class="megabar_mid">
+                                <b>Defensive Stats</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/blogs/the-fangraphs-uzr-primer/">UZR Primer</a>,
+                            <a href="http://www.fangraphs.com/library/defense/drs/">DRS</a>, <a href="http://www.fangraphs.com/library/defense/fsr/">FSR</a>, <a href="http://www.fangraphs.com/library/defense/tz-tzl/">TZ & TZL</a>,
+                            <a href="http://www.fangraphs.com/library/defense/">more...</a>
+                            <div class="megabar_mid">
+                                <b>More</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/library/misc/war/">WAR</a>, <a href="http://www.fangraphs.com/blogs/ultimate-base-running-primer/">UBR Primer</a>, <a href="http://www.fangraphs.com/library/misc/wpa/">WPA</a>,
+                            <a href="http://www.fangraphs.com/library/misc/li/">LI</a>, <a href="http://www.fangraphs.com/library/misc/clutch/">Clutch</a>
+                            <div class="megabar_mid">
+                                <b>Guts!</b>
+                            </div>
+                            <a href="http://www.fangraphs.com/guts.aspx?type=cn">Seasonal Constants</a><br />
+                            <a href="http://www.fangraphs.com/guts.aspx?type=pf&teamid=0&season=2014">Park Factors</a><br />
+                            <a href="http://www.fangraphs.com/guts.aspx?type=pfh&teamid=0&season=2014">Park Factors
+                                by Handedness</a>
+                        </div>
+                    
+				</div></li>
+			</ul>
+		</div></li>
+	</ul><input id="Header1_rdMenu_ClientState" name="Header1_rdMenu_ClientState" type="hidden" />
+</div>
+
+<p id="login">
+    <a href="http://www.fangraphs.com/blogs/wp-login.php?redirect_to=http%3a%2f%2fwww.fangraphs.com%2fplayers.aspx%3fletter%3dVi">Log In</a> &nbsp;&nbsp;-&nbsp;&nbsp; <a href="http://www.fangraphs.com/blogs/wp-login.php?action=register">Register?</a>
+</p>
+<div id="Header1_panSpace">
+	
+    <div style="display:table; height:27px;"><div style="display:table-cell; padding-top:1px; background-color:#50ae26; font-size:17px; font-weight:bold; width:980px; text-align:center; vertical-align:middle;"><a href="http://www.fangraphs.com/freeagents.aspx?sign=all&pos=all&nteam=all&oteam=all" style="color:white; text-decoration:none;">2016 Free Agent Tracker!</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=0&type=8&season=2015&month=0&season1=2015&ind=0&team=0&rost=0&age=0&filter=&players=4300,8223,7476,5986,9736,1830,8844,9015,979,1837,5842,4849,7841,2237,4363,4759,225,512,950,4962,6249,1701,13110,13071,813,5640,375,1797,6893,9272,3708,3371,4400,6885,2859,4251,4064,1118,9425,3886,4062,4684,4792,9549,8173,5209,6244,1943,2072,3255,7410,1451,1757,1945,729,4259,4940,4806,921,1157,8267,13048,656,9848,1841,7355,5887,4567,2234,3353,13047,4897,7773,2216,4229,6986,1507,3815,10130,1636,1259,5705,739,7416,1852,5905,3448,6086,3190,5088,1737,9346,5861,4891,3970,4316,6035,3057,1122,3179,9492,3321,5746,8268,9926,8553,4279,9957,5203,3231,3395,1514,746,3184,2170,2218,5133,9893,7619,2090,494,6589,971,5557,3254,3704,1555,2155,8280,2197,6941,3707,8347,9328,4620,1918,3442,5222,454,1679,211,1677,4138,1011,7474,4298,1137,976,5960,3196,3882,4505,944,7435" style="color:white; text-decoration:none;">2016 Free Agent Leaderboards!</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.fangraphs.com/auctiontool.aspx" style="color:white; text-decoration:none;">Auction Calculator!</a></div></div>
+
+    <div class="spacer_10">
+    </div>
+
+</div>
+
+
+
+        </div>
+        <div id="content">
+            
+<table cellspacing="0" cellpadding="0" style="font-size: 10pt; width: 980px; border: 0px;">
+    <tr>
+        <td style="width: 750px; vertical-align: top;">
+            
+            <div id="PlayerSearch1_panSearch">
+	
+                <table cellspacing="0" cellpadding="0" style="font-size: 10pt; width: 750px; border: 0px;">
+                    <tr>
+                        <td align="center" style="width: 375px; background-color: #D3D3D3;">
+                            <b>Major League Players</b>
+                        </td>
+                        <td align="center" style="width: 375px; background-color: #D3D3D3;">
+                            <b>Minor League Players</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;">
+                            <br /><div class="search"><table cellspacing="0" cellpadding="2px" style="width: 350px; border: 0px; margin-left: 10px;"><tr><td><a href="statss.aspx?playerid=1013420&position=P">Lee Viau</a></td><td>1888 - 1892</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=3917&position=OF">Dayan Viciedo</a></td><td>2010 - 2014</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=1013421&position=C">Ernie Vick</a></td><td>1922 - 1926</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=1013424&position=OF">Sammy Vick</a></td><td>1917 - 1921</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=1013422&position=P">Rube Vickers</a></td><td>1902 - 1909</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1013423&position=P">Tom Vickery</a></td><td>1890 - 1893</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1013425&position=1B">George Vico</a></td><td>1948 - 1949</td><td>1B</td></tr><tr><td><a href="statss.aspx?playerid=1677&position=OF">Shane Victorino</a></td><td>2003 - 2015</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=1013426&position=OF">Jose Vidal</a></td><td>1966 - 1969</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=802&position=2B">Jose Vidro</a></td><td>1997 - 2008</td><td>2B</td></tr><tr><td><a href="statss.aspx?playerid=1922&position=P">Eduardo Villacis</a></td><td>2004 - 2004</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1059&position=P">Brandon Villafuerte</a></td><td>2000 - 2004</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=4138&position=P">Carlos Villanueva</a></td><td>2006 - 2015</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=8796&position=P">Elih Villanueva</a></td><td>2011 - 2011</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1013427&position=C">Hector Villanueva</a></td><td>1990 - 1993</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=10071&position=SS">Jonathan Villar</a></td><td>2013 - 2015</td><td>SS</td></tr><tr><td><a href="statss.aspx?playerid=5360&position=P">Henry Villar</a></td><td>2010 - 2010</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=5180&position=P">Brayan Villarreal</a></td><td>2011 - 2013</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1654&position=P">Oscar Villarreal</a></td><td>2003 - 2008</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=9904&position=P">Pedro Villarreal</a></td><td>2012 - 2015</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1013428&position=P">Ismael Villegas</a></td><td>2000 - 2000</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1010&position=P">Ron Villone</a></td><td>1995 - 2009</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1189&position=2B">Fernando Vina</a></td><td>1993 - 2004</td><td>2B</td></tr><tr><td><a href="statss.aspx?playerid=7555&position=P">Nick Vincent</a></td><td>2012 - 2015</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1013429&position=P">Bob Vines</a></td><td>1924 - 1925</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1013430&position=P">Dave Vineyard</a></td><td>1964 - 1964</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1013431&position=P">Ken Vining</a></td><td>2001 - 2001</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1013432&position=1B">Charlie Vinson</a></td><td>1966 - 1966</td><td>1B</td></tr><tr><td><a href="statss.aspx?playerid=1013433&position=OF">Rube Vinson</a></td><td>1904 - 1906</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=1013434&position=P">Bill Vinton</a></td><td>1884 - 1885</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=5971&position=P">Pedro Viola</a></td><td>2009 - 2011</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1013435&position=P">Frank Viola</a></td><td>1982 - 1996</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1013436&position=2B">Jim Viox</a></td><td>1912 - 1916</td><td>2B</td></tr><tr><td><a href="statss.aspx?playerid=1013437&position=OF">Bill Virdon</a></td><td>1955 - 1968</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=1013438&position=3B">Ozzie Virgil</a></td><td>1956 - 1969</td><td>3B</td></tr><tr><td><a href="statss.aspx?playerid=1013439&position=C">Ozzie Virgil</a></td><td>1980 - 1990</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=1013440&position=1B">Jake Virtue</a></td><td>1890 - 1894</td><td>1B</td></tr><tr><td><a href="statss.aspx?playerid=1013441&position=OF">Joe Visner</a></td><td>1885 - 1891</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=1013442&position=P">Joe Vitelli</a></td><td>1944 - 1945</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1748&position=1B/DH">Joe Vitiello</a></td><td>1995 - 2003</td><td>1B/DH</td></tr><tr><td><a href="statss.aspx?playerid=1013443&position=P">Joe Vitko</a></td><td>1992 - 1992</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=1013444&position=3B">Ossie Vitt</a></td><td>1912 - 1921</td><td>3B</td></tr><tr><td><a href="statss.aspx?playerid=4623&position=3B">Josh Vitters</a></td><td>2012 - 2012</td><td>3B</td></tr><tr><td><a href="statss.aspx?playerid=577&position=2B/SS">Jose Vizcaino</a></td><td>1989 - 2006</td><td>2B/SS</td></tr><tr><td><a href="statss.aspx?playerid=5498&position=P">Arodys Vizcaino</a></td><td>2011 - 2015</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=714&position=P">Luis Vizcaino</a></td><td>1999 - 2009</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=411&position=SS">Omar Vizquel</a></td><td>1989 - 2012</td><td>SS</td></tr></table></div>
+                        </td>
+                        <td style="vertical-align: top;">
+                            <br /><div class="search"><table cellspacing="0" cellpadding="2px" style="width: 325px; border: 0px; margin-left: 50px;"><tr><td><a href="statss.aspx?playerid=sa400984&position=P">Mike Vicaro</a></td><td>8/13/1983</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa828860&position=C/1B">Jose Vicente</a></td><td>11/13/1995</td><td>C/1B</td></tr><tr><td><a href="statss.aspx?playerid=sa503860&position=C">Danny Vicioso</a></td><td>10/27/1988</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=sa579780&position=OF">Logan Vick</a></td><td>10/22/1990</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=sa291105&position=2B">Hunter Vick</a></td><td>4/12/1982</td><td>2B</td></tr><tr><td><a href="statss.aspx?playerid=sa598342&position=3B">Nick Vickerson</a></td><td>7/8/1989</td><td>3B</td></tr><tr><td><a href="statss.aspx?playerid=sa506273&position=OF">Jose Victor</a></td><td>5/25/1990</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=sa872466&position=SS">Kevin Vicuna</a></td><td>1/14/1998</td><td>SS</td></tr><tr><td><a href="statss.aspx?playerid=sa548470&position=3B">David Vidal</a></td><td>10/23/1989</td><td>3B</td></tr><tr><td><a href="statss.aspx?playerid=sa456353&position=P">Pedro Vidal</a></td><td>7/31/1987</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa828715&position=OF">Carlos Vidal</a></td><td>11/29/1995</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=sa735867&position=P">Mauro Vides</a></td><td>10/19/1995</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa457155&position=P">Matt Vieira</a></td><td>8/9/1985</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa596366&position=P">Thyago Vieira</a></td><td>1/7/1993</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa875869&position=P">Ivan Vieitez</a></td><td>5/8/1993</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa738726&position=SS">Justin Viele</a></td><td>11/18/1990</td><td>SS</td></tr><tr><td><a href="statss.aspx?playerid=sa597024&position=P">Gilberto Vielma</a></td><td>11/23/1993</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa657416&position=SS">Engelb Vielma</a></td><td>6/22/1994</td><td>SS</td></tr><tr><td><a href="statss.aspx?playerid=sa547818&position=C">Rodrigo Vigil</a></td><td>1/3/1993</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=sa502089&position=OF">Brian Vigo</a></td><td>12/12/1991</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=sa526229&position=C">Jeff Vigurs</a></td><td>3/10/1988</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=sa504952&position=P">Francisco Vilchez</a></td><td>12/28/1990</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa828228&position=P">Gerardo Vilchez</a></td><td>6/6/1997</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa544974&position=P">Jose Angel Villa</a></td><td>11/5/1990</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa541846&position=P">Juan Villa</a></td><td>12/6/1977</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa655978&position=OF">Hilario Villa</a></td><td>7/1/1992</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=sa506124&position=P">Alejandro Villa</a></td><td>5/29/1992</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa254797&position=P">Kelvin Villa</a></td><td>12/14/1985</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa841600&position=C">Jonathan Villa</a></td><td>2/2/1996</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=sa599910&position=P">Francisco Villa</a></td><td>4/1/1992</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa828511&position=P">Eduin Villa</a></td><td>3/12/1996</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa328600&position=C">Ivan Villaescusa</a></td><td>10/13/1986</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=sa185423&position=OF">Fernando Villaescusa</a></td><td>1/7/1985</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=sa835491&position=P">Josue Villafranca</a></td><td>10/3/1997</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa550658&position=P">Luis Villalba</a></td><td>10/28/1992</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa872510&position=2B/3B">Andres Villalobos</a></td><td>1/14/1998</td><td>2B/3B</td></tr><tr><td><a href="statss.aspx?playerid=sa509285&position=P">Fernando Villalobos</a></td><td>12/7/1984</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa456096&position=C">Andrick Villalobos</a></td><td>6/30/1986</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=sa554987&position=2B">Alejandro Villalobos</a></td><td>8/20/1991</td><td>2B</td></tr><tr><td><a href="statss.aspx?playerid=sa199913&position=P">Julio Villalon</a></td><td>5/11/1978</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa244281&position=P">Bryan Villalona</a></td><td>9/15/1982</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa392874&position=1B">Angel Villalona</a></td><td>8/13/1990</td><td>1B</td></tr><tr><td><a href="statss.aspx?playerid=sa828170&position=P">Julian Villamar</a></td><td>4/23/1994</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa504731&position=P">Dail Villanueva</a></td><td>1/23/1990</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa505993&position=3B">Christian Villanueva</a></td><td>6/19/1991</td><td>3B</td></tr><tr><td><a href="statss.aspx?playerid=sa878425&position=OF">Brandon Villarreal</a></td><td>11/25/1994</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=sa873539&position=C">Guillermo Villarreal</a></td><td></td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=sa202011&position=P">Luis Villarreal</a></td><td>12/20/1979</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa657536&position=P">Edwin Villarroel</a></td><td>5/18/1995</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa657907&position=P">Hector Villarroel</a></td><td>8/12/1995</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa828397&position=1B/DH">Ylexander Villarroel</a></td><td>6/4/1997</td><td>1B/DH</td></tr><tr><td><a href="statss.aspx?playerid=sa837408&position=P">Cesar Villarroel</a></td><td>7/27/1994</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa506792&position=P">Orlando Villarroel</a></td><td>3/18/1990</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa548133&position=P">Elias Villasana</a></td><td>3/22/1993</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa736702&position=P">Rodolfo Villasmil</a></td><td>1/20/1995</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa504847&position=P">Edioglis Villasmil</a></td><td>4/10/1992</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa599811&position=C">David Villasuso</a></td><td>12/31/1989</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=sa601530&position=1B">Gabriel Villavicencio</a></td><td>10/3/1992</td><td>1B</td></tr><tr><td><a href="statss.aspx?playerid=sa737571&position=P">Giovanny Villavicencio</a></td><td>2/27/1988</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa652680&position=P">David Villegas</a></td><td>9/26/1992</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa504868&position=1B/DH">Enderson Villegas</a></td><td>1/31/1992</td><td>1B/DH</td></tr><tr><td><a href="statss.aspx?playerid=sa393048&position=P">Juan Villegas</a></td><td>1/20/1987</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa502602&position=SS">Ydwin Villegas</a></td><td>9/1/1990</td><td>SS</td></tr><tr><td><a href="statss.aspx?playerid=sa593047&position=P">Saul Villegas</a></td><td>4/26/1992</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa507718&position=2B">Luis Villegas</a></td><td>5/24/1992</td><td>2B</td></tr><tr><td><a href="statss.aspx?playerid=sa738281&position=P">MJ Villegas</a></td><td>9/6/1994</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa547944&position=C">Luis Villegas</a></td><td>12/2/1992</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=sa546467&position=P">Kender Villegas</a></td><td>6/8/1993</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa202855&position=P">Francisco Villegas</a></td><td>3/23/1978</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa392935&position=SS">Jesus Villegas-Andino</a></td><td>9/21/1986</td><td>SS</td></tr><tr><td><a href="statss.aspx?playerid=sa328184&position=2B/SS">Marcos Villezcas</a></td><td>12/10/1983</td><td>2B/SS</td></tr><tr><td><a href="statss.aspx?playerid=sa830182&position=C/DH">Meibrys Viloria</a></td><td>2/15/1997</td><td>C/DH</td></tr><tr><td><a href="statss.aspx?playerid=sa635433&position=P">Alejandro Viloria</a></td><td>6/15/1995</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa393418&position=P">Euclides Viloria</a></td><td>9/9/1989</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa828561&position=P">Felix Viloria</a></td><td>12/2/1996</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa739876&position=P">Ismael Viloria</a></td><td>3/31/1995</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa754679&position=C">Luis Vilorio</a></td><td>8/28/1993</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=sa829164&position=3B">Nick Vilter</a></td><td>10/6/1993</td><td>3B</td></tr><tr><td><a href="statss.aspx?playerid=sa598629&position=P">Leonel Vinas</a></td><td>8/27/1991</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa621790&position=SS">Zach Vincej</a></td><td>5/1/1991</td><td>SS</td></tr><tr><td><a href="statss.aspx?playerid=sa327820&position=OF">Jeff Vincent</a></td><td>4/15/1984</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=sa657834&position=P">Junior Vincent</a></td><td>2/28/1995</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa236454&position=P">Chris Vines</a></td><td>2/26/1985</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa389837&position=P">Nathan Vineyard</a></td><td>10/3/1988</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa549538&position=SS">Jose Vinicio</a></td><td>7/10/1993</td><td>SS</td></tr><tr><td><a href="statss.aspx?playerid=sa828167&position=DH/OF">Felix Vinicio</a></td><td>10/28/1994</td><td>DH/OF</td></tr><tr><td><a href="statss.aspx?playerid=sa830237&position=P">Thony Vinicio</a></td><td>3/25/1994</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa577016&position=OF">Matt Vinson</a></td><td>10/16/1990</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=sa875409&position=P">Michael Vinson</a></td><td>2/9/1994</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa326109&position=1B/DH">Chris Vinyard</a></td><td>12/15/1985</td><td>1B/DH</td></tr><tr><td><a href="statss.aspx?playerid=sa389370&position=P">Jeremy Vinyard</a></td><td>8/10/1988</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa294919&position=P">Frank Viola</a></td><td>6/19/1984</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa390651&position=P">Martin Viramontes</a></td><td>7/12/1989</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa598988&position=P">Andrew Virgili</a></td><td>1/30/1990</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa741479&position=OF">Jose Vital</a></td><td>3/25/1996</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=sa546631&position=C">Carson Vitale</a></td><td>8/25/1988</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=sa553374&position=P">Michael Vitale</a></td><td>11/26/1987</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa548187&position=3B/DH">Kolbrin Vitek</a></td><td>4/1/1989</td><td>3B/DH</td></tr><tr><td><a href="statss.aspx?playerid=sa456598&position=C/DH">Josh Vittek</a></td><td>4/9/1986</td><td>C/DH</td></tr><tr><td><a href="statss.aspx?playerid=sa327120&position=3B">Christian Vitters</a></td><td>6/26/1985</td><td>3B</td></tr><tr><td><a href="statss.aspx?playerid=sa596284&position=P">Julio Vivas</a></td><td>10/1/1993</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa508351&position=2B">Wilfred Vivas</a></td><td>11/8/1989</td><td>2B</td></tr><tr><td><a href="statss.aspx?playerid=sa827957&position=P">Samir Vivas</a></td><td>2/1/1995</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa548116&position=C">Enyelber Vivas</a></td><td>8/26/1992</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=sa597105&position=C/1B">Fernando Vivili</a></td><td>1/9/1994</td><td>C/1B</td></tr><tr><td><a href="statss.aspx?playerid=sa738610&position=P">Tyler Viza</a></td><td>10/21/1994</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa872559&position=OF">Eddy Vizcaino</a></td><td>7/19/1996</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=sa873209&position=P">Dember Vizcaino</a></td><td>5/12/1995</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa550636&position=P">Eduardo Vizcaino</a></td><td>1/23/1988</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa551276&position=DH/OF">Kelvin Vizcaino</a></td><td>9/30/1992</td><td>DH/OF</td></tr><tr><td><a href="statss.aspx?playerid=sa507041&position=P">Francisco Vizcaino</a></td><td>7/26/1988</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa736748&position=2B/3B">Manuel Vizcaino</a></td><td>1/8/1996</td><td>2B/3B</td></tr><tr><td><a href="statss.aspx?playerid=sa329308&position=OF">Francisco Vizcaino</a></td><td>11/28/1984</td><td>OF</td></tr><tr><td><a href="statss.aspx?playerid=sa828372&position=P">Gabriel Vizcaino</a></td><td>3/26/1994</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa736742&position=P">Raffi Vizcaino</a></td><td>12/2/1995</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa828973&position=C">Fabian Vizcaino</a></td><td>5/27/1995</td><td>C</td></tr><tr><td><a href="statss.aspx?playerid=sa506647&position=P">Joan Vizcaino</a></td><td>4/25/1989</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa659043&position=3B">Jose Vizcaino</a></td><td>4/5/1994</td><td>3B</td></tr><tr><td><a href="statss.aspx?playerid=sa543516&position=P">William Vizcarra</a></td><td>5/15/1984</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa509707&position=P">Ernesto Vizcarra</a></td><td>5/29/1976</td><td>P</td></tr><tr><td><a href="statss.aspx?playerid=sa657689&position=P">Anthony Vizcaya</a></td><td>10/24/1993</td><td>P</td></tr></table></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center" style="background-color: #D3D3D3;">
+                            <b>Blog Search Results</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <br />
+                            
+                        </td>
+                    </tr>
+                </table>
+            
+</div>
+        </td>
+        <td style="width: 230px; vertical-align: top;" align="right">
+            
+<!-- ROS_160x600 -->
+<div id='div-gpt-ad-1349421924281-11' style='width: 160px; height: 600px; overflow: hidden;'>
+    <script type='text/javascript'>
+        googletag.cmd.push(function () { googletag.display('div-gpt-ad-1349421924281-11'); });
+    </script>
+</div>
+        </td>
+    </tr>
+</table>
+
+        </div>
+        <div id="footer">
+            
+<br />
+<div id="Footer1_panROS">
+	
+    <center>
+        <!-- Stats-footer -->
+        <div id='div-gpt-ad-1349421924281-18' style='width: 728px; height: 90px; overflow: hidden;'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function () { googletag.display('div-gpt-ad-1349421924281-18'); });
+            </script>
+        </div>
+    </center>
+
+</div>
+
+<br />
+
+
+
+
+
+
+
+<div class="spacer_10">
+</div>
+<div id="footer_bar">
+    <div style="float: left;">
+        Updated: Friday, January 15, 2016 3:22 AM ET
+    </div>
+    <div style="float: right;">
+        <strong><a href="http://www.fangraphs.com/linkify.aspx">Player Linker</a> - <a href="http://www.fangraphs.com/blogs/contact/">Contact Us</a> - <a href="http://www.fangraphs.com/blogs/advertise/">Advertise</a>
+            - <a href="http://www.fangraphs.com/tos.aspx">Terms of Service</a> - <a href="http://www.fangraphs.com/policy.aspx">Privacy Policy</a> </strong>
+    </div>
+</div>
+<br />
+<div style="width: 320px; float: left;">
+    <div style="width: 308px; float: left; background-color: transparent; border: 0px solid black; padding: 5px;">
+        <center>
+            <a href="http://www.baseballinfosolutions.com">
+                <img src="http://www.fangraphs.com/images/bis-logo-white.png" alt="bis logo" border="0px" /></a></center>
+        <br />
+        All major league baseball data including pitch type, velocity, batted ball location,
+        and play-by-play data provided by Baseball Info Solutions.
+    </div>
+    <div class="spacer_10">
+    </div>
+    <div style="width: 308px; float: left; background-color: transparent; border: 0px solid black; padding: 5px;">
+        <center>
+            <strong>Mitchel Lichtman</strong></center>
+        <br />
+        All UZR (ultimate zone rating) calculations are provided courtesy of Mitchel Lichtman.
+    </div>
+</div>
+<div style="width: 320px; margin-left: 10px; float: left;">
+    <div style="width: 308px; background-color: transparent; border: 0px solid black; padding: 5px;">
+
+                        <center>
+                    <a href="http://www.foxsports.com/">
+            <img border="0" width="300" src="http://www.fangraphs.com/images/badge_300.gif" height="33" /></a></center>
+        <br />
+        <center>FOX Sports Engage Network Partner</center><br />
+    </div>
+    <div class="spacer_10">
+    </div>
+    <div style="width: 308px; background-color: transparent; border: 0px solid black; padding: 5px;">
+
+                    <center>
+            <strong><a href="http://www.tangotiger.com">TangoTiger.com</a></strong></center>
+        <br />
+        All Win Expectancy, Leverage Index, Run Expectancy, and Fans Scouting Report data licenced from TangoTiger.com
+    </div>
+</div>
+<div style="width: 320px; margin-left: 10px; float: left;">
+    <div style="width: 308px; background-color: transparent; border: 0px solid black; padding: 5px;">
+                <center>
+            <a href="http://www.stats.com">
+                <img src="http://www.fangraphs.com/images/stats_logo.gif" alt="statslogo" border="0px" /></a></center>
+        <br />
+        All minor league baseball data provided by Major League Baseball Advanced Media
+        as distributed by STATS.
+    </div>
+    <div class="spacer_10">
+    </div>
+    <div style="width: 308px; background-color: transparent; border: 0px solid black; padding: 5px;">
+        <center>
+            <strong><a href="http://www.retrosheet.org">Retrosheet.org</a></strong></center>
+        <br />
+        Play-by-play data prior to 2002 was obtained free of charge from and is copyrighted
+        by Retrosheet.
+    </div>
+</div>
+
+<!-- Google Analytics Tag -->
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-230086-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+<!-- Chartbeat Tag -->
+
+<script type="text/javascript">
+    var _sf_async_config = { uid: 4890, domain: "fangraphs.com" };
+    (function () {
+        function loadChartbeat() {
+            window._sf_endpt = (new Date()).getTime();
+            var e = document.createElement('script');
+            e.setAttribute('language', 'javascript');
+            e.setAttribute('type', 'text/javascript');
+            e.setAttribute('src',
+       (("https:" == document.location.protocol) ? "https://s3.amazonaws.com/" : "http://") +
+       "static.chartbeat.com/js/chartbeat.js");
+            document.body.appendChild(e);
+        }
+        var oldonload = window.onload;
+        window.onload = (typeof window.onload != 'function') ?
+            loadChartbeat : function () { oldonload(); loadChartbeat(); };
+    })();
+
+</script>
+
+<!-- Yardbarker Pixel -->
+
+<script src="http://network.yardbarker.com/network/ybn_pixel/8637" type="text/javascript"></script>
+<noscript>
+</noscript>
+
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+    var _qevents = _qevents || [];
+
+    (function () {
+        var elem = document.createElement('script');
+        elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+        elem.async = true;
+        elem.type = "text/javascript";
+        var scpt = document.getElementsByTagName('script')[0];
+        scpt.parentNode.insertBefore(elem, scpt);
+    })();
+
+    _qevents.push({
+        qacct: "p-8dBx9wgQFa1M6"
+    });
+</script>
+<noscript>
+    <div style="display: none;">
+        <img src="//pixel.quantserve.com/pixel/p-8dBx9wgQFa1M6.gif" border="0" height="1"
+            width="1" alt="Quantcast" />
+    </div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- Clicky Tag -->
+
+<script src="//static.getclicky.com/js" type="text/javascript"></script>
+<script type="text/javascript">try { clicky.init(100553825); } catch (e) { }</script>
+<noscript>
+    <p>
+        <img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100553825ns.gif" />
+    </p>
+</noscript>
+
+<!-- Choicestream Tag -->
+
+<img src="http://api.choicestream.com/instr/crunch/fangraph/seg/all?segs=0060001,0" width="1" height="1" />
+
+<!-- More TABOOLA -->
+
+
+
+        </div>
+    </div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadMenu, {"_childListElementCssClass":null,"_skin":"FanGraphs","clientStateFieldID":"Header1_rdMenu_ClientState","collapseAnimation":"{\"type\":0,\"duration\":450}","enableScreenBoundaryDetection":false,"expandAnimation":"{\"type\":0,\"duration\":450}","itemData":[{"items":[{"templated":true}],"templated":true},{"items":[{"templated":true}],"navigateUrl":"http://www.fangraphs.com","target":"_top"},{"items":[{"templated":true}],"navigateUrl":"http://www.fangraphs.com/thegame/","target":"_top"},{"items":[{"templated":true}],"navigateUrl":"http://www.fangraphs.com/plus/","target":"_top"},{"items":[{"templated":true}],"navigateUrl":"http://www.fangraphs.com/blogroll.aspx","target":"_top"},{"items":[{"templated":true}],"navigateUrl":"http://www.fangraphs.com/projections.aspx","target":"_top"},{"items":[{"templated":true}],"navigateUrl":"http://ottoneu.fangraphs.com","target":"_top"},{"groupSettings":{"expandDirection":2,"offsetX":0},"items":[{"templated":true}],"navigateUrl":"http://www.fangraphs.com/livescoreboard.aspx","target":"_top"},{"items":[{"templated":true}],"navigateUrl":"http://www.fangraphs.com/depthcharts.aspx","target":"_top"},{"groupSettings":{"expandDirection":3,"offsetX":66,"offsetY":23},"items":[{"templated":true}],"navigateUrl":"http://www.fangraphs.com/leaders.aspx","target":"_top"},{"groupSettings":{"expandDirection":3,"offsetX":56,"offsetY":23},"items":[{"templated":true}],"navigateUrl":"http://www.fangraphs.com/teams.aspx","target":"_top"},{"groupSettings":{"expandDirection":3,"offsetX":74,"offsetY":23},"items":[{"templated":true}],"navigateUrl":"http://www.fangraphs.com/library/","target":"_top"}]}, null, null, $get("Header1_rdMenu"));
+});
+//]]>
+</script>
+</form>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.fantasyworks.fangraphsparser.pitcher;
+package com.fantasyworks.fangraphsparser.parser;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
