@@ -10,4 +10,9 @@ public class FanGraphsPitchersCrawlerTest {
 	public void testDownloadPlayerIndexPage(){
 		crawler.crawPlayerIndexPages();
 	}
+	
+	@Test
+	public void testDownloadPlayerPages(){
+		crawler.crawPlayerPages();
+	}
 }

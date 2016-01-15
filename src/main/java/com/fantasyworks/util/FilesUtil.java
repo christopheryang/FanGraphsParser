@@ -6,7 +6,7 @@ import java.io.IOException;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 
-public class IOUtil {
+public class FilesUtil {
 	
 	public static void writeToFile(String fileName, String content){
 		writeToFile(new File(fileName), content);
