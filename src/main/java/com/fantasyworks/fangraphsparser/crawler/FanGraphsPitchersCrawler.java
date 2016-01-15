@@ -1,9 +1,7 @@
 package com.fantasyworks.fangraphsparser.crawler;
 
-import java.io.File;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.jsoup.Jsoup;
@@ -31,7 +29,7 @@ public class FanGraphsPitchersCrawler {
 	 * 
 	 * @return A list of sub pages
 	 */
-	public List<String> crawPlayerIndexPages(){
+	public List<String> crawlPlayerIndexPages(){
 		List<String> playerIndexSubPages = Lists.newArrayList();
 		
 		String fileName = "./download/playerIndex/playerIndex.html";
@@ -63,30 +61,49 @@ public class FanGraphsPitchersCrawler {
 	}
 	
 
-    public List<String> crawPlayerPages(){
+    public List<String> crawlPlayerPages(){
     	List<String> playerPages = Lists.newArrayList();
 		
-    	List<String> playerSubPages = crawPlayerIndexPages();
+    	List<String> playerSubPages = crawlPlayerIndexPages();
     	for(String subPage: playerSubPages){
     		Document doc = Jsoup.parse(FilesUtil.readFileToString(subPage));
-    		Elements links = doc.select("a[href]");
     		
-    		// Sample player page URL: "statss.aspx?playerid=4994&position=P", "statss.aspx?playerid=1009829&position=OF"
-    		Map<String, String> filteredLinks = links
-    				.stream()
-    				.filter(e->e.attr("href").startsWith("statss.aspx?"))
-    				.collect(Collectors.toMap(Element::text, e->e.attr("href")));
+    		// CSS select: dev#PlayerSearch1_panSearch > table[0] > tr[2] > td[0] > table[0]
+    		Element mlbPlayerTable = doc.select("div#PlayerSearch1_panSearch").first()
+    										.select("table").first()
+    										.select("tr").get(2)
+    										.select("td").first()
+    										.select("table").first();
     		
-    		for (String linkName: filteredLinks.keySet()) {
-    			String url = filteredLinks.get(linkName);
-    			String outputFileName = url.endsWith("position=P")? "./download/players/pitchers/"+linkName+".html": "./download/players/batters/"+linkName+".html";
-    			if(!FilesUtil.isExistingFile(outputFileName)){
-    				logger.info("Downloading player page: "+linkName);
-    				String content = DownloadUtil.downloadPage(PLAYER_INDEX_PAGE.replace("players.aspx", url));
-    				FilesUtil.writeToFile(outputFileName, content);
+    		Elements rows = mlbPlayerTable.select("tr");
+    		for(Element row: rows){
+    			Elements cols = row.select("td");
+    			
+    			// Only process if the player is active in the current season
+    			String playerActivePeriod = cols.get(1).text();
+    			if(!playerActivePeriod.endsWith("2015")){
+    				continue;
     			}
+    			
+    			// Player page's URL (e.g. statss.aspx?playerid=4994&position=P) and player's name (e.g. Fernando Abad)
+    			Element link = cols.get(0).select("a[href]").first();
+    			String playerPageLink = link.attr("href");
+    			String playerName = link.text();
+    			
+    			// Player's position e.g. P, SS, 2B/SS
+    			String playerPosition = cols.get(2).text();
+    			
+    			String outputFileName = "./download/players/2015/"+(playerPosition.equals("P")? "pitchers/": "batters/")+playerName+".html";
+    			
+    			if(!FilesUtil.isExistingFile(outputFileName)){
+    				String playerPageUrl = PLAYER_INDEX_PAGE.replace("players.aspx", playerPageLink);
+    				logger.info("Downloading player page for "+playerName+", "+playerPageUrl);
+    				FilesUtil.writeToFile(outputFileName, DownloadUtil.downloadPage(playerPageUrl));
+    			}
+    			
     			playerPages.add(outputFileName);
-            }
+    		}
+    		
     	}
     	
     	return playerPages;

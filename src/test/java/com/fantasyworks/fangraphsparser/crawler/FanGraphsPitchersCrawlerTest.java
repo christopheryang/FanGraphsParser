@@ -8,11 +8,11 @@ public class FanGraphsPitchersCrawlerTest {
 	
 	@Test
 	public void testDownloadPlayerIndexPage(){
-		crawler.crawPlayerIndexPages();
+		crawler.crawlPlayerIndexPages();
 	}
 	
 	@Test
 	public void testDownloadPlayerPages(){
-		crawler.crawPlayerPages();
+		crawler.crawlPlayerPages();
 	}
 }
