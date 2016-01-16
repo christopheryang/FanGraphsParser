@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<param name="Target" value="System.out" />
+
+		<encoder>
+			<pattern>%date{ISO8601} %-5level %X{requestID} [%logger{0}.%method] %message%n</pattern>
+		</encoder> 
+	</appender>
+
+	<!-- Loggers -->
+	<logger name="ch.qos.logback" level="INFO" />
+
+	<logger name="org" level="INFO" />
+
+	<logger name="com" level="INFO" />
+	
+	<logger name="org.springframework" level="INFO" />
+	
+	<logger name="com.fantasyworks" level="DEBUG" />
+	
+	<logger name="jdbc.audit" level="ERROR" additivity="false"/>
+	<logger name="jdbc.connection" level="ERROR" additivity="false"/>
+
+	<!-- enable these for low-level JDBC driver calls like setTransactionIsolation and comment out the 2 lines above
+	<logger name="jdbc.audit" level="DEBUG" />
+	<logger name="jdbc.connection" level="DEBUG"/>
+	<logger name="org.springframework.jdbc.datasource.DriverManagerDataSource" level="DEBUG" />
+    -->
+
+	<logger name="jdbc.sqlonly" level="INFO" additivity="false"/>
+
+	<logger name="jdbc.resultset" level="ERROR" additivity="false"/>
+
+	<logger name="jdbc.resultsettable" level="ERROR" additivity="false"/>
+
+	<logger name="log4jdbc.dump.sql" level="ERROR" additivity="false"/>
+
+	<logger name="jdbc.sqltiming" level="ERROR" additivity="false"/>
+
+	<!-- Root Logger -->
+	<root>
+		<appender-ref ref="CONSOLE" />
+	</root>
+	
+</configuration>

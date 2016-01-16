@@ -23,9 +23,9 @@ public class DevConfig {
 	public DataSource dataSource(){
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/reconciliation_tool_payplus?useServerPrepStmts=false&rewriteBatchedStatements=true");
-		dataSource.setUsername("bart_dev");
-		dataSource.setPassword("secret");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/FanGraphsStats");
+		dataSource.setUsername("fantasyworks");
+		dataSource.setPassword("itnotf$1T");
 		return dataSource;
 	}
 

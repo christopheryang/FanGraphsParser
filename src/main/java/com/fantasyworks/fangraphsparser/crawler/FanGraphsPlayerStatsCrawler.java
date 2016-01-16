@@ -17,9 +17,9 @@ import com.fantasyworks.util.FilesUtil;
 import com.google.common.collect.Lists;
 
 @Service
-public class FanGraphsPitchersCrawler {
+public class FanGraphsPlayerStatsCrawler {
 	
-	private static final Logger logger = LoggerFactory.getLogger(FanGraphsPitchersCrawler.class);
+	private static final Logger logger = LoggerFactory.getLogger(FanGraphsPlayerStatsCrawler.class);
 	
 	public static final String PLAYER_INDEX_PAGE="http://www.fangraphs.com/players.aspx";
 	public static final String PLAYER_INDEX_SUB_PAGE="http://www.fangraphs.com/players.aspx?letter=${prefix}";
@@ -27,7 +27,7 @@ public class FanGraphsPitchersCrawler {
 	/**
 	 * Download player index page and sub pages.
 	 * 
-	 * @return A list of sub pages
+	 * @return A list of sub pages e.g. Aa, Ab, Ac
 	 */
 	public List<String> crawlPlayerIndexPages(){
 		List<String> playerIndexSubPages = Lists.newArrayList();
@@ -60,8 +60,12 @@ public class FanGraphsPitchersCrawler {
 		return playerIndexSubPages;
 	}
 	
-
-    public List<String> crawlPlayerPages(){
+	/**
+	 * Download and return a list of player season stats pages
+	 * 
+	 * @return 
+	 */
+    public List<String> crawlPlayerSeasonStatsPages(){
     	List<String> playerPages = Lists.newArrayList();
 		
     	List<String> playerSubPages = crawlPlayerIndexPages();

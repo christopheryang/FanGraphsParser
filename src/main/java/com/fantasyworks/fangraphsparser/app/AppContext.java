@@ -35,8 +35,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Configuration
 @EnableWebMvc
 @EnableAsync
-@ComponentScan(basePackages="com.livegamer")
-@EnableJpaRepositories("com.livegamer.financetool.repo")
+@ComponentScan(basePackages="com.fantasyworks")
+@EnableJpaRepositories("com.fantasyworks.fangraphsparser.repo")
 @EnableTransactionManagement
 @EnableSpringDataWebSupport
 public class AppContext extends WebMvcConfigurerAdapter {
@@ -65,7 +65,7 @@ public class AppContext extends WebMvcConfigurerAdapter {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource);
 		em.setPersistenceUnitName("default");
-		em.setPackagesToScan(new String[] {"com.livegamer.financetool.entity"});
+		em.setPackagesToScan(new String[] {"com.fantasyworks.fangraphsparser.entity"});
 
 		em.setJpaVendorAdapter(jpaVenderAdaptor());
 		em.setJpaProperties(additionalProperties());
