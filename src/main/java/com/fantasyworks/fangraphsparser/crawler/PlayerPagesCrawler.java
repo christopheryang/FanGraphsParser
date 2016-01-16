@@ -2,6 +2,7 @@ package com.fantasyworks.fangraphsparser.crawler;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.jsoup.Jsoup;
@@ -15,11 +16,12 @@ import org.springframework.stereotype.Service;
 import com.fantasyworks.util.DownloadUtil;
 import com.fantasyworks.util.FilesUtil;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 @Service
-public class FanGraphsPlayerStatsCrawler {
+public class PlayerPagesCrawler {
 	
-	private static final Logger logger = LoggerFactory.getLogger(FanGraphsPlayerStatsCrawler.class);
+	private static final Logger logger = LoggerFactory.getLogger(PlayerPagesCrawler.class);
 	
 	public static final String PLAYER_INDEX_PAGE="http://www.fangraphs.com/players.aspx";
 	public static final String PLAYER_INDEX_SUB_PAGE="http://www.fangraphs.com/players.aspx?letter=${prefix}";
@@ -65,8 +67,8 @@ public class FanGraphsPlayerStatsCrawler {
 	 * 
 	 * @return 
 	 */
-    public List<String> crawlPlayerSeasonStatsPages(){
-    	List<String> playerPages = Lists.newArrayList();
+    public Set<String> crawlPlayerSeasonStatsPages(){
+    	Set<String> playerPages = Sets.newHashSet();
 		
     	List<String> playerSubPages = crawlPlayerIndexPages();
     	for(String subPage: playerSubPages){

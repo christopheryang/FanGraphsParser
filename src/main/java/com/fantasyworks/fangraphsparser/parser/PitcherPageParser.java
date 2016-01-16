@@ -5,11 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FanGraphsPitcherPageParser {
+public class PitcherPageParser extends PlayerProfileParser {
 
-	private static final Logger logger = LoggerFactory.getLogger(FanGraphsPitcherPageParser.class);
+	private static final Logger logger = LoggerFactory.getLogger(PitcherPageParser.class);
 	
-	
-	
-	
+
 }

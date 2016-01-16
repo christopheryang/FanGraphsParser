@@ -1,14 +1,15 @@
 package com.fantasyworks.fangraphsparser.crawler;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 import org.junit.Test;
 
-public class FanGraphsPlayerStatsCrawlerTest {
+public class PlayerPagesCrawlerTest {
 
-	protected FanGraphsPlayerStatsCrawler crawler = new FanGraphsPlayerStatsCrawler();
+	protected PlayerPagesCrawler crawler = new PlayerPagesCrawler();
 	
 	@Test
 	public void testCrawlPlayerIndexPages(){
@@ -18,7 +19,7 @@ public class FanGraphsPlayerStatsCrawlerTest {
 	
 	@Test
 	public void testCrawlPlayerSeasonStatsPages(){
-		List<String> files = crawler.crawlPlayerSeasonStatsPages();
+		Set<String> files = crawler.crawlPlayerSeasonStatsPages();
 		assertThat(files, hasSize(greaterThan(1000)));
 	}
 }

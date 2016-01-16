@@ -11,6 +11,7 @@ public class DateUtil {
 			return null;
 		}
 		DateFormat MMDDYYYY = new SimpleDateFormat("MM/dd/yyyy");
+		MMDDYYYY.setLenient(false);
 		try{
 			return MMDDYYYY.parse(dateStr);
 		}
