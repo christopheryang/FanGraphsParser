@@ -17,7 +17,6 @@ import com.fantasyworks.fangraphsparser.enumeration.PlayerTypeEnum;
 import com.fantasyworks.util.DateUtil;
 import com.fantasyworks.util.FilesUtil;
 
-@Service("playerProfileParser")
 public class PlayerProfileParser {
 
 	private static final Logger logger = LoggerFactory.getLogger(PlayerProfileParser.class);
@@ -35,6 +34,8 @@ public class PlayerProfileParser {
 	 * @return
 	 */
 	public Player parsePlayerProfile(String fileName){
+		logger.debug("Parsing player profile: "+fileName);
+		
 		Player player = new Player();
 		player.setPlayerType(fileName.contains("pitcher")? PlayerTypeEnum.PITCHER: PlayerTypeEnum.BATTER);
 		
