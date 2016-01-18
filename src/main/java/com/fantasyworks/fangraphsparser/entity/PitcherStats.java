@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 import com.fantasyworks.fangraphsparser.enumeration.StatsTypeEnum;
+import com.google.common.base.MoreObjects.ToStringHelper;
 
 @MappedSuperclass
 public class PitcherStats extends IdEntity {
@@ -74,7 +75,30 @@ public class PitcherStats extends IdEntity {
 	protected Integer eraMinus; // ERA adjusted for park and league. 100 is the average. Lower is better.
 	protected Integer fipMinus; // FIP adjusted for park and league. 100 is the average. Lower is better.
 	
-	// Batted ball section (no minors stats)
+	// Batted ball section (no minor league stats)
+//	protected BigDecimal gbPerFb;
+//	protected BigDecimal ldPerc;
+//	protected BigDecimal fbPerc;
+//	protected BigDecimal iffbPerc; // In field fly ball %
+//	protected BigDecimal ifhPerc; // In field hit %
+//	protected BigDecimal buhPerc; // Bunt hit %
+//	protected BigDecimal pullPerc; // % of pull direction
+//	protected BigDecimal centPerc; // % of center direction
+//	protected BigDecimal oppoPerc; // % of opposite direction
+//	protected BigDecimal softPerc; // % of soft contact
+//	protected BigDecimal medPerc; // % of medium contact
+//	protected BigDecimal hardPerc; // % of hard contact
+//	protected BigDecimal siera; // Skill Interactive ERA
+//	protected Integer xFipMinus; // xFIP adjusted by league where average is 100. Lower is better.
+	
+	
+	protected ToStringHelper toStringHelper() {
+		return super.toStringHelper()
+				.add("player", player)
+				.add("season", season)
+				.add("team", team)
+				;
+	}
 	
 	
 	public Player getPlayer() {
@@ -329,4 +353,88 @@ public class PitcherStats extends IdEntity {
 	public void setFipMinus(Integer fipMinus) {
 		this.fipMinus = fipMinus;
 	}
+//	public BigDecimal getGbPerFb() {
+//		return gbPerFb;
+//	}
+//	public void setGbPerFb(BigDecimal gbPerFb) {
+//		this.gbPerFb = gbPerFb;
+//	}
+//	public BigDecimal getLdPerc() {
+//		return ldPerc;
+//	}
+//	public void setLdPerc(BigDecimal ldPerc) {
+//		this.ldPerc = ldPerc;
+//	}
+//	public BigDecimal getFbPerc() {
+//		return fbPerc;
+//	}
+//	public void setFbPerc(BigDecimal fbPerc) {
+//		this.fbPerc = fbPerc;
+//	}
+//	public BigDecimal getIffbPerc() {
+//		return iffbPerc;
+//	}
+//	public void setIffbPerc(BigDecimal iffbPerc) {
+//		this.iffbPerc = iffbPerc;
+//	}
+//	public BigDecimal getIfhPerc() {
+//		return ifhPerc;
+//	}
+//	public void setIfhPerc(BigDecimal ifhPerc) {
+//		this.ifhPerc = ifhPerc;
+//	}
+//	public BigDecimal getBuhPerc() {
+//		return buhPerc;
+//	}
+//	public void setBuhPerc(BigDecimal buhPerc) {
+//		this.buhPerc = buhPerc;
+//	}
+//	public BigDecimal getPullPerc() {
+//		return pullPerc;
+//	}
+//	public void setPullPerc(BigDecimal pullPerc) {
+//		this.pullPerc = pullPerc;
+//	}
+//	public BigDecimal getCentPerc() {
+//		return centPerc;
+//	}
+//	public void setCentPerc(BigDecimal centPerc) {
+//		this.centPerc = centPerc;
+//	}
+//	public BigDecimal getOppoPerc() {
+//		return oppoPerc;
+//	}
+//	public void setOppoPerc(BigDecimal oppoPerc) {
+//		this.oppoPerc = oppoPerc;
+//	}
+//	public BigDecimal getSoftPerc() {
+//		return softPerc;
+//	}
+//	public void setSoftPerc(BigDecimal softPerc) {
+//		this.softPerc = softPerc;
+//	}
+//	public BigDecimal getMedPerc() {
+//		return medPerc;
+//	}
+//	public void setMedPerc(BigDecimal medPerc) {
+//		this.medPerc = medPerc;
+//	}
+//	public BigDecimal getHardPerc() {
+//		return hardPerc;
+//	}
+//	public void setHardPerc(BigDecimal hardPerc) {
+//		this.hardPerc = hardPerc;
+//	}
+//	public BigDecimal getSiera() {
+//		return siera;
+//	}
+//	public void setSiera(BigDecimal siera) {
+//		this.siera = siera;
+//	}
+//	public Integer getxFipMinus() {
+//		return xFipMinus;
+//	}
+//	public void setxFipMinus(Integer xFipMinus) {
+//		this.xFipMinus = xFipMinus;
+//	}
 }

@@ -1,7 +1,10 @@
 package com.fantasyworks.fangraphsparser.parser;
 
+import static com.google.common.base.Preconditions.checkState;
+
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -45,8 +48,15 @@ public class PitcherPageParser extends PlayerProfileParser {
 		parseStandardStats(doc, player, statsList);
 		parseAdvancedStats(doc, player, statsList);
 		
+//		List<PitcherStats> regSeasonStatsList = statsList.stream()
+//				.filter(s->(s instanceof PitcherRegularSeasonStats || s instanceof PitcherRegularSeasonPartialStats))
+//				.collect(Collectors.toList());
+//		
+//		parseBattedBallStats(doc, player, regSeasonStatsList);
+		
 		return statsList;
 	}
+	
 	
 	/**
 	 * Parse the stats in the dashboard section.
@@ -141,8 +151,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 			int currCol=0;
 			
 			// Season, Team, W, L, ERA, G, GS, CG, ShO, SV, HLD, BS, IP, TBF, H, R, ER, HR, BB, IBB, HBP, WP, BK, SO
-			currCol++;
-			currCol++;
+			currCol = validateStatsRow(cols, currCol, stats, "Standard stats"); // Season and Team must match
 			currCol++;
 			currCol++;
 			currCol++;
@@ -183,16 +192,22 @@ public class PitcherPageParser extends PlayerProfileParser {
 		}
 		
 		// Always start from the second row. First row is the header row.
-		for(int i=1; i<=statsList.size(); i++){
+		int skipCount=0;
+		for(int i=1; i-skipCount<=statsList.size(); i++){
 			Element row = rows.get(i);
 			Elements cols = row.select("td");
 			
-			PitcherStats stats = statsList.get(i-1);
+			PitcherStats stats = statsList.get(i-skipCount-1);
 			int currCol=0;
 			
+			// In the Advanced section, there are the "average" stats rows
+			if("Average".equals(cols.get(1).text())){
+				skipCount++;
+				continue;
+			}
+			
 			// Season, Team, K/9, BB/9, K/BB, HR/9, K%, BB%, K-BB%, AVG, WHIP, BABIP, LOB%, ERA-, FIP-, FIP
-			currCol++;
-			currCol++;
+			currCol = validateStatsRow(cols, currCol, stats, "Advanced stats"); // Season and Team must match
 			currCol++;
 			currCol++;
 			currCol++;
@@ -209,5 +224,38 @@ public class PitcherPageParser extends PlayerProfileParser {
 			currCol++; // FIP
 		}
 	}
+	
 
+	protected void parseBattedBallStats(Document doc, Player player, List<PitcherStats> statsList){
+		Element battedBallTable = doc.select("table#SeasonStats1_dgSeason3_ctl00").first();
+		Elements rows = battedBallTable.select("tr");
+		
+		if(rows.size()-1<statsList.size()){
+			throw new RuntimeException("Rows in Standard section: "+(rows.size()-1)+" is fewer than that in Dashboard section: "+statsList.size()+" for player: "+player);
+		}
+		
+		// Always start from the second row. First row is the header row.
+		for(int i=1; i<=statsList.size(); i++){
+			Element row = rows.get(i);
+			Elements cols = row.select("td");
+			
+			PitcherStats stats = statsList.get(i-1);
+			int currCol=0;
+			
+			// Season, Team, GB/FB, LD%, GB%, FB%, IFFB%, HR/FB, IFH%, BUH%, Pull%, Cent%, Oppo%, Soft%, Med%, Hard%, SIERA, xFIP-, xFIP
+			currCol = validateStatsRow(cols, currCol, stats, "Batted ball"); // Season and Team must match
+			
+		}
+		
+	}
+	
+	
+	protected int validateStatsRow(Elements cols, int currCol, PitcherStats stats, String sectionName){
+		String seasonStr = cols.get(currCol++).text().replace("\u00a0", "");
+		Integer season = Integer.parseInt(seasonStr);
+		String team = cols.get(currCol++).text();
+		checkState(stats.getSeason()-season==0 && stats.getTeam().equals(team), "Season and/or team mismatch in: "+sectionName+" Actual season: "+season+", team: "+team+", expected stats: "+stats);
+		return currCol;
+	}
+	
 }

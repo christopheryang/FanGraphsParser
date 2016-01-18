@@ -24,6 +24,12 @@ public class PlayerSeasonStatsServiceTest extends SpringEnabledTest {
 	}
 	
 	@Test
+	public void testDownloadAndPersistPlayer_WillSmith(){
+		String fileName = "./download/players/2015/pitchers/Will Smith.html";
+		service.downloadAndPersistPlayer(fileName);
+	}
+	
+	@Test
 	@Rollback(false)
 	public void testDownloadAndPersistAllPlayers(){
 		service.downloadAndPersistAllPlayers();
