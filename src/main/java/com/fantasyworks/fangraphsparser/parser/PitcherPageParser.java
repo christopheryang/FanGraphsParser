@@ -225,7 +225,12 @@ public class PitcherPageParser extends PlayerProfileParser {
 		}
 	}
 	
-
+	/**
+	 * 
+	 * @param doc
+	 * @param player
+	 * @param statsList
+	 */
 	protected void parseBattedBallStats(Document doc, Player player, List<PitcherStats> statsList){
 		Element battedBallTable = doc.select("table#SeasonStats1_dgSeason3_ctl00").first();
 		Elements rows = battedBallTable.select("tr");
@@ -249,7 +254,14 @@ public class PitcherPageParser extends PlayerProfileParser {
 		
 	}
 	
-	
+	/**
+	 * 
+	 * @param cols
+	 * @param currCol
+	 * @param stats
+	 * @param sectionName
+	 * @return
+	 */
 	protected int validateStatsRow(Elements cols, int currCol, PitcherStats stats, String sectionName){
 		String seasonStr = cols.get(currCol++).text().replace("\u00a0", "");
 		Integer season = Integer.parseInt(seasonStr);

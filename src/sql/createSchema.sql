@@ -72,6 +72,21 @@ CREATE TABLE PitcherRegularSeasonStats (
 	whip DECIMAL(10,2),
 	eraMinus INT,
 	fipMinus INT,
+	-- Batted ball section
+	gbPerFb DECIMAL(10,3),
+	ldPerc DECIMAL(10,3),
+	fbPerc DECIMAL(10,3),
+	iffbPerc DECIMAL(10,3), -- In field fly ball %
+	ifhPerc DECIMAL(10,3), -- In field hit %
+	buhPerc DECIMAL(10,3), -- Bunt hit %
+	pullPerc DECIMAL(10,3), -- % of pull direction
+	centPerc DECIMAL(10,3), -- % of center direction
+	oppoPerc DECIMAL(10,3), -- % of opposite direction
+	softPerc DECIMAL(10,3), -- % of soft contact
+	medPerc DECIMAL(10,3), -- % of medium contact
+	hardPerc DECIMAL(10,3), -- % of hard contact
+	siera DECIMAL(10,3), -- Skill Interactive ERA
+	xFipMinus INT, -- xFIP adjusted for park
 	
 	UNIQUE KEY UC_PitcherRegularSeasonStats1 (playerId, season, team),
 	CONSTRAINT FK_PitcherRegularSeasonStats_Player FOREIGN KEY (playerId) REFERENCES Player (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -129,6 +144,21 @@ CREATE TABLE PitcherRegularSeasonPartialStats (
 	whip DECIMAL(10,2),
 	eraMinus INT,
 	fipMinus INT,
+	-- Batted ball section
+	gbPerFb DECIMAL(10,3),
+	ldPerc DECIMAL(10,3),
+	fbPerc DECIMAL(10,3),
+	iffbPerc DECIMAL(10,3), -- In field fly ball %
+	ifhPerc DECIMAL(10,3), -- In field hit %
+	buhPerc DECIMAL(10,3), -- Bunt hit %
+	pullPerc DECIMAL(10,3), -- % of pull direction
+	centPerc DECIMAL(10,3), -- % of center direction
+	oppoPerc DECIMAL(10,3), -- % of opposite direction
+	softPerc DECIMAL(10,3), -- % of soft contact
+	medPerc DECIMAL(10,3), -- % of medium contact
+	hardPerc DECIMAL(10,3), -- % of hard contact
+	siera DECIMAL(10,3), -- Skill Interactive ERA
+	xFipMinus INT, -- xFIP adjusted for park
 	
 	UNIQUE KEY UC_PitcherRegularSeasonPartialStats1 (playerId, season, team),
 	CONSTRAINT FK_PitcherRegularSeasonPartialStats_Player FOREIGN KEY (playerId) REFERENCES Player (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -186,7 +216,22 @@ CREATE TABLE PitcherRegularSeasonProjectedStats (
 	whip DECIMAL(10,2),
 	eraMinus INT,
 	fipMinus INT,
-	
+	-- Batted ball section
+	gbPerFb DECIMAL(10,3),
+	ldPerc DECIMAL(10,3),
+	fbPerc DECIMAL(10,3),
+	iffbPerc DECIMAL(10,3), -- In field fly ball %
+	ifhPerc DECIMAL(10,3), -- In field hit %
+	buhPerc DECIMAL(10,3), -- Bunt hit %
+	pullPerc DECIMAL(10,3), -- % of pull direction
+	centPerc DECIMAL(10,3), -- % of center direction
+	oppoPerc DECIMAL(10,3), -- % of opposite direction
+	softPerc DECIMAL(10,3), -- % of soft contact
+	medPerc DECIMAL(10,3), -- % of medium contact
+	hardPerc DECIMAL(10,3), -- % of hard contact
+	siera DECIMAL(10,3), -- Skill Interactive ERA
+	xFipMinus INT, -- xFIP adjusted for park
+		
 	UNIQUE KEY UC_PitcherRegularSeasonProjectedStats1 (playerId, season, team),
 	CONSTRAINT FK_PitcherRegularSeasonProjectedStats_Player FOREIGN KEY (playerId) REFERENCES Player (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
 	INDEX IDX_PitcherRegularSeasonProjectedStats1 (season, team, win, save, games, gs, ip, kper9, era)
@@ -243,7 +288,22 @@ CREATE TABLE PitcherPostSeasonStats (
 	whip DECIMAL(10,2),
 	eraMinus INT,
 	fipMinus INT,
-	
+	-- Batted ball section
+	gbPerFb DECIMAL(10,3),
+	ldPerc DECIMAL(10,3),
+	fbPerc DECIMAL(10,3),
+	iffbPerc DECIMAL(10,3), -- In field fly ball %
+	ifhPerc DECIMAL(10,3), -- In field hit %
+	buhPerc DECIMAL(10,3), -- Bunt hit %
+	pullPerc DECIMAL(10,3), -- % of pull direction
+	centPerc DECIMAL(10,3), -- % of center direction
+	oppoPerc DECIMAL(10,3), -- % of opposite direction
+	softPerc DECIMAL(10,3), -- % of soft contact
+	medPerc DECIMAL(10,3), -- % of medium contact
+	hardPerc DECIMAL(10,3), -- % of hard contact
+	siera DECIMAL(10,3), -- Skill Interactive ERA
+	xFipMinus INT, -- xFIP adjusted for park
+		
 	UNIQUE KEY UC_PitcherPostSeasonStats1 (playerId, season, team),
 	CONSTRAINT FK_PitcherPostSeasonStats_Player FOREIGN KEY (playerId) REFERENCES Player (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
 	INDEX IDX_PitcherPostSeasonStats1 (season, team, win, save, games, gs, ip, kper9, era)
@@ -299,7 +359,22 @@ CREATE TABLE PitcherMinorsSeasonStats (
 	whip DECIMAL(10,2),
 	eraMinus INT,
 	fipMinus INT,
-	
+	-- Batted ball section
+	gbPerFb DECIMAL(10,3),
+	ldPerc DECIMAL(10,3),
+	fbPerc DECIMAL(10,3),
+	iffbPerc DECIMAL(10,3), -- In field fly ball %
+	ifhPerc DECIMAL(10,3), -- In field hit %
+	buhPerc DECIMAL(10,3), -- Bunt hit %
+	pullPerc DECIMAL(10,3), -- % of pull direction
+	centPerc DECIMAL(10,3), -- % of center direction
+	oppoPerc DECIMAL(10,3), -- % of opposite direction
+	softPerc DECIMAL(10,3), -- % of soft contact
+	medPerc DECIMAL(10,3), -- % of medium contact
+	hardPerc DECIMAL(10,3), -- % of hard contact
+	siera DECIMAL(10,3), -- Skill Interactive ERA
+	xFipMinus INT, -- xFIP adjusted for park
+		
 	CONSTRAINT FK_PitcherMinorsSeasonStats_Player FOREIGN KEY (playerId) REFERENCES Player (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
 	INDEX IDX_PitcherMinorsSeasonStats1 (season, team, win, save, games, gs, ip, kper9, era)
 
