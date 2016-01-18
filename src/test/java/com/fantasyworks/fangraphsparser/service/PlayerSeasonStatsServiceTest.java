@@ -12,8 +12,22 @@ public class PlayerSeasonStatsServiceTest extends SpringEnabledTest {
 	protected PlayerSeasonStatsService service;
 	
 	@Test
-	//@Rollback(false)
-	public void testDownloadAndPersistPlayers(){
-		service.downloadAndPersistPlayers();
+	@Rollback(false)
+	public void testDownloadAndPersistPlayer_ClaytonKershaw(){
+		String fileName = "./download/players/2015/pitchers/Clayton Kershaw.html";
+		service.downloadAndPersistPlayer(fileName);
+	}
+	
+	@Test
+	@Rollback(false)
+	public void testDownloadAndPersistPlayer_NeftaliFeliz(){
+		String fileName = "./download/players/2015/pitchers/Neftali Feliz.html";
+		service.downloadAndPersistPlayer(fileName);
+	}
+	
+	@Test
+	@Rollback(false)
+	public void testDownloadAndPersistAllPlayers(){
+		service.downloadAndPersistAllPlayers();
 	}
 }

@@ -30,17 +30,18 @@ public class PitcherStats extends IdEntity {
 	@Enumerated(EnumType.STRING)
 	protected StatsTypeEnum statsType;
 	
+	// Dashboard section
 	protected Integer win;
 	protected Integer loss;
 	protected Integer save;
 	protected Integer games;
-	protected Integer gs;
+	protected Integer gs; // games started
 	protected BigDecimal ip;
 	protected BigDecimal kPer9;
 	protected BigDecimal bbPer9;
 	protected BigDecimal hrPer9;
-	protected BigDecimal babip;
-	protected BigDecimal lobPerc;
+	protected BigDecimal babip; // batting average balls in play
+	protected BigDecimal lobPerc; // % runners LOB
 	protected BigDecimal gbPerc; // Ground ball per ball in play
 	protected BigDecimal hrPerFb; // HR per fly ball
 	protected BigDecimal era;
@@ -48,7 +49,32 @@ public class PitcherStats extends IdEntity {
 	protected BigDecimal xFip; // Expected FIP where HR/FB is set to 10.5%
 	protected BigDecimal war;
 	
+	// Standard section
+	protected Integer cg; // complete games
+	protected Integer sho; // shutouts
+	protected Integer hld; // holds
+	protected Integer bs; // blown saves
+	protected Integer tbf; // total batters faced
+	protected Integer hits;
+	protected Integer runs;
+	protected Integer er; // earned runs
+	protected Integer hr;
+	protected Integer bb;
+	protected Integer ibb; // intentional BB
+	protected Integer hbp;
+	protected Integer wp; // wild pitches
+	protected Integer bk; // balks
+	protected Integer so; // strikeouts
 	
+	// Advanced section
+	protected BigDecimal kPerc; // % of batters struck out
+	protected BigDecimal bbPerc; // % of batters walked
+	protected BigDecimal avg; // batting average against
+	protected BigDecimal whip;
+	protected Integer eraMinus; // ERA adjusted for park and league. 100 is the average. Lower is better.
+	protected Integer fipMinus; // FIP adjusted for park and league. 100 is the average. Lower is better.
+	
+	// Batted ball section (no minors stats)
 	
 	
 	public Player getPlayer() {
@@ -176,5 +202,131 @@ public class PitcherStats extends IdEntity {
 	}
 	public void setStatsType(StatsTypeEnum statsType) {
 		this.statsType = statsType;
+	}
+	public Integer getCg() {
+		return cg;
+	}
+	public void setCg(Integer cg) {
+		this.cg = cg;
+	}
+	public Integer getSho() {
+		return sho;
+	}
+	public void setSho(Integer sho) {
+		this.sho = sho;
+	}
+	public Integer getHld() {
+		return hld;
+	}
+	public void setHld(Integer hld) {
+		this.hld = hld;
+	}
+	public Integer getBs() {
+		return bs;
+	}
+	public void setBs(Integer bs) {
+		this.bs = bs;
+	}
+	public Integer getTbf() {
+		return tbf;
+	}
+	public void setTbf(Integer tbf) {
+		this.tbf = tbf;
+	}
+	public Integer getHits() {
+		return hits;
+	}
+	public void setHits(Integer hits) {
+		this.hits = hits;
+	}
+	public Integer getRuns() {
+		return runs;
+	}
+	public void setRuns(Integer runs) {
+		this.runs = runs;
+	}
+	public Integer getEr() {
+		return er;
+	}
+	public void setEr(Integer er) {
+		this.er = er;
+	}
+	public Integer getHr() {
+		return hr;
+	}
+	public void setHr(Integer hr) {
+		this.hr = hr;
+	}
+	public Integer getBb() {
+		return bb;
+	}
+	public void setBb(Integer bb) {
+		this.bb = bb;
+	}
+	public Integer getIbb() {
+		return ibb;
+	}
+	public void setIbb(Integer ibb) {
+		this.ibb = ibb;
+	}
+	public Integer getHbp() {
+		return hbp;
+	}
+	public void setHbp(Integer hbp) {
+		this.hbp = hbp;
+	}
+	public Integer getWp() {
+		return wp;
+	}
+	public void setWp(Integer wp) {
+		this.wp = wp;
+	}
+	public Integer getBk() {
+		return bk;
+	}
+	public void setBk(Integer bk) {
+		this.bk = bk;
+	}
+	public Integer getSo() {
+		return so;
+	}
+	public void setSo(Integer so) {
+		this.so = so;
+	}
+	public BigDecimal getkPerc() {
+		return kPerc;
+	}
+	public void setkPerc(BigDecimal kPerc) {
+		this.kPerc = kPerc;
+	}
+	public BigDecimal getBbPerc() {
+		return bbPerc;
+	}
+	public void setBbPerc(BigDecimal bbPerc) {
+		this.bbPerc = bbPerc;
+	}
+	public BigDecimal getAvg() {
+		return avg;
+	}
+	public void setAvg(BigDecimal avg) {
+		this.avg = avg;
+	}
+	public BigDecimal getWhip() {
+		return whip;
+	}
+	public void setWhip(BigDecimal whip) {
+		this.whip = whip;
+	}
+	public Integer getEraMinus() {
+		return eraMinus;
+	}
+	public void setEraMinus(Integer eraMinus) {
+		this.eraMinus = eraMinus;
+	}
+	public Integer getFipMinus() {
+		return fipMinus;
+	}
+	public void setFipMinus(Integer fipMinus) {
+		this.fipMinus = fipMinus;
 	}
 }

@@ -31,7 +31,7 @@ CREATE TABLE PitcherRegularSeasonStats (
 	season INT NOT NULL,
 	team VARCHAR(64) NOT NULL,
 	statsType VARCHAR(32) NOT NULL,
-	
+	-- Dashboard section
 	win INT,
 	loss INT,
 	save INT,
@@ -49,12 +49,150 @@ CREATE TABLE PitcherRegularSeasonStats (
 	fip DECIMAL(10,2), -- Fielder independent pitching on ERA scale
 	xFip DECIMAL(10,2), -- Expected FIP where HR/FB is set to 10.5%
 	war DECIMAL(10,1),
+	-- Standard section
+	cg INT,
+	sho INT,
+	hld INT,
+	bs INT,
+	tbf INT,
+	hits INT,
+	runs INT,
+	er INT,
+	hr INT,
+	bb INT,
+	ibb INT,
+	hbp INT,
+	wp INT,
+	bk INT,
+	so INT,
+	-- Advanced section
+	kPerc DECIMAL(10,3),
+	bbPerc DECIMAL(10,3),
+	avg DECIMAL(10,3),
+	whip DECIMAL(10,2),
+	eraMinus INT,
+	fipMinus INT,
 	
 	UNIQUE KEY UC_PitcherRegularSeasonStats1 (playerId, season, team),
 	CONSTRAINT FK_PitcherRegularSeasonStats_Player FOREIGN KEY (playerId) REFERENCES Player (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
 	INDEX IDX_PitcherRegularSeasonStats1 (season, team, win, save, games, gs, ip, kper9, era)
 
 ) ENGINE=InnoDB;
+
+
+DROP TABLE IF EXISTS PitcherRegularSeasonPartialStats;
+CREATE TABLE PitcherRegularSeasonPartialStats (
+	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	
+	playerId INT(11) NOT NULL,
+	season INT NOT NULL,
+	team VARCHAR(64) NOT NULL,
+	statsType VARCHAR(32) NOT NULL,
+	-- Dashboard section
+	win INT,
+	loss INT,
+	save INT,
+	games INT,
+	gs INT,
+	ip DECIMAL(10,1),
+	kPer9 DECIMAL(10,2),
+	bbPer9 DECIMAL(10,2),
+	hrPer9 DECIMAL(10,2),
+	babip DECIMAL(10,3),
+	lobPerc DECIMAL(10,3),
+	gbPerc DECIMAL(10,3), -- Ground ball per ball in play
+	hrPerFb DECIMAL(10,3), -- HR per fly ball
+	era DECIMAL(10,2),
+	fip DECIMAL(10,2), -- Fielder independent pitching on ERA scale
+	xFip DECIMAL(10,2), -- Expected FIP where HR/FB is set to 10.5%
+	war DECIMAL(10,1),
+	-- Standard section
+	cg INT,
+	sho INT,
+	hld INT,
+	bs INT,
+	tbf INT,
+	hits INT,
+	runs INT,
+	er INT,
+	hr INT,
+	bb INT,
+	ibb INT,
+	hbp INT,
+	wp INT,
+	bk INT,
+	so INT,
+	-- Advanced section
+	kPerc DECIMAL(10,3),
+	bbPerc DECIMAL(10,3),
+	avg DECIMAL(10,3),
+	whip DECIMAL(10,2),
+	eraMinus INT,
+	fipMinus INT,
+	
+	UNIQUE KEY UC_PitcherRegularSeasonPartialStats1 (playerId, season, team),
+	CONSTRAINT FK_PitcherRegularSeasonPartialStats_Player FOREIGN KEY (playerId) REFERENCES Player (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	INDEX IDX_PitcherRegularSeasonPartialStats1 (season, team, win, save, games, gs, ip, kper9, era)
+
+) ENGINE=InnoDB;
+
+
+DROP TABLE IF EXISTS PitcherRegularSeasonProjectedStats;
+CREATE TABLE PitcherRegularSeasonProjectedStats (
+	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	
+	playerId INT(11) NOT NULL,
+	season INT NOT NULL,
+	team VARCHAR(64) NOT NULL,
+	statsType VARCHAR(32) NOT NULL,
+	-- Dashboard section
+	win INT,
+	loss INT,
+	save INT,
+	games INT,
+	gs INT,
+	ip DECIMAL(10,1),
+	kPer9 DECIMAL(10,2),
+	bbPer9 DECIMAL(10,2),
+	hrPer9 DECIMAL(10,2),
+	babip DECIMAL(10,3),
+	lobPerc DECIMAL(10,3),
+	gbPerc DECIMAL(10,3), -- Ground ball per ball in play
+	hrPerFb DECIMAL(10,3), -- HR per fly ball
+	era DECIMAL(10,2),
+	fip DECIMAL(10,2), -- Fielder independent pitching on ERA scale
+	xFip DECIMAL(10,2), -- Expected FIP where HR/FB is set to 10.5%
+	war DECIMAL(10,1),
+	-- Standard section
+	cg INT,
+	sho INT,
+	hld INT,
+	bs INT,
+	tbf INT,
+	hits INT,
+	runs INT,
+	er INT,
+	hr INT,
+	bb INT,
+	ibb INT,
+	hbp INT,
+	wp INT,
+	bk INT,
+	so INT,
+	-- Advanced section
+	kPerc DECIMAL(10,3),
+	bbPerc DECIMAL(10,3),
+	avg DECIMAL(10,3),
+	whip DECIMAL(10,2),
+	eraMinus INT,
+	fipMinus INT,
+	
+	UNIQUE KEY UC_PitcherRegularSeasonProjectedStats1 (playerId, season, team),
+	CONSTRAINT FK_PitcherRegularSeasonProjectedStats_Player FOREIGN KEY (playerId) REFERENCES Player (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	INDEX IDX_PitcherRegularSeasonProjectedStats1 (season, team, win, save, games, gs, ip, kper9, era)
+
+) ENGINE=InnoDB;
+
 
 DROP TABLE IF EXISTS PitcherPostSeasonStats;
 CREATE TABLE PitcherPostSeasonStats (
@@ -82,6 +220,29 @@ CREATE TABLE PitcherPostSeasonStats (
 	fip DECIMAL(10,2), -- Fielder independent pitching on ERA scale
 	xFip DECIMAL(10,2), -- Expected FIP where HR/FB is set to 10.5%
 	war DECIMAL(10,1),
+	-- Standard section
+	cg INT,
+	sho INT,
+	hld INT,
+	bs INT,
+	tbf INT,
+	hits INT,
+	runs INT,
+	er INT,
+	hr INT,
+	bb INT,
+	ibb INT,
+	hbp INT,
+	wp INT,
+	bk INT,
+	so INT,
+	-- Advanced section
+	kPerc DECIMAL(10,3),
+	bbPerc DECIMAL(10,3),
+	avg DECIMAL(10,3),
+	whip DECIMAL(10,2),
+	eraMinus INT,
+	fipMinus INT,
 	
 	UNIQUE KEY UC_PitcherPostSeasonStats1 (playerId, season, team),
 	CONSTRAINT FK_PitcherPostSeasonStats_Player FOREIGN KEY (playerId) REFERENCES Player (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -115,6 +276,29 @@ CREATE TABLE PitcherMinorsSeasonStats (
 	fip DECIMAL(10,2), -- Fielder independent pitching on ERA scale
 	xFip DECIMAL(10,2), -- Expected FIP where HR/FB is set to 10.5%
 	war DECIMAL(10,1),
+	-- Standard section
+	cg INT,
+	sho INT,
+	hld INT,
+	bs INT,
+	tbf INT,
+	hits INT,
+	runs INT,
+	er INT,
+	hr INT,
+	bb INT,
+	ibb INT,
+	hbp INT,
+	wp INT,
+	bk INT,
+	so INT,
+	-- Advanced section
+	kPerc DECIMAL(10,3),
+	bbPerc DECIMAL(10,3),
+	avg DECIMAL(10,3),
+	whip DECIMAL(10,2),
+	eraMinus INT,
+	fipMinus INT,
 	
 	CONSTRAINT FK_PitcherMinorsSeasonStats_Player FOREIGN KEY (playerId) REFERENCES Player (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
 	INDEX IDX_PitcherMinorsSeasonStats1 (season, team, win, save, games, gs, ip, kper9, era)

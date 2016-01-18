@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 
 import com.fantasyworks.fangraphsparser.enumeration.HandednessEnum;
 import com.fantasyworks.fangraphsparser.enumeration.PlayerTypeEnum;
+import com.google.common.base.MoreObjects.ToStringHelper;
 
 @Entity
 public class Player extends IdEntity {
@@ -38,6 +39,12 @@ public class Player extends IdEntity {
 	// e.g. 2B/SS
 	protected String positions;
 	
+	protected ToStringHelper toStringHelper() {
+		return super.toStringHelper()
+				.add("name", name)
+				.add("uid", uid)
+				;
+	}
 	
 	
 	public String getUid() {
