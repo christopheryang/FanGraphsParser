@@ -3,12 +3,16 @@ package com.fantasyworks.fangraphsparser.entity;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
 
-@Entity
-public class PitcherSeasonStats extends IdEntity {
+import com.fantasyworks.fangraphsparser.enumeration.StatsTypeEnum;
+
+@MappedSuperclass
+public class PitcherStats extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -18,8 +22,14 @@ public class PitcherSeasonStats extends IdEntity {
 	
 	@Column(nullable=false)
 	protected Integer season;
+	
 	@Column(nullable=false)
 	protected String team;
+	
+	@Column(nullable=false)
+	@Enumerated(EnumType.STRING)
+	protected StatsTypeEnum statsType;
+	
 	protected Integer win;
 	protected Integer loss;
 	protected Integer save;
@@ -160,5 +170,11 @@ public class PitcherSeasonStats extends IdEntity {
 	}
 	public void setWar(BigDecimal war) {
 		this.war = war;
+	}
+	public StatsTypeEnum getStatsType() {
+		return statsType;
+	}
+	public void setStatsType(StatsTypeEnum statsType) {
+		this.statsType = statsType;
 	}
 }

@@ -1,6 +1,7 @@
 package com.fantasyworks.fangraphsparser.test;
 
-import com.fantasyworks.fangraphsparser.entity.PitcherSeasonStats;
+import com.fantasyworks.fangraphsparser.entity.PitcherRegularSeasonStats;
+import com.fantasyworks.fangraphsparser.entity.PitcherStats;
 import com.fantasyworks.fangraphsparser.entity.Player;
 import com.fantasyworks.fangraphsparser.enumeration.HandednessEnum;
 import com.fantasyworks.fangraphsparser.enumeration.PlayerTypeEnum;
@@ -25,8 +26,8 @@ public class TestDataGenerator {
 	}
 	
 	
-	public static PitcherSeasonStats generateTestPitcherSeasonStats(){
-		PitcherSeasonStats stats = new PitcherSeasonStats();
+	public static PitcherRegularSeasonStats generateTestPitcherRegularSeasonStats(){
+		PitcherRegularSeasonStats stats = new PitcherRegularSeasonStats();
 		stats.setSeason(2015);
 		stats.setTeam("Dodgers");
 		stats.setWin(16);

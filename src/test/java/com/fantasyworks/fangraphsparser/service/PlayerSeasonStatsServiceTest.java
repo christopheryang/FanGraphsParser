@@ -12,7 +12,7 @@ public class PlayerSeasonStatsServiceTest extends SpringEnabledTest {
 	protected PlayerSeasonStatsService service;
 	
 	@Test
-	@Rollback(false)
+	//@Rollback(false)
 	public void testDownloadAndPersistPlayers(){
 		service.downloadAndPersistPlayers();
 	}

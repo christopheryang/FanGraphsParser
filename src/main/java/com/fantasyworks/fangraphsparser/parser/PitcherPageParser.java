@@ -10,7 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.fantasyworks.fangraphsparser.entity.PitcherSeasonStats;
+import com.fantasyworks.fangraphsparser.entity.PitcherMinorsSeasonStats;
+import com.fantasyworks.fangraphsparser.entity.PitcherPostSeasonStats;
+import com.fantasyworks.fangraphsparser.entity.PitcherRegularSeasonStats;
+import com.fantasyworks.fangraphsparser.entity.PitcherStats;
 import com.fantasyworks.fangraphsparser.entity.Player;
 import com.fantasyworks.util.ConversionUtil;
 import com.fantasyworks.util.FilesUtil;
@@ -23,9 +26,10 @@ public class PitcherPageParser extends PlayerProfileParser {
 	private static final Logger logger = LoggerFactory.getLogger(PitcherPageParser.class);
 	
 
-	public List<PitcherSeasonStats> parsePitcherSeasonStats(String fileName, Player player){
+	public List<PitcherStats> parsePitcherSeasonStats(String fileName, Player player){
 		logger.debug("Parsing pitcher season stats: "+fileName);
-		List<PitcherSeasonStats> statsList = Lists.newArrayList();
+		
+		List<PitcherStats> statsList = Lists.newArrayList();
 		
 		Document doc = Jsoup.parse(FilesUtil.readFileToString(fileName));
 		Element dashboardTable = doc.select("table#SeasonStats1_dgSeason11_ctl00").first();
@@ -34,7 +38,22 @@ public class PitcherPageParser extends PlayerProfileParser {
 		// First row is always the header row. Terminate when we see the aggregated total row.
 		for(int i=1; i<rows.size(); i++){
 			Element row = rows.get(i);
-			PitcherSeasonStats stats = new PitcherSeasonStats();
+			
+			PitcherStats stats;
+			
+			// Determine what type of stats it is
+			String statsClass = row.attr("class");
+			if(statsClass.contains("postseason")){
+				stats = new PitcherPostSeasonStats();
+			}
+			else if(statsClass.contains("minors")){
+				stats = new PitcherMinorsSeasonStats();
+			}
+			else{
+				stats = new PitcherRegularSeasonStats();
+			}
+						
+						
 			stats.setPlayer(player);
 			Elements cols = row.select("td");
 			int currCol=0;

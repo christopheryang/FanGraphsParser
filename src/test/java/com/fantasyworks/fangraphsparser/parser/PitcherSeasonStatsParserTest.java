@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.fantasyworks.fangraphsparser.entity.PitcherSeasonStats;
+import com.fantasyworks.fangraphsparser.entity.PitcherStats;
 import com.fantasyworks.fangraphsparser.entity.Player;
 import com.fantasyworks.fangraphsparser.repo.PlayerRepo;
 import com.fantasyworks.fangraphsparser.test.SpringEnabledTest;
@@ -21,12 +21,26 @@ public class PitcherSeasonStatsParserTest extends SpringEnabledTest {
 	protected PlayerRepo playerRepo;
 	
 	@Test
-	public void testParseSeasonStats(){
+	public void testParseSeasonStats_ClaytonKershaw(){
 		String fileName = "./download/players/2015/pitchers/Clayton Kershaw.html";
 		Player player = parser.parsePlayerProfile(fileName);
 		player = playerRepo.save(player);
 		
-		List<PitcherSeasonStats> statsList = parser.parsePitcherSeasonStats(fileName, player);
+		List<PitcherStats> statsList = parser.parsePitcherSeasonStats(fileName, player);
 		assertThat(statsList.size(), greaterThanOrEqualTo(15));
 	}
+	
+	/**
+	 * Caleb Thielbar has two entries in 2009, both with team "Brewers (R)"
+	 */
+	@Test
+	public void testParseSeasonStats_CalebThielbar(){
+		String fileName = "./download/players/2015/pitchers/Caleb Thielbar.html";
+		Player player = parser.parsePlayerProfile(fileName);
+		player = playerRepo.save(player);
+		
+		List<PitcherStats> statsList = parser.parsePitcherSeasonStats(fileName, player);
+		assertThat(statsList.size(), greaterThanOrEqualTo(15));
+	}
+	
 }
