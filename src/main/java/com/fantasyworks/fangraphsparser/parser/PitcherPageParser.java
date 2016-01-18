@@ -43,16 +43,16 @@ public class PitcherPageParser extends PlayerProfileParser {
 		// Parse the stats one section at a time. Store the result in class variables
 		parseDashboardStats(doc, player, statsList);
 		parseStandardStats(doc, player, statsList);
+		parseAdvancedStats(doc, player, statsList);
 		
-//		return rowIdToStatsMap.values();
 		return statsList;
 	}
 	
 	/**
 	 * Parse the stats in the dashboard section.
-	 * 
 	 * @param doc
 	 * @param player
+	 * @param statsList
 	 */
 	protected void parseDashboardStats(Document doc, Player player, List<PitcherStats> statsList){
 		Element dashboardTable = doc.select("table#SeasonStats1_dgSeason11_ctl00").first();
@@ -119,15 +119,17 @@ public class PitcherPageParser extends PlayerProfileParser {
 	}
 	
 	/**
-	 * 
+	 * Parse the stats in the standard section.
 	 * @param doc
+	 * @param player
+	 * @param statsList
 	 */
 	protected void parseStandardStats(Document doc, Player player, List<PitcherStats> statsList){
 		Element standardStatsTable = doc.select("table#SeasonStats1_dgSeason1_ctl00").first();
 		Elements rows = standardStatsTable.select("tr");
 		
 		if(rows.size()-1<statsList.size()){
-			throw new RuntimeException("Rows in standard section: "+(rows.size()-1)+" is fewer than that in dashboard section: "+statsList.size()+" for player: "+player);
+			throw new RuntimeException("Rows in Standard section: "+(rows.size()-1)+" is fewer than that in Dashboard section: "+statsList.size()+" for player: "+player);
 		}
 		
 		// Always start from the second row. First row is the header row.
@@ -166,5 +168,46 @@ public class PitcherPageParser extends PlayerProfileParser {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param doc
+	 * @param player
+	 * @param statsList
+	 */
+	protected void parseAdvancedStats(Document doc, Player player, List<PitcherStats> statsList){
+		Element standardStatsTable = doc.select("table#SeasonStats1_dgSeason2_ctl00").first();
+		Elements rows = standardStatsTable.select("tr");
+		
+		if(rows.size()-1<statsList.size()){
+			throw new RuntimeException("Rows in Advanced section: "+(rows.size()-1)+" is fewer than that in Dashboard section: "+statsList.size()+" for player: "+player);
+		}
+		
+		// Always start from the second row. First row is the header row.
+		for(int i=1; i<=statsList.size(); i++){
+			Element row = rows.get(i);
+			Elements cols = row.select("td");
+			
+			PitcherStats stats = statsList.get(i-1);
+			int currCol=0;
+			
+			// Season, Team, K/9, BB/9, K/BB, HR/9, K%, BB%, K-BB%, AVG, WHIP, BABIP, LOB%, ERA-, FIP-, FIP
+			currCol++;
+			currCol++;
+			currCol++;
+			currCol++;
+			currCol++;
+			currCol++;
+			stats.setkPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setBbPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			currCol++; // K-BB%
+			stats.setAvg(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setWhip(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			currCol++; // BABIP
+			currCol++; // LOB%
+			stats.setEraMinus(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			stats.setFipMinus(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			currCol++; // FIP
+		}
+	}
 
 }
