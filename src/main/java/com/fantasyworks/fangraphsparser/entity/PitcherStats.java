@@ -89,7 +89,7 @@ public class PitcherStats extends PlayerStats {
 	protected Integer rs; // run support
 	protected Integer balls;
 	protected Integer strikes;
-	protected Integer pitchers;
+	protected Integer pitches;
 	
 	// Win Probability section
 	protected BigDecimal wpa; // win probability added
@@ -116,6 +116,14 @@ public class PitcherStats extends PlayerStats {
 	protected BigDecimal bisSfPerc; // split finger %
 	protected BigDecimal bisKnPerc; // knuckle ball %
 	protected BigDecimal bisXxPerc; // unknown pitch type %
+	protected BigDecimal bisFbVelocity;
+	protected BigDecimal bisSlVelocity;
+	protected BigDecimal bisCtVelocity;
+	protected BigDecimal bisCbVelocity;
+	protected BigDecimal bisChVelocity;
+	protected BigDecimal bisSfVelocity;
+	protected BigDecimal bisKnVelocity;
+	protected BigDecimal bisXxVelocity;
 	
 	// Pitchf/x Pitch Type section (based on Pitchf/x data)
 	protected BigDecimal pfxFaPerc; // fast ball all types %
@@ -132,6 +140,21 @@ public class PitcherStats extends PlayerStats {
 	protected BigDecimal pfxScPerc; // screwball %
 	protected BigDecimal pfxKnPerc; // knuckleball %
 	protected BigDecimal pfxUnPerc; // unknown pitch type %
+	
+	// Pitchf/x Pitch Velocity section
+	protected BigDecimal pfxFaVelocity;
+	protected BigDecimal pfxFtVelocity;
+	protected BigDecimal pfxFcVelocity;
+	protected BigDecimal pfxFsVelocity;
+	protected BigDecimal pfxFoVelocity;
+	protected BigDecimal pfxSiVelocity;
+	protected BigDecimal pfxSlVelocity;
+	protected BigDecimal pfxCuVelocity;
+	protected BigDecimal pfxKcVelocity;
+	protected BigDecimal pfxEpVelocity;
+	protected BigDecimal pfxChVelocity;
+	protected BigDecimal pfxScVelocity;
+	protected BigDecimal pfxKnVelocity;
 
 	@Override
 	public boolean equals(Object obj){
@@ -512,11 +535,11 @@ public class PitcherStats extends PlayerStats {
 	public void setStrikes(Integer strikes) {
 		this.strikes = strikes;
 	}
-	public Integer getPitchers() {
-		return pitchers;
+	public Integer getPitches() {
+		return pitches;
 	}
-	public void setPitchers(Integer pitchers) {
-		this.pitchers = pitchers;
+	public void setPitches(Integer pitches) {
+		this.pitches = pitches;
 	}
 	public BigDecimal getWpa() {
 		return wpa;
@@ -548,10 +571,10 @@ public class PitcherStats extends PlayerStats {
 	public void setRew(BigDecimal rew) {
 		this.rew = rew;
 	}
-	public BigDecimal getpLi() {
+	public BigDecimal getPLi() {
 		return pLi;
 	}
-	public void setpLi(BigDecimal pLi) {
+	public void setPLi(BigDecimal pLi) {
 		this.pLi = pLi;
 	}
 	public BigDecimal getInLi() {
@@ -733,5 +756,131 @@ public class PitcherStats extends PlayerStats {
 	}
 	public void setPfxUnPerc(BigDecimal pfxUnPerc) {
 		this.pfxUnPerc = pfxUnPerc;
+	}
+	public BigDecimal getBisFbVelocity() {
+		return bisFbVelocity;
+	}
+	public void setBisFbVelocity(BigDecimal bisFbVelocity) {
+		this.bisFbVelocity = bisFbVelocity;
+	}
+	public BigDecimal getBisSlVelocity() {
+		return bisSlVelocity;
+	}
+	public void setBisSlVelocity(BigDecimal bisSlVelocity) {
+		this.bisSlVelocity = bisSlVelocity;
+	}
+	public BigDecimal getBisCtVelocity() {
+		return bisCtVelocity;
+	}
+	public void setBisCtVelocity(BigDecimal bisCtVelocity) {
+		this.bisCtVelocity = bisCtVelocity;
+	}
+	public BigDecimal getBisCbVelocity() {
+		return bisCbVelocity;
+	}
+	public void setBisCbVelocity(BigDecimal bisCbVelocity) {
+		this.bisCbVelocity = bisCbVelocity;
+	}
+	public BigDecimal getBisChVelocity() {
+		return bisChVelocity;
+	}
+	public void setBisChVelocity(BigDecimal bisChVelocity) {
+		this.bisChVelocity = bisChVelocity;
+	}
+	public BigDecimal getBisSfVelocity() {
+		return bisSfVelocity;
+	}
+	public void setBisSfVelocity(BigDecimal bisSfVelocity) {
+		this.bisSfVelocity = bisSfVelocity;
+	}
+	public BigDecimal getBisKnVelocity() {
+		return bisKnVelocity;
+	}
+	public void setBisKnVelocity(BigDecimal bisKnVelocity) {
+		this.bisKnVelocity = bisKnVelocity;
+	}
+	public BigDecimal getBisXxVelocity() {
+		return bisXxVelocity;
+	}
+	public void setBisXxVelocity(BigDecimal bisXxVelocity) {
+		this.bisXxVelocity = bisXxVelocity;
+	}
+	public BigDecimal getPfxFaVelocity() {
+		return pfxFaVelocity;
+	}
+	public void setPfxFaVelocity(BigDecimal pfxFaVelocity) {
+		this.pfxFaVelocity = pfxFaVelocity;
+	}
+	public BigDecimal getPfxFtVelocity() {
+		return pfxFtVelocity;
+	}
+	public void setPfxFtVelocity(BigDecimal pfxFtVelocity) {
+		this.pfxFtVelocity = pfxFtVelocity;
+	}
+	public BigDecimal getPfxFcVelocity() {
+		return pfxFcVelocity;
+	}
+	public void setPfxFcVelocity(BigDecimal pfxFcVelocity) {
+		this.pfxFcVelocity = pfxFcVelocity;
+	}
+	public BigDecimal getPfxFsVelocity() {
+		return pfxFsVelocity;
+	}
+	public void setPfxFsVelocity(BigDecimal pfxFsVelocity) {
+		this.pfxFsVelocity = pfxFsVelocity;
+	}
+	public BigDecimal getPfxFoVelocity() {
+		return pfxFoVelocity;
+	}
+	public void setPfxFoVelocity(BigDecimal pfxFoVelocity) {
+		this.pfxFoVelocity = pfxFoVelocity;
+	}
+	public BigDecimal getPfxSiVelocity() {
+		return pfxSiVelocity;
+	}
+	public void setPfxSiVelocity(BigDecimal pfxSiVelocity) {
+		this.pfxSiVelocity = pfxSiVelocity;
+	}
+	public BigDecimal getPfxSlVelocity() {
+		return pfxSlVelocity;
+	}
+	public void setPfxSlVelocity(BigDecimal pfxSlVelocity) {
+		this.pfxSlVelocity = pfxSlVelocity;
+	}
+	public BigDecimal getPfxCuVelocity() {
+		return pfxCuVelocity;
+	}
+	public void setPfxCuVelocity(BigDecimal pfxCuVelocity) {
+		this.pfxCuVelocity = pfxCuVelocity;
+	}
+	public BigDecimal getPfxKcVelocity() {
+		return pfxKcVelocity;
+	}
+	public void setPfxKcVelocity(BigDecimal pfxKcVelocity) {
+		this.pfxKcVelocity = pfxKcVelocity;
+	}
+	public BigDecimal getPfxEpVelocity() {
+		return pfxEpVelocity;
+	}
+	public void setPfxEpVelocity(BigDecimal pfxEpVelocity) {
+		this.pfxEpVelocity = pfxEpVelocity;
+	}
+	public BigDecimal getPfxChVelocity() {
+		return pfxChVelocity;
+	}
+	public void setPfxChVelocity(BigDecimal pfxChVelocity) {
+		this.pfxChVelocity = pfxChVelocity;
+	}
+	public BigDecimal getPfxScVelocity() {
+		return pfxScVelocity;
+	}
+	public void setPfxScVelocity(BigDecimal pfxScVelocity) {
+		this.pfxScVelocity = pfxScVelocity;
+	}
+	public BigDecimal getPfxKnVelocity() {
+		return pfxKnVelocity;
+	}
+	public void setPfxKnVelocity(BigDecimal pfxKnVelocity) {
+		this.pfxKnVelocity = pfxKnVelocity;
 	}
 }

@@ -7,7 +7,7 @@ public class ConversionUtil {
 	
 	public static Integer toInteger(String str){
 		// \u00a0 is "&nbsp;", it is different from space
-		if(str==null || str.trim().length()==0 || "\u00a0".equals(str)){
+		if(isEmpty(str)){
 			return null;
 		}
 		
@@ -38,7 +38,7 @@ public class ConversionUtil {
 	 */
 	public static BigDecimal toBigDecimal(String str, int decimalPrecision){
 		// \u00a0 is "&nbsp;", it is different from space
-		if(str==null || str.trim().length()==0 || "\u00a0".equals(str)){
+		if(isEmpty(str)){
 			return null;
 		}
 		
@@ -58,6 +58,16 @@ public class ConversionUtil {
 		catch(Exception ex){
 			throw new RuntimeException("Unable to parse big decimal: "+str+", precision: "+decimalPrecision, ex);
 		}
+	}
+	
+	/**
+	 * Treat &nbsp; as empty
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public static boolean isEmpty(String str){
+		return str==null || str.trim().length()==0 || "\u00a0".equals(str);
 	}
 	
 }

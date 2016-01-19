@@ -6,6 +6,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.jsoup.Jsoup;
@@ -33,6 +35,8 @@ public class PitcherPageParser extends PlayerProfileParser {
 
 	private static final Logger logger = LoggerFactory.getLogger(PitcherPageParser.class);
 	
+	private static final Pattern BIS_PITCH_TYPE_STATS_STRING_PATTERN = Pattern.compile("([\\d.%]+) \\(([\\d.]+)\\)");
+	
 	/**
 	 * 
 	 * @param fileName
@@ -55,6 +59,11 @@ public class PitcherPageParser extends PlayerProfileParser {
 				.collect(Collectors.toMap(PitcherStats::getUid, Function.identity()));
 		
 		parseBattedBallStats(doc, player, filteredSeasonStatsMap);
+		parseMoreBattedBallStats(doc, player, filteredSeasonStatsMap);
+		parseWinProbabilityStats(doc, player, filteredSeasonStatsMap);
+		parsePitchTypeStats(doc, player, filteredSeasonStatsMap);
+		parsePitchfxPitchTypeStats(doc, player, filteredSeasonStatsMap);
+		parsePitchfxPitchVelocityStats(doc, player, filteredSeasonStatsMap);
 		
 		return statsList;
 	}
@@ -225,29 +234,10 @@ public class PitcherPageParser extends PlayerProfileParser {
 		// Always start from the second row. First row is the header row.
 		for(int i=1; i<=rows.size(); i++){
 			Element row = rows.get(i);
-			String rowCssClass = row.attr("class");
-			
 			Elements cols = row.select("td");
-			int currCol=0;
-			
-			// Season, Team, GB/FB, LD%, GB%, FB%, IFFB%, HR/FB, IFH%, BUH%, Pull%, Cent%, Oppo%, Soft%, Med%, Hard%, SIERA, xFIP-, xFIP
-			String seasonStr = cols.get(currCol++).text().replace("\u00a0", "");
-			if(Ints.tryParse(seasonStr)==null){
-				break;
-			}
-			Integer season = Integer.parseInt(seasonStr);
-			String team = cols.get(currCol++).text();
-			
-			PitcherStats tempStats = createPitcherStatsBaseOnRowCssClass(rowCssClass, seasonStr);
-			tempStats.setPlayer(player);
-			tempStats.setSeason(season);
-			tempStats.setTeam(team);
-			
-			// Some stats in batted ball section may be missing, but for whatever is there, it must also exist in the dashboard section.
-			PitcherStats stats = statsMap.get(tempStats.getUid());
-			if(stats == null){
-				throw new RuntimeException("Cannot find stats: "+tempStats+", from stats map: "+statsMap);
-			}
+			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
+			if(stats==null){break;} // We've reached the Total row
+			int currCol=2;
 			
 			currCol++; // GB/FB
 			stats.setLdPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
@@ -269,6 +259,223 @@ public class PitcherPageParser extends PlayerProfileParser {
 		}
 		
 	}
+	
+	
+	/**
+	 * 
+	 * @param doc
+	 * @param player
+	 * @param statsList
+	 */
+	protected void parseMoreBattedBallStats(Document doc, Player player, Map<String, PitcherStats> statsMap){
+		Element battedBallTable = doc.select("table#SeasonStats1_dgSeason4_ctl00").first();
+		Elements rows = battedBallTable.select("tr");
+		
+		// Always start from the second row. First row is the header row.
+		for(int i=1; i<=rows.size(); i++){
+			Element row = rows.get(i);
+			Elements cols = row.select("td");
+			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
+			if(stats==null){break;} // We've reached the Total row
+			int currCol=2;
+			
+			stats.setGb(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			stats.setFb(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			stats.setLd(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			stats.setIffb(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			stats.setIfh(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			stats.setBu(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			stats.setBuh(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			stats.setRs(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			stats.setBalls(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			stats.setStrikes(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			stats.setPitches(ConversionUtil.toInteger(cols.get(currCol++).text()));
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * @param doc
+	 * @param player
+	 * @param statsList
+	 */
+	protected void parseWinProbabilityStats(Document doc, Player player, Map<String, PitcherStats> statsMap){
+		Element battedBallTable = doc.select("table#SeasonStats1_dgSeason5_ctl00").first();
+		Elements rows = battedBallTable.select("tr");
+		
+		// Always start from the second row. First row is the header row.
+		for(int i=1; i<=rows.size(); i++){
+			Element row = rows.get(i);
+			Elements cols = row.select("td");
+			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
+			if(stats==null){break;} // We've reached the Total row
+			int currCol=2;
+			
+			stats.setWpa(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setWpaMinus(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setWpaPlus(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setRe24(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setRew(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setPLi(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setInLi(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setGmLi(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setExLi(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setPulls(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			stats.setWpaPerLi(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setClutch(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setSd(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			stats.setMd(ConversionUtil.toInteger(cols.get(currCol++).text()));
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * @param doc
+	 * @param player
+	 * @param statsList
+	 */
+	protected void parsePitchTypeStats(Document doc, Player player, Map<String, PitcherStats> statsMap){
+		Element battedBallTable = doc.select("table#SeasonStats1_dgSeason6_ctl00").first();
+		Elements rows = battedBallTable.select("tr");
+		
+		// Always start from the second row. First row is the header row.
+		for(int i=1; i<=rows.size(); i++){
+			Element row = rows.get(i);
+			Elements cols = row.select("td");
+			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
+			if(stats==null){break;} // We've reached the Total row
+			int currCol=2;
+			
+			String[] parsedStr = parseBisPitchTypeStatsStr(cols.get(currCol++).text());
+			if(parsedStr!=null){
+				stats.setBisFbPerc(ConversionUtil.toBigDecimal(parsedStr[0], 3));
+				stats.setBisFbVelocity(ConversionUtil.toBigDecimal(parsedStr[1], 1));
+			}
+			parsedStr = parseBisPitchTypeStatsStr(cols.get(currCol++).text());
+			if(parsedStr!=null){
+				stats.setBisSlPerc(ConversionUtil.toBigDecimal(parsedStr[0], 3));
+				stats.setBisSlVelocity(ConversionUtil.toBigDecimal(parsedStr[1], 1));
+			}
+			parsedStr = parseBisPitchTypeStatsStr(cols.get(currCol++).text());
+			if(parsedStr!=null){
+				stats.setBisCtPerc(ConversionUtil.toBigDecimal(parsedStr[0], 3));
+				stats.setBisCtVelocity(ConversionUtil.toBigDecimal(parsedStr[1], 1));
+			}
+			parsedStr = parseBisPitchTypeStatsStr(cols.get(currCol++).text());
+			if(parsedStr!=null){
+				stats.setBisCbPerc(ConversionUtil.toBigDecimal(parsedStr[0], 3));
+				stats.setBisCbVelocity(ConversionUtil.toBigDecimal(parsedStr[1], 1));
+			}
+			parsedStr = parseBisPitchTypeStatsStr(cols.get(currCol++).text());
+			if(parsedStr!=null){
+				stats.setBisChPerc(ConversionUtil.toBigDecimal(parsedStr[0], 3));
+				stats.setBisChVelocity(ConversionUtil.toBigDecimal(parsedStr[1], 1));
+			}
+			parsedStr = parseBisPitchTypeStatsStr(cols.get(currCol++).text());
+			if(parsedStr!=null){
+				stats.setBisSfPerc(ConversionUtil.toBigDecimal(parsedStr[0], 3));
+				stats.setBisSfVelocity(ConversionUtil.toBigDecimal(parsedStr[1], 1));
+			}
+			parsedStr = parseBisPitchTypeStatsStr(cols.get(currCol++).text());
+			if(parsedStr!=null){
+				stats.setBisKnPerc(ConversionUtil.toBigDecimal(parsedStr[0], 3));
+				stats.setBisKnVelocity(ConversionUtil.toBigDecimal(parsedStr[1], 1));
+			}
+			stats.setBisXxPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+		}
+	}
+	
+	/**
+	 * Parse Baseball Info Solutions' pitch type data representation
+	 * @param str
+	 * @return
+	 */
+	protected String[] parseBisPitchTypeStatsStr(String str){
+		if(ConversionUtil.isEmpty(str)){
+			return null;
+		}
+		Matcher matcher = BIS_PITCH_TYPE_STATS_STRING_PATTERN.matcher(str);
+		if(matcher.find()){
+			return new String[]{matcher.group(1), matcher.group(2)};
+		}
+		else{
+			throw new RuntimeException("Unable to parse pitch type stats expecting xx.x% (xx.x), instead got: "+str);
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * @param doc
+	 * @param player
+	 * @param statsList
+	 */
+	protected void parsePitchfxPitchTypeStats(Document doc, Player player, Map<String, PitcherStats> statsMap){
+		Element battedBallTable = doc.select("table#SeasonStats1_dgSeason16_ctl00").first();
+		Elements rows = battedBallTable.select("tr");
+		
+		// Always start from the second row. First row is the header row.
+		for(int i=1; i<=rows.size(); i++){
+			Element row = rows.get(i);
+			Elements cols = row.select("td");
+			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
+			if(stats==null){break;} // We've reached the Total row
+			int currCol=2;
+			
+			stats.setPfxFaPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxFtPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxFcPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxFsPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxFoPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxSiPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxSlPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxCuPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxKcPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxEpPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxChPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxScPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxKnPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxUnPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * @param doc
+	 * @param player
+	 * @param statsList
+	 */
+	protected void parsePitchfxPitchVelocityStats(Document doc, Player player, Map<String, PitcherStats> statsMap){
+		Element battedBallTable = doc.select("table#SeasonStats1_dgSeason17_ctl00").first();
+		Elements rows = battedBallTable.select("tr");
+		
+		// Always start from the second row. First row is the header row.
+		for(int i=1; i<=rows.size(); i++){
+			Element row = rows.get(i);
+			Elements cols = row.select("td");
+			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
+			if(stats==null){break;} // We've reached the Total row
+			int currCol=2;
+			
+			stats.setPfxFaVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxFtVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxFcVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxFsVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxFoVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxSiVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxSlVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxCuVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxKcVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxEpVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxChVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxScVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxKnVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+		}
+	}
+	
 	
 	/**
 	 * 
@@ -312,4 +519,38 @@ public class PitcherPageParser extends PlayerProfileParser {
 		return stats;
 	}
 	
+	/**
+	 * 
+	 * @param row
+	 * @param cols
+	 * @param player
+	 * @param statsMap
+	 * @return
+	 */
+	protected PitcherStats findPitcherStats(Element row, Elements cols, Player player, Map<String, PitcherStats> statsMap){
+		String rowCssClass = row.attr("class");
+		
+		int currCol=0;
+		
+		// Season, Team, GB/FB, LD%, GB%, FB%, IFFB%, HR/FB, IFH%, BUH%, Pull%, Cent%, Oppo%, Soft%, Med%, Hard%, SIERA, xFIP-, xFIP
+		String seasonStr = cols.get(currCol++).text().replace("\u00a0", "");
+		if(Ints.tryParse(seasonStr)==null){
+			return null;
+		}
+		Integer season = Integer.parseInt(seasonStr);
+		String team = cols.get(currCol++).text();
+		
+		PitcherStats tempStats = createPitcherStatsBaseOnRowCssClass(rowCssClass, seasonStr);
+		tempStats.setPlayer(player);
+		tempStats.setSeason(season);
+		tempStats.setTeam(team);
+		
+		// Some stats in batted ball section may be missing, but for whatever is there, it must also exist in the dashboard section.
+		PitcherStats stats = statsMap.get(tempStats.getUid());
+		if(stats == null){
+			throw new RuntimeException("Cannot find stats: "+tempStats+", from stats map: "+statsMap);
+		}
+		
+		return stats;
+	}
 }
