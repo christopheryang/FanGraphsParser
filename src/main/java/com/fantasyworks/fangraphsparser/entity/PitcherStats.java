@@ -62,7 +62,7 @@ public class PitcherStats extends PlayerStats {
 	protected Integer eraMinus; // ERA adjusted for park and league. 100 is the average. Lower is better.
 	protected Integer fipMinus; // FIP adjusted for park and league. 100 is the average. Lower is better.
 	
-	// Batted ball section (no minor league stats)
+	// Batted ball section (no minor league, partial season or projected season stats)
 	protected BigDecimal gbPerFb;
 	protected BigDecimal ldPerc;
 	protected BigDecimal fbPerc;
@@ -78,8 +78,61 @@ public class PitcherStats extends PlayerStats {
 	protected BigDecimal siera; // Skill Interactive ERA
 	protected Integer xFipMinus; // xFIP adjusted by league where average is 100. Lower is better.
 	
+	// More Batted Ball section (no minor league, partial season or projected season stats)
+	protected Integer gb;
+	protected Integer fb;
+	protected Integer ld; // line drive
+	protected Integer iffb; // in field fly ball
+	protected Integer ifh; // in field hits
+	protected Integer bu; // bunts
+	protected Integer buh; // bunt singles
+	protected Integer rs; // run support
+	protected Integer balls;
+	protected Integer strikes;
+	protected Integer pitchers;
 	
+	// Win Probability section
+	protected BigDecimal wpa; // win probability added
+	protected BigDecimal wpaMinus; // loss advancement
+	protected BigDecimal wpaPlus; // win advancement
+	protected BigDecimal re24; // run above average base on 24 base/out states
+	protected BigDecimal rew; // win above average base on 24 base/out states
+	protected BigDecimal pLi; // above leverage index
+	protected BigDecimal inLi; // average leverage index at the start of the inning
+	protected BigDecimal gmLi; // average leverage index when entering the game
+	protected BigDecimal exLi; // average leverage index when existing the game
+	protected Integer pulls; // number of times pulled from the game
+	protected BigDecimal wpaPerLi; // situational wins
+	protected BigDecimal clutch; // how much better or worse a player perform under high leverage situation. 0 is neutral.
+	protected Integer sd; // shutdowns
+	protected Integer md; // meltdowns
 	
+	// Pitch Type section (based on Baseball Info Solution's data)
+	protected BigDecimal bisFbPerc; // Fast ball %
+	protected BigDecimal bisSlPerc; // slider %
+	protected BigDecimal bisCtPerc; // cutter %
+	protected BigDecimal bisCbPerc; // curve ball %
+	protected BigDecimal bisChPerc; // changeup %
+	protected BigDecimal bisSfPerc; // split finger %
+	protected BigDecimal bisKnPerc; // knuckle ball %
+	protected BigDecimal bisXxPerc; // unknown pitch type %
+	
+	// Pitchf/x Pitch Type section (based on Pitchf/x data)
+	protected BigDecimal pfxFaPerc; // fast ball all types %
+	protected BigDecimal pfxFtPerc; // two-seam fast ball %
+	protected BigDecimal pfxFcPerc; // fast ball cutter %
+	protected BigDecimal pfxFsPerc; // fast ball splitter %
+	protected BigDecimal pfxFoPerc; // fork ball %
+	protected BigDecimal pfxSiPerc; // sinker %
+	protected BigDecimal pfxSlPerc; // slider %
+	protected BigDecimal pfxCuPerc; // curve ball %
+	protected BigDecimal pfxKcPerc; // knucke curve ball %
+	protected BigDecimal pfxEpPerc; // eephus %
+	protected BigDecimal pfxChPerc; // changeup %
+	protected BigDecimal pfxScPerc; // screwball %
+	protected BigDecimal pfxKnPerc; // knuckleball %
+	protected BigDecimal pfxUnPerc; // unknown pitch type %
+
 	@Override
 	public boolean equals(Object obj){
 		if(obj==null || obj instanceof PitcherStats == false){
@@ -87,9 +140,6 @@ public class PitcherStats extends PlayerStats {
 		}
 		return super.equals(obj);
 	}
-	
-	
-	
 	public Integer getWin() {
 		return win;
 	}
@@ -401,5 +451,287 @@ public class PitcherStats extends PlayerStats {
 	}
 	public void setxFipMinus(Integer xFipMinus) {
 		this.xFipMinus = xFipMinus;
+	}
+	public Integer getGb() {
+		return gb;
+	}
+	public void setGb(Integer gb) {
+		this.gb = gb;
+	}
+	public Integer getFb() {
+		return fb;
+	}
+	public void setFb(Integer fb) {
+		this.fb = fb;
+	}
+	public Integer getLd() {
+		return ld;
+	}
+	public void setLd(Integer ld) {
+		this.ld = ld;
+	}
+	public Integer getIffb() {
+		return iffb;
+	}
+	public void setIffb(Integer iffb) {
+		this.iffb = iffb;
+	}
+	public Integer getIfh() {
+		return ifh;
+	}
+	public void setIfh(Integer ifh) {
+		this.ifh = ifh;
+	}
+	public Integer getBu() {
+		return bu;
+	}
+	public void setBu(Integer bu) {
+		this.bu = bu;
+	}
+	public Integer getBuh() {
+		return buh;
+	}
+	public void setBuh(Integer buh) {
+		this.buh = buh;
+	}
+	public Integer getRs() {
+		return rs;
+	}
+	public void setRs(Integer rs) {
+		this.rs = rs;
+	}
+	public Integer getBalls() {
+		return balls;
+	}
+	public void setBalls(Integer balls) {
+		this.balls = balls;
+	}
+	public Integer getStrikes() {
+		return strikes;
+	}
+	public void setStrikes(Integer strikes) {
+		this.strikes = strikes;
+	}
+	public Integer getPitchers() {
+		return pitchers;
+	}
+	public void setPitchers(Integer pitchers) {
+		this.pitchers = pitchers;
+	}
+	public BigDecimal getWpa() {
+		return wpa;
+	}
+	public void setWpa(BigDecimal wpa) {
+		this.wpa = wpa;
+	}
+	public BigDecimal getWpaMinus() {
+		return wpaMinus;
+	}
+	public void setWpaMinus(BigDecimal wpaMinus) {
+		this.wpaMinus = wpaMinus;
+	}
+	public BigDecimal getWpaPlus() {
+		return wpaPlus;
+	}
+	public void setWpaPlus(BigDecimal wpaPlus) {
+		this.wpaPlus = wpaPlus;
+	}
+	public BigDecimal getRe24() {
+		return re24;
+	}
+	public void setRe24(BigDecimal re24) {
+		this.re24 = re24;
+	}
+	public BigDecimal getRew() {
+		return rew;
+	}
+	public void setRew(BigDecimal rew) {
+		this.rew = rew;
+	}
+	public BigDecimal getpLi() {
+		return pLi;
+	}
+	public void setpLi(BigDecimal pLi) {
+		this.pLi = pLi;
+	}
+	public BigDecimal getInLi() {
+		return inLi;
+	}
+	public void setInLi(BigDecimal inLi) {
+		this.inLi = inLi;
+	}
+	public BigDecimal getGmLi() {
+		return gmLi;
+	}
+	public void setGmLi(BigDecimal gmLi) {
+		this.gmLi = gmLi;
+	}
+	public BigDecimal getExLi() {
+		return exLi;
+	}
+	public void setExLi(BigDecimal exLi) {
+		this.exLi = exLi;
+	}
+	public Integer getPulls() {
+		return pulls;
+	}
+	public void setPulls(Integer pulls) {
+		this.pulls = pulls;
+	}
+	public BigDecimal getWpaPerLi() {
+		return wpaPerLi;
+	}
+	public void setWpaPerLi(BigDecimal wpaPerLi) {
+		this.wpaPerLi = wpaPerLi;
+	}
+	public BigDecimal getClutch() {
+		return clutch;
+	}
+	public void setClutch(BigDecimal clutch) {
+		this.clutch = clutch;
+	}
+	public Integer getSd() {
+		return sd;
+	}
+	public void setSd(Integer sd) {
+		this.sd = sd;
+	}
+	public Integer getMd() {
+		return md;
+	}
+	public void setMd(Integer md) {
+		this.md = md;
+	}
+	public BigDecimal getBisFbPerc() {
+		return bisFbPerc;
+	}
+	public void setBisFbPerc(BigDecimal bisFbPerc) {
+		this.bisFbPerc = bisFbPerc;
+	}
+	public BigDecimal getBisSlPerc() {
+		return bisSlPerc;
+	}
+	public void setBisSlPerc(BigDecimal bisSlPerc) {
+		this.bisSlPerc = bisSlPerc;
+	}
+	public BigDecimal getBisCtPerc() {
+		return bisCtPerc;
+	}
+	public void setBisCtPerc(BigDecimal bisCtPerc) {
+		this.bisCtPerc = bisCtPerc;
+	}
+	public BigDecimal getBisCbPerc() {
+		return bisCbPerc;
+	}
+	public void setBisCbPerc(BigDecimal bisCbPerc) {
+		this.bisCbPerc = bisCbPerc;
+	}
+	public BigDecimal getBisChPerc() {
+		return bisChPerc;
+	}
+	public void setBisChPerc(BigDecimal bisChPerc) {
+		this.bisChPerc = bisChPerc;
+	}
+	public BigDecimal getBisSfPerc() {
+		return bisSfPerc;
+	}
+	public void setBisSfPerc(BigDecimal bisSfPerc) {
+		this.bisSfPerc = bisSfPerc;
+	}
+	public BigDecimal getBisKnPerc() {
+		return bisKnPerc;
+	}
+	public void setBisKnPerc(BigDecimal bisKnPerc) {
+		this.bisKnPerc = bisKnPerc;
+	}
+	public BigDecimal getBisXxPerc() {
+		return bisXxPerc;
+	}
+	public void setBisXxPerc(BigDecimal bisXxPerc) {
+		this.bisXxPerc = bisXxPerc;
+	}
+	public BigDecimal getPfxFaPerc() {
+		return pfxFaPerc;
+	}
+	public void setPfxFaPerc(BigDecimal pfxFaPerc) {
+		this.pfxFaPerc = pfxFaPerc;
+	}
+	public BigDecimal getPfxFtPerc() {
+		return pfxFtPerc;
+	}
+	public void setPfxFtPerc(BigDecimal pfxFtPerc) {
+		this.pfxFtPerc = pfxFtPerc;
+	}
+	public BigDecimal getPfxFcPerc() {
+		return pfxFcPerc;
+	}
+	public void setPfxFcPerc(BigDecimal pfxFcPerc) {
+		this.pfxFcPerc = pfxFcPerc;
+	}
+	public BigDecimal getPfxFsPerc() {
+		return pfxFsPerc;
+	}
+	public void setPfxFsPerc(BigDecimal pfxFsPerc) {
+		this.pfxFsPerc = pfxFsPerc;
+	}
+	public BigDecimal getPfxFoPerc() {
+		return pfxFoPerc;
+	}
+	public void setPfxFoPerc(BigDecimal pfxFoPerc) {
+		this.pfxFoPerc = pfxFoPerc;
+	}
+	public BigDecimal getPfxSiPerc() {
+		return pfxSiPerc;
+	}
+	public void setPfxSiPerc(BigDecimal pfxSiPerc) {
+		this.pfxSiPerc = pfxSiPerc;
+	}
+	public BigDecimal getPfxSlPerc() {
+		return pfxSlPerc;
+	}
+	public void setPfxSlPerc(BigDecimal pfxSlPerc) {
+		this.pfxSlPerc = pfxSlPerc;
+	}
+	public BigDecimal getPfxCuPerc() {
+		return pfxCuPerc;
+	}
+	public void setPfxCuPerc(BigDecimal pfxCuPerc) {
+		this.pfxCuPerc = pfxCuPerc;
+	}
+	public BigDecimal getPfxKcPerc() {
+		return pfxKcPerc;
+	}
+	public void setPfxKcPerc(BigDecimal pfxKcPerc) {
+		this.pfxKcPerc = pfxKcPerc;
+	}
+	public BigDecimal getPfxEpPerc() {
+		return pfxEpPerc;
+	}
+	public void setPfxEpPerc(BigDecimal pfxEpPerc) {
+		this.pfxEpPerc = pfxEpPerc;
+	}
+	public BigDecimal getPfxChPerc() {
+		return pfxChPerc;
+	}
+	public void setPfxChPerc(BigDecimal pfxChPerc) {
+		this.pfxChPerc = pfxChPerc;
+	}
+	public BigDecimal getPfxScPerc() {
+		return pfxScPerc;
+	}
+	public void setPfxScPerc(BigDecimal pfxScPerc) {
+		this.pfxScPerc = pfxScPerc;
+	}
+	public BigDecimal getPfxKnPerc() {
+		return pfxKnPerc;
+	}
+	public void setPfxKnPerc(BigDecimal pfxKnPerc) {
+		this.pfxKnPerc = pfxKnPerc;
+	}
+	public BigDecimal getPfxUnPerc() {
+		return pfxUnPerc;
+	}
+	public void setPfxUnPerc(BigDecimal pfxUnPerc) {
+		this.pfxUnPerc = pfxUnPerc;
 	}
 }

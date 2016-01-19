@@ -243,7 +243,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 			tempStats.setSeason(season);
 			tempStats.setTeam(team);
 			
-			// Stats in batted ball section do not exist. For whatever is there, it must also exist in the dashboard section.
+			// Some stats in batted ball section may be missing, but for whatever is there, it must also exist in the dashboard section.
 			PitcherStats stats = statsMap.get(tempStats.getUid());
 			if(stats == null){
 				throw new RuntimeException("Cannot find stats: "+tempStats+", from stats map: "+statsMap);
