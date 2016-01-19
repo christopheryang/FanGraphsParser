@@ -1,6 +1,7 @@
 package com.fantasyworks.fangraphsparser.entity;
 
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,11 +40,24 @@ public class Player extends IdEntity {
 	// e.g. 2B/SS
 	protected String positions;
 	
+	@Override
 	protected ToStringHelper toStringHelper() {
 		return super.toStringHelper()
 				.add("name", name)
 				.add("uid", uid)
 				;
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+		if(obj==null || obj instanceof Player == false){
+			return false;
+		}
+		if(this == obj){
+			return true;
+		}
+		Player instance = (Player) obj;
+		return Objects.equals(this.getUid(), instance.getUid());
 	}
 	
 	

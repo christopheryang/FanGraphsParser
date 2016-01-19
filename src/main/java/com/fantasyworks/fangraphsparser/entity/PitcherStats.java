@@ -1,6 +1,7 @@
 package com.fantasyworks.fangraphsparser.entity;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.EnumType;
@@ -13,23 +14,9 @@ import com.fantasyworks.fangraphsparser.enumeration.StatsTypeEnum;
 import com.google.common.base.MoreObjects.ToStringHelper;
 
 @MappedSuperclass
-public class PitcherStats extends IdEntity {
+public class PitcherStats extends PlayerStats {
 
 	private static final long serialVersionUID = 1L;
-	
-	@ManyToOne
-	@JoinColumn(name="playerId", nullable=false)
-	protected Player player;
-	
-	@Column(nullable=false)
-	protected Integer season;
-	
-	@Column(nullable=false)
-	protected String team;
-	
-	@Column(nullable=false)
-	@Enumerated(EnumType.STRING)
-	protected StatsTypeEnum statsType;
 	
 	// Dashboard section
 	protected Integer win;
@@ -92,33 +79,17 @@ public class PitcherStats extends IdEntity {
 	protected Integer xFipMinus; // xFIP adjusted by league where average is 100. Lower is better.
 	
 	
-	protected ToStringHelper toStringHelper() {
-		return super.toStringHelper()
-				.add("player", player)
-				.add("season", season)
-				.add("team", team)
-				;
+	
+	@Override
+	public boolean equals(Object obj){
+		if(obj==null || obj instanceof PitcherStats == false){
+			return false;
+		}
+		return super.equals(obj);
 	}
 	
 	
-	public Player getPlayer() {
-		return player;
-	}
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
-	public Integer getSeason() {
-		return season;
-	}
-	public void setSeason(Integer year) {
-		this.season = year;
-	}
-	public String getTeam() {
-		return team;
-	}
-	public void setTeam(String team) {
-		this.team = team;
-	}
+	
 	public Integer getWin() {
 		return win;
 	}
@@ -220,12 +191,6 @@ public class PitcherStats extends IdEntity {
 	}
 	public void setWar(BigDecimal war) {
 		this.war = war;
-	}
-	public StatsTypeEnum getStatsType() {
-		return statsType;
-	}
-	public void setStatsType(StatsTypeEnum statsType) {
-		this.statsType = statsType;
 	}
 	public Integer getCg() {
 		return cg;

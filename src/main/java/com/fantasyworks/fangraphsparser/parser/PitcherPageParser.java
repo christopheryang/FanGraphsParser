@@ -4,6 +4,8 @@ import static com.google.common.base.Preconditions.checkState;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.jsoup.Jsoup;
@@ -48,11 +50,11 @@ public class PitcherPageParser extends PlayerProfileParser {
 		parseStandardStats(doc, player, statsList);
 		parseAdvancedStats(doc, player, statsList);
 		
-//		List<PitcherStats> regSeasonStatsList = statsList.stream()
-//				.filter(s->(s instanceof PitcherRegularSeasonStats || s instanceof PitcherRegularSeasonPartialStats))
-//				.collect(Collectors.toList());
-//		
-//		parseBattedBallStats(doc, player, regSeasonStatsList);
+		Map<String, PitcherStats> filteredSeasonStatsMap = statsList.stream()
+				.filter(s->(s instanceof PitcherRegularSeasonStats || s instanceof PitcherRegularSeasonPartialStats || s instanceof PitcherPostSeasonStats))
+				.collect(Collectors.toMap(PitcherStats::getUid, Function.identity()));
+		
+		parseBattedBallStats(doc, player, filteredSeasonStatsMap);
 		
 		return statsList;
 	}
@@ -82,24 +84,8 @@ public class PitcherPageParser extends PlayerProfileParser {
 			}
 			
 			// Initialize stats
-			PitcherStats stats;
-			String statsClass = row.attr("class");
-			if("rgRow grid_postseason".equals(statsClass)){
-				stats = new PitcherPostSeasonStats();
-			}
-			else if("rgRow grid_minors_show".equals(statsClass)){
-				stats = new PitcherMinorsSeasonStats();
-			}
-			else if("rgRow grid_multi".equals(statsClass)){
-				stats = new PitcherRegularSeasonPartialStats();
-			}
-			else if("2016".equals(seasonStr)){
-				stats = new PitcherRegularSeasonProjectedStats();
-			}
-			else{ // class name: "rgRow"
-				stats = new PitcherRegularSeasonStats();
-			}
-			
+			String rowCssClass = row.attr("class");
+			PitcherStats stats = createPitcherStatsBaseOnRowCssClass(rowCssClass, seasonStr);
 			stats.setPlayer(player);
 			
 			// Season, Team, W, L, Sv, G, Gs, IP, K/9, BB/9, HR/9, BABIP, LOB%, GB%, HR/FB, ERA, FIP, xFIP, WAR
@@ -151,7 +137,8 @@ public class PitcherPageParser extends PlayerProfileParser {
 			int currCol=0;
 			
 			// Season, Team, W, L, ERA, G, GS, CG, ShO, SV, HLD, BS, IP, TBF, H, R, ER, HR, BB, IBB, HBP, WP, BK, SO
-			currCol = validateStatsRow(cols, currCol, stats, "Standard stats"); // Season and Team must match
+			currCol++;
+			currCol++;
 			currCol++;
 			currCol++;
 			currCol++;
@@ -231,25 +218,54 @@ public class PitcherPageParser extends PlayerProfileParser {
 	 * @param player
 	 * @param statsList
 	 */
-	protected void parseBattedBallStats(Document doc, Player player, List<PitcherStats> statsList){
+	protected void parseBattedBallStats(Document doc, Player player, Map<String, PitcherStats> statsMap){
 		Element battedBallTable = doc.select("table#SeasonStats1_dgSeason3_ctl00").first();
 		Elements rows = battedBallTable.select("tr");
 		
-		if(rows.size()-1<statsList.size()){
-			throw new RuntimeException("Rows in Standard section: "+(rows.size()-1)+" is fewer than that in Dashboard section: "+statsList.size()+" for player: "+player);
-		}
-		
 		// Always start from the second row. First row is the header row.
-		for(int i=1; i<=statsList.size(); i++){
+		for(int i=1; i<=rows.size(); i++){
 			Element row = rows.get(i);
-			Elements cols = row.select("td");
+			String rowCssClass = row.attr("class");
 			
-			PitcherStats stats = statsList.get(i-1);
+			Elements cols = row.select("td");
 			int currCol=0;
 			
 			// Season, Team, GB/FB, LD%, GB%, FB%, IFFB%, HR/FB, IFH%, BUH%, Pull%, Cent%, Oppo%, Soft%, Med%, Hard%, SIERA, xFIP-, xFIP
-			currCol = validateStatsRow(cols, currCol, stats, "Batted ball"); // Season and Team must match
+			String seasonStr = cols.get(currCol++).text().replace("\u00a0", "");
+			if(Ints.tryParse(seasonStr)==null){
+				break;
+			}
+			Integer season = Integer.parseInt(seasonStr);
+			String team = cols.get(currCol++).text();
 			
+			PitcherStats tempStats = createPitcherStatsBaseOnRowCssClass(rowCssClass, seasonStr);
+			tempStats.setPlayer(player);
+			tempStats.setSeason(season);
+			tempStats.setTeam(team);
+			
+			// Stats in batted ball section do not exist. For whatever is there, it must also exist in the dashboard section.
+			PitcherStats stats = statsMap.get(tempStats.getUid());
+			if(stats == null){
+				throw new RuntimeException("Cannot find stats: "+tempStats+", from stats map: "+statsMap);
+			}
+			
+			currCol++; // GB/FB
+			stats.setLdPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setGbPerFb(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setFbPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setIffbPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			currCol++; // HR/FB
+			stats.setIfhPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setBuhPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPullPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setCentPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setOppoPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setSoftPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setMedPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setHardPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setSiera(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setxFipMinus(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			currCol++; // xFIP
 		}
 		
 	}
@@ -268,6 +284,32 @@ public class PitcherPageParser extends PlayerProfileParser {
 		String team = cols.get(currCol++).text();
 		checkState(stats.getSeason()-season==0 && stats.getTeam().equals(team), "Season and/or team mismatch in: "+sectionName+" Actual season: "+season+", team: "+team+", expected stats: "+stats);
 		return currCol;
+	}
+	
+	/**
+	 * 
+	 * @param rowCssClass
+	 * @param seasonStr
+	 * @return
+	 */
+	protected PitcherStats createPitcherStatsBaseOnRowCssClass(String rowCssClass, String seasonStr){
+		PitcherStats stats;
+		if("rgRow grid_postseason".equals(rowCssClass)){
+			stats = new PitcherPostSeasonStats();
+		}
+		else if("rgRow grid_minors_show".equals(rowCssClass)){
+			stats = new PitcherMinorsSeasonStats();
+		}
+		else if("rgRow grid_multi".equals(rowCssClass)){
+			stats = new PitcherRegularSeasonPartialStats();
+		}
+		else if("2016".equals(seasonStr)){
+			stats = new PitcherRegularSeasonProjectedStats();
+		}
+		else{ // class name: "rgRow"
+			stats = new PitcherRegularSeasonStats();
+		}
+		return stats;
 	}
 	
 }

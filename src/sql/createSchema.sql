@@ -85,7 +85,7 @@ CREATE TABLE PitcherRegularSeasonStats (
 	softPerc DECIMAL(10,3), -- % of soft contact
 	medPerc DECIMAL(10,3), -- % of medium contact
 	hardPerc DECIMAL(10,3), -- % of hard contact
-	siera DECIMAL(10,3), -- Skill Interactive ERA
+	siera DECIMAL(10,2), -- Skill Interactive ERA
 	xFipMinus INT, -- xFIP adjusted for park
 	
 	UNIQUE KEY UC_PitcherRegularSeasonStats1 (playerId, season, team),
@@ -157,7 +157,7 @@ CREATE TABLE PitcherRegularSeasonPartialStats (
 	softPerc DECIMAL(10,3), -- % of soft contact
 	medPerc DECIMAL(10,3), -- % of medium contact
 	hardPerc DECIMAL(10,3), -- % of hard contact
-	siera DECIMAL(10,3), -- Skill Interactive ERA
+	siera DECIMAL(10,2), -- Skill Interactive ERA
 	xFipMinus INT, -- xFIP adjusted for park
 	
 	UNIQUE KEY UC_PitcherRegularSeasonPartialStats1 (playerId, season, team),
@@ -229,7 +229,7 @@ CREATE TABLE PitcherRegularSeasonProjectedStats (
 	softPerc DECIMAL(10,3), -- % of soft contact
 	medPerc DECIMAL(10,3), -- % of medium contact
 	hardPerc DECIMAL(10,3), -- % of hard contact
-	siera DECIMAL(10,3), -- Skill Interactive ERA
+	siera DECIMAL(10,2), -- Skill Interactive ERA
 	xFipMinus INT, -- xFIP adjusted for park
 		
 	UNIQUE KEY UC_PitcherRegularSeasonProjectedStats1 (playerId, season, team),
@@ -301,7 +301,7 @@ CREATE TABLE PitcherPostSeasonStats (
 	softPerc DECIMAL(10,3), -- % of soft contact
 	medPerc DECIMAL(10,3), -- % of medium contact
 	hardPerc DECIMAL(10,3), -- % of hard contact
-	siera DECIMAL(10,3), -- Skill Interactive ERA
+	siera DECIMAL(10,2), -- Skill Interactive ERA
 	xFipMinus INT, -- xFIP adjusted for park
 		
 	UNIQUE KEY UC_PitcherPostSeasonStats1 (playerId, season, team),
@@ -372,7 +372,7 @@ CREATE TABLE PitcherMinorsSeasonStats (
 	softPerc DECIMAL(10,3), -- % of soft contact
 	medPerc DECIMAL(10,3), -- % of medium contact
 	hardPerc DECIMAL(10,3), -- % of hard contact
-	siera DECIMAL(10,3), -- Skill Interactive ERA
+	siera DECIMAL(10,2), -- Skill Interactive ERA
 	xFipMinus INT, -- xFIP adjusted for park
 		
 	CONSTRAINT FK_PitcherMinorsSeasonStats_Player FOREIGN KEY (playerId) REFERENCES Player (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
