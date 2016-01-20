@@ -116,50 +116,49 @@ CREATE TABLE PitcherRegularSeasonStats (
 	md INT, -- meltdowns
 	-- Pitch Type section
 	bisFbPerc DECIMAL(10,3), -- Fast ball %
-	bisSlPerc DECIMAL(10,3), -- slider %
-	bisCtPerc DECIMAL(10,3), -- cutter %
-	bisCbPerc DECIMAL(10,3), -- curve ball %
-	bisChPerc DECIMAL(10,3), -- changeup %
-	bisSfPerc DECIMAL(10,3), -- split finger %
-	bisKnPerc DECIMAL(10,3), -- knuckle ball %
-	bisXxPerc DECIMAL(10,3), -- unknown pitch type %
 	bisFbVelocity DECIMAL(10,1),
+	bisSlPerc DECIMAL(10,3), -- slider %
 	bisSlVelocity DECIMAL(10,1),
+	bisCtPerc DECIMAL(10,3), -- cutter %
 	bisCtVelocity DECIMAL(10,1),
+	bisCbPerc DECIMAL(10,3), -- curve ball %
 	bisCbVelocity DECIMAL(10,1),
+	bisChPerc DECIMAL(10,3), -- changeup %
 	bisChVelocity DECIMAL(10,1),
+	bisSfPerc DECIMAL(10,3), -- split finger %
 	bisSfVelocity DECIMAL(10,1),
+	bisKnPerc DECIMAL(10,3), -- knuckle ball %
 	bisKnVelocity DECIMAL(10,1),
+	bisXxPerc DECIMAL(10,3), -- unknown pitch type %
 	bisXxVelocity DECIMAL(10,1),
-	-- Pitchf/x Pitch Type section (based on Pitchf/x data)
+	-- Pitchf/x Pitch Type and Velocity (based on Pitchf/x data)
 	pfxFaPerc DECIMAL(10,3), -- fast ball all types %
-	pfxFtPerc DECIMAL(10,3), -- two-seam fast ball %
-	pfxFcPerc DECIMAL(10,3), -- fast ball cutter %
-	pfxFsPerc DECIMAL(10,3), -- fast ball splitter %
-	pfxFoPerc DECIMAL(10,3), -- fork ball %
-	pfxSiPerc DECIMAL(10,3), -- sinker %
-	pfxSlPerc DECIMAL(10,3), -- slider %
-	pfxCuPerc DECIMAL(10,3), -- curve ball %
-	pfxKcPerc DECIMAL(10,3), -- knucke curve ball %
-	pfxEpPerc DECIMAL(10,3), -- eephus %
-	pfxChPerc DECIMAL(10,3), -- changeup %
-	pfxScPerc DECIMAL(10,3), -- screwball %
-	pfxKnPerc DECIMAL(10,3), -- knuckleball %
-	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
-	-- Pitchf/x Pitch Velocity section
 	pfxFaVelocity DECIMAL(10,1),
+	pfxFtPerc DECIMAL(10,3), -- two-seam fast ball %
 	pfxFtVelocity DECIMAL(10,1),
+	pfxFcPerc DECIMAL(10,3), -- fast ball cutter %
 	pfxFcVelocity DECIMAL(10,1),
+	pfxFsPerc DECIMAL(10,3), -- fast ball splitter %
 	pfxFsVelocity DECIMAL(10,1),
+	pfxFoPerc DECIMAL(10,3), -- fork ball %
 	pfxFoVelocity DECIMAL(10,1),
+	pfxSiPerc DECIMAL(10,3), -- sinker %
 	pfxSiVelocity DECIMAL(10,1),
+	pfxSlPerc DECIMAL(10,3), -- slider %
 	pfxSlVelocity DECIMAL(10,1),
+	pfxCuPerc DECIMAL(10,3), -- curve ball %
 	pfxCuVelocity DECIMAL(10,1),
+	pfxKcPerc DECIMAL(10,3), -- knucke curve ball %
 	pfxKcVelocity DECIMAL(10,1),
+	pfxEpPerc DECIMAL(10,3), -- eephus %
 	pfxEpVelocity DECIMAL(10,1),
+	pfxChPerc DECIMAL(10,3), -- changeup %
 	pfxChVelocity DECIMAL(10,1),
+	pfxScPerc DECIMAL(10,3), -- screwball %
 	pfxScVelocity DECIMAL(10,1),
+	pfxKnPerc DECIMAL(10,3), -- knuckleball %
 	pfxKnVelocity DECIMAL(10,1),
+	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
 
 	
 	UNIQUE KEY UC_PitcherRegularSeasonStats1 (playerId, season, team),
@@ -262,50 +261,49 @@ CREATE TABLE PitcherRegularSeasonPartialStats (
 	md INT, -- meltdowns
 	-- Pitch Type section
 	bisFbPerc DECIMAL(10,3), -- Fast ball %
-	bisSlPerc DECIMAL(10,3), -- slider %
-	bisCtPerc DECIMAL(10,3), -- cutter %
-	bisCbPerc DECIMAL(10,3), -- curve ball %
-	bisChPerc DECIMAL(10,3), -- changeup %
-	bisSfPerc DECIMAL(10,3), -- split finger %
-	bisKnPerc DECIMAL(10,3), -- knuckle ball %
-	bisXxPerc DECIMAL(10,3), -- unknown pitch type %
 	bisFbVelocity DECIMAL(10,1),
+	bisSlPerc DECIMAL(10,3), -- slider %
 	bisSlVelocity DECIMAL(10,1),
+	bisCtPerc DECIMAL(10,3), -- cutter %
 	bisCtVelocity DECIMAL(10,1),
+	bisCbPerc DECIMAL(10,3), -- curve ball %
 	bisCbVelocity DECIMAL(10,1),
+	bisChPerc DECIMAL(10,3), -- changeup %
 	bisChVelocity DECIMAL(10,1),
+	bisSfPerc DECIMAL(10,3), -- split finger %
 	bisSfVelocity DECIMAL(10,1),
+	bisKnPerc DECIMAL(10,3), -- knuckle ball %
 	bisKnVelocity DECIMAL(10,1),
+	bisXxPerc DECIMAL(10,3), -- unknown pitch type %
 	bisXxVelocity DECIMAL(10,1),
-	-- Pitchf/x Pitch Type section (based on Pitchf/x data)
+	-- Pitchf/x Pitch Type and Velocity (based on Pitchf/x data)
 	pfxFaPerc DECIMAL(10,3), -- fast ball all types %
-	pfxFtPerc DECIMAL(10,3), -- two-seam fast ball %
-	pfxFcPerc DECIMAL(10,3), -- fast ball cutter %
-	pfxFsPerc DECIMAL(10,3), -- fast ball splitter %
-	pfxFoPerc DECIMAL(10,3), -- fork ball %
-	pfxSiPerc DECIMAL(10,3), -- sinker %
-	pfxSlPerc DECIMAL(10,3), -- slider %
-	pfxCuPerc DECIMAL(10,3), -- curve ball %
-	pfxKcPerc DECIMAL(10,3), -- knucke curve ball %
-	pfxEpPerc DECIMAL(10,3), -- eephus %
-	pfxChPerc DECIMAL(10,3), -- changeup %
-	pfxScPerc DECIMAL(10,3), -- screwball %
-	pfxKnPerc DECIMAL(10,3), -- knuckleball %
-	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
-	-- Pitchf/x Pitch Velocity section
 	pfxFaVelocity DECIMAL(10,1),
+	pfxFtPerc DECIMAL(10,3), -- two-seam fast ball %
 	pfxFtVelocity DECIMAL(10,1),
+	pfxFcPerc DECIMAL(10,3), -- fast ball cutter %
 	pfxFcVelocity DECIMAL(10,1),
+	pfxFsPerc DECIMAL(10,3), -- fast ball splitter %
 	pfxFsVelocity DECIMAL(10,1),
+	pfxFoPerc DECIMAL(10,3), -- fork ball %
 	pfxFoVelocity DECIMAL(10,1),
+	pfxSiPerc DECIMAL(10,3), -- sinker %
 	pfxSiVelocity DECIMAL(10,1),
+	pfxSlPerc DECIMAL(10,3), -- slider %
 	pfxSlVelocity DECIMAL(10,1),
+	pfxCuPerc DECIMAL(10,3), -- curve ball %
 	pfxCuVelocity DECIMAL(10,1),
+	pfxKcPerc DECIMAL(10,3), -- knucke curve ball %
 	pfxKcVelocity DECIMAL(10,1),
+	pfxEpPerc DECIMAL(10,3), -- eephus %
 	pfxEpVelocity DECIMAL(10,1),
+	pfxChPerc DECIMAL(10,3), -- changeup %
 	pfxChVelocity DECIMAL(10,1),
+	pfxScPerc DECIMAL(10,3), -- screwball %
 	pfxScVelocity DECIMAL(10,1),
+	pfxKnPerc DECIMAL(10,3), -- knuckleball %
 	pfxKnVelocity DECIMAL(10,1),
+	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
 
 	
 	UNIQUE KEY UC_PitcherRegularSeasonPartialStats1 (playerId, season, team),
@@ -408,50 +406,49 @@ CREATE TABLE PitcherRegularSeasonProjectedStats (
 	md INT, -- meltdowns
 	-- Pitch Type section
 	bisFbPerc DECIMAL(10,3), -- Fast ball %
-	bisSlPerc DECIMAL(10,3), -- slider %
-	bisCtPerc DECIMAL(10,3), -- cutter %
-	bisCbPerc DECIMAL(10,3), -- curve ball %
-	bisChPerc DECIMAL(10,3), -- changeup %
-	bisSfPerc DECIMAL(10,3), -- split finger %
-	bisKnPerc DECIMAL(10,3), -- knuckle ball %
-	bisXxPerc DECIMAL(10,3), -- unknown pitch type %
 	bisFbVelocity DECIMAL(10,1),
+	bisSlPerc DECIMAL(10,3), -- slider %
 	bisSlVelocity DECIMAL(10,1),
+	bisCtPerc DECIMAL(10,3), -- cutter %
 	bisCtVelocity DECIMAL(10,1),
+	bisCbPerc DECIMAL(10,3), -- curve ball %
 	bisCbVelocity DECIMAL(10,1),
+	bisChPerc DECIMAL(10,3), -- changeup %
 	bisChVelocity DECIMAL(10,1),
+	bisSfPerc DECIMAL(10,3), -- split finger %
 	bisSfVelocity DECIMAL(10,1),
+	bisKnPerc DECIMAL(10,3), -- knuckle ball %
 	bisKnVelocity DECIMAL(10,1),
+	bisXxPerc DECIMAL(10,3), -- unknown pitch type %
 	bisXxVelocity DECIMAL(10,1),
-	-- Pitchf/x Pitch Type section (based on Pitchf/x data)
+	-- Pitchf/x Pitch Type and Velocity (based on Pitchf/x data)
 	pfxFaPerc DECIMAL(10,3), -- fast ball all types %
-	pfxFtPerc DECIMAL(10,3), -- two-seam fast ball %
-	pfxFcPerc DECIMAL(10,3), -- fast ball cutter %
-	pfxFsPerc DECIMAL(10,3), -- fast ball splitter %
-	pfxFoPerc DECIMAL(10,3), -- fork ball %
-	pfxSiPerc DECIMAL(10,3), -- sinker %
-	pfxSlPerc DECIMAL(10,3), -- slider %
-	pfxCuPerc DECIMAL(10,3), -- curve ball %
-	pfxKcPerc DECIMAL(10,3), -- knucke curve ball %
-	pfxEpPerc DECIMAL(10,3), -- eephus %
-	pfxChPerc DECIMAL(10,3), -- changeup %
-	pfxScPerc DECIMAL(10,3), -- screwball %
-	pfxKnPerc DECIMAL(10,3), -- knuckleball %
-	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
-	-- Pitchf/x Pitch Velocity section
 	pfxFaVelocity DECIMAL(10,1),
+	pfxFtPerc DECIMAL(10,3), -- two-seam fast ball %
 	pfxFtVelocity DECIMAL(10,1),
+	pfxFcPerc DECIMAL(10,3), -- fast ball cutter %
 	pfxFcVelocity DECIMAL(10,1),
+	pfxFsPerc DECIMAL(10,3), -- fast ball splitter %
 	pfxFsVelocity DECIMAL(10,1),
+	pfxFoPerc DECIMAL(10,3), -- fork ball %
 	pfxFoVelocity DECIMAL(10,1),
+	pfxSiPerc DECIMAL(10,3), -- sinker %
 	pfxSiVelocity DECIMAL(10,1),
+	pfxSlPerc DECIMAL(10,3), -- slider %
 	pfxSlVelocity DECIMAL(10,1),
+	pfxCuPerc DECIMAL(10,3), -- curve ball %
 	pfxCuVelocity DECIMAL(10,1),
+	pfxKcPerc DECIMAL(10,3), -- knucke curve ball %
 	pfxKcVelocity DECIMAL(10,1),
+	pfxEpPerc DECIMAL(10,3), -- eephus %
 	pfxEpVelocity DECIMAL(10,1),
+	pfxChPerc DECIMAL(10,3), -- changeup %
 	pfxChVelocity DECIMAL(10,1),
+	pfxScPerc DECIMAL(10,3), -- screwball %
 	pfxScVelocity DECIMAL(10,1),
+	pfxKnPerc DECIMAL(10,3), -- knuckleball %
 	pfxKnVelocity DECIMAL(10,1),
+	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
 
 	
 	UNIQUE KEY UC_PitcherRegularSeasonProjectedStats1 (playerId, season, team),
@@ -554,50 +551,49 @@ CREATE TABLE PitcherPostSeasonStats (
 	md INT, -- meltdowns
 	-- Pitch Type section
 	bisFbPerc DECIMAL(10,3), -- Fast ball %
-	bisSlPerc DECIMAL(10,3), -- slider %
-	bisCtPerc DECIMAL(10,3), -- cutter %
-	bisCbPerc DECIMAL(10,3), -- curve ball %
-	bisChPerc DECIMAL(10,3), -- changeup %
-	bisSfPerc DECIMAL(10,3), -- split finger %
-	bisKnPerc DECIMAL(10,3), -- knuckle ball %
-	bisXxPerc DECIMAL(10,3), -- unknown pitch type %
 	bisFbVelocity DECIMAL(10,1),
+	bisSlPerc DECIMAL(10,3), -- slider %
 	bisSlVelocity DECIMAL(10,1),
+	bisCtPerc DECIMAL(10,3), -- cutter %
 	bisCtVelocity DECIMAL(10,1),
+	bisCbPerc DECIMAL(10,3), -- curve ball %
 	bisCbVelocity DECIMAL(10,1),
+	bisChPerc DECIMAL(10,3), -- changeup %
 	bisChVelocity DECIMAL(10,1),
+	bisSfPerc DECIMAL(10,3), -- split finger %
 	bisSfVelocity DECIMAL(10,1),
+	bisKnPerc DECIMAL(10,3), -- knuckle ball %
 	bisKnVelocity DECIMAL(10,1),
+	bisXxPerc DECIMAL(10,3), -- unknown pitch type %
 	bisXxVelocity DECIMAL(10,1),
-	-- Pitchf/x Pitch Type section (based on Pitchf/x data)
+	-- Pitchf/x Pitch Type and Velocity (based on Pitchf/x data)
 	pfxFaPerc DECIMAL(10,3), -- fast ball all types %
-	pfxFtPerc DECIMAL(10,3), -- two-seam fast ball %
-	pfxFcPerc DECIMAL(10,3), -- fast ball cutter %
-	pfxFsPerc DECIMAL(10,3), -- fast ball splitter %
-	pfxFoPerc DECIMAL(10,3), -- fork ball %
-	pfxSiPerc DECIMAL(10,3), -- sinker %
-	pfxSlPerc DECIMAL(10,3), -- slider %
-	pfxCuPerc DECIMAL(10,3), -- curve ball %
-	pfxKcPerc DECIMAL(10,3), -- knucke curve ball %
-	pfxEpPerc DECIMAL(10,3), -- eephus %
-	pfxChPerc DECIMAL(10,3), -- changeup %
-	pfxScPerc DECIMAL(10,3), -- screwball %
-	pfxKnPerc DECIMAL(10,3), -- knuckleball %
-	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
-	-- Pitchf/x Pitch Velocity section
 	pfxFaVelocity DECIMAL(10,1),
+	pfxFtPerc DECIMAL(10,3), -- two-seam fast ball %
 	pfxFtVelocity DECIMAL(10,1),
+	pfxFcPerc DECIMAL(10,3), -- fast ball cutter %
 	pfxFcVelocity DECIMAL(10,1),
+	pfxFsPerc DECIMAL(10,3), -- fast ball splitter %
 	pfxFsVelocity DECIMAL(10,1),
+	pfxFoPerc DECIMAL(10,3), -- fork ball %
 	pfxFoVelocity DECIMAL(10,1),
+	pfxSiPerc DECIMAL(10,3), -- sinker %
 	pfxSiVelocity DECIMAL(10,1),
+	pfxSlPerc DECIMAL(10,3), -- slider %
 	pfxSlVelocity DECIMAL(10,1),
+	pfxCuPerc DECIMAL(10,3), -- curve ball %
 	pfxCuVelocity DECIMAL(10,1),
+	pfxKcPerc DECIMAL(10,3), -- knucke curve ball %
 	pfxKcVelocity DECIMAL(10,1),
+	pfxEpPerc DECIMAL(10,3), -- eephus %
 	pfxEpVelocity DECIMAL(10,1),
+	pfxChPerc DECIMAL(10,3), -- changeup %
 	pfxChVelocity DECIMAL(10,1),
+	pfxScPerc DECIMAL(10,3), -- screwball %
 	pfxScVelocity DECIMAL(10,1),
+	pfxKnPerc DECIMAL(10,3), -- knuckleball %
 	pfxKnVelocity DECIMAL(10,1),
+	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
 	
 	
 	UNIQUE KEY UC_PitcherPostSeasonStats1 (playerId, season, team),
@@ -699,50 +695,49 @@ CREATE TABLE PitcherMinorsSeasonStats (
 	md INT, -- meltdowns
 	-- Pitch Type section
 	bisFbPerc DECIMAL(10,3), -- Fast ball %
-	bisSlPerc DECIMAL(10,3), -- slider %
-	bisCtPerc DECIMAL(10,3), -- cutter %
-	bisCbPerc DECIMAL(10,3), -- curve ball %
-	bisChPerc DECIMAL(10,3), -- changeup %
-	bisSfPerc DECIMAL(10,3), -- split finger %
-	bisKnPerc DECIMAL(10,3), -- knuckle ball %
-	bisXxPerc DECIMAL(10,3), -- unknown pitch type %
 	bisFbVelocity DECIMAL(10,1),
+	bisSlPerc DECIMAL(10,3), -- slider %
 	bisSlVelocity DECIMAL(10,1),
+	bisCtPerc DECIMAL(10,3), -- cutter %
 	bisCtVelocity DECIMAL(10,1),
+	bisCbPerc DECIMAL(10,3), -- curve ball %
 	bisCbVelocity DECIMAL(10,1),
+	bisChPerc DECIMAL(10,3), -- changeup %
 	bisChVelocity DECIMAL(10,1),
+	bisSfPerc DECIMAL(10,3), -- split finger %
 	bisSfVelocity DECIMAL(10,1),
+	bisKnPerc DECIMAL(10,3), -- knuckle ball %
 	bisKnVelocity DECIMAL(10,1),
+	bisXxPerc DECIMAL(10,3), -- unknown pitch type %
 	bisXxVelocity DECIMAL(10,1),
-	-- Pitchf/x Pitch Type section (based on Pitchf/x data)
+	-- Pitchf/x Pitch Type and Velocity (based on Pitchf/x data)
 	pfxFaPerc DECIMAL(10,3), -- fast ball all types %
-	pfxFtPerc DECIMAL(10,3), -- two-seam fast ball %
-	pfxFcPerc DECIMAL(10,3), -- fast ball cutter %
-	pfxFsPerc DECIMAL(10,3), -- fast ball splitter %
-	pfxFoPerc DECIMAL(10,3), -- fork ball %
-	pfxSiPerc DECIMAL(10,3), -- sinker %
-	pfxSlPerc DECIMAL(10,3), -- slider %
-	pfxCuPerc DECIMAL(10,3), -- curve ball %
-	pfxKcPerc DECIMAL(10,3), -- knucke curve ball %
-	pfxEpPerc DECIMAL(10,3), -- eephus %
-	pfxChPerc DECIMAL(10,3), -- changeup %
-	pfxScPerc DECIMAL(10,3), -- screwball %
-	pfxKnPerc DECIMAL(10,3), -- knuckleball %
-	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
-	-- Pitchf/x Pitch Velocity section
 	pfxFaVelocity DECIMAL(10,1),
+	pfxFtPerc DECIMAL(10,3), -- two-seam fast ball %
 	pfxFtVelocity DECIMAL(10,1),
+	pfxFcPerc DECIMAL(10,3), -- fast ball cutter %
 	pfxFcVelocity DECIMAL(10,1),
+	pfxFsPerc DECIMAL(10,3), -- fast ball splitter %
 	pfxFsVelocity DECIMAL(10,1),
+	pfxFoPerc DECIMAL(10,3), -- fork ball %
 	pfxFoVelocity DECIMAL(10,1),
+	pfxSiPerc DECIMAL(10,3), -- sinker %
 	pfxSiVelocity DECIMAL(10,1),
+	pfxSlPerc DECIMAL(10,3), -- slider %
 	pfxSlVelocity DECIMAL(10,1),
+	pfxCuPerc DECIMAL(10,3), -- curve ball %
 	pfxCuVelocity DECIMAL(10,1),
+	pfxKcPerc DECIMAL(10,3), -- knucke curve ball %
 	pfxKcVelocity DECIMAL(10,1),
+	pfxEpPerc DECIMAL(10,3), -- eephus %
 	pfxEpVelocity DECIMAL(10,1),
+	pfxChPerc DECIMAL(10,3), -- changeup %
 	pfxChVelocity DECIMAL(10,1),
+	pfxScPerc DECIMAL(10,3), -- screwball %
 	pfxScVelocity DECIMAL(10,1),
+	pfxKnPerc DECIMAL(10,3), -- knuckleball %
 	pfxKnVelocity DECIMAL(10,1),
+	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
 
 	
 	CONSTRAINT FK_PitcherMinorsSeasonStats_Player FOREIGN KEY (playerId) REFERENCES Player (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
