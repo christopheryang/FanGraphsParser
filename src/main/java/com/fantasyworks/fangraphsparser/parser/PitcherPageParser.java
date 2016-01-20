@@ -64,6 +64,11 @@ public class PitcherPageParser extends PlayerProfileParser {
 		parsePitchTypeStats(doc, player, filteredSeasonStatsMap);
 		parsePitchfxPitchTypeStats(doc, player, filteredSeasonStatsMap);
 		parsePitchfxPitchVelocityStats(doc, player, filteredSeasonStatsMap);
+		parsePitchValues(doc, player, filteredSeasonStatsMap);
+		parsePitchfxPitchValues(doc, player, filteredSeasonStatsMap);
+		parsePitchfxPitchValuesPer100(doc, player, filteredSeasonStatsMap);
+		parsePlateDiscipline(doc, player, filteredSeasonStatsMap);
+		parsePitchfxPlateDiscipline(doc, player, filteredSeasonStatsMap);
 		
 		return statsList;
 	}
@@ -473,6 +478,188 @@ public class PitcherPageParser extends PlayerProfileParser {
 			stats.setPfxChVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
 			stats.setPfxScVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
 			stats.setPfxKnVelocity(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * @param doc
+	 * @param player
+	 * @param statsList
+	 */
+	protected void parsePitchValues(Document doc, Player player, Map<String, PitcherStats> statsMap){
+		Element battedBallTable = doc.select("table#SeasonStats1_dgSeason10_ctl00").first();
+		Elements rows = battedBallTable.select("tr");
+		
+		// Always start from the second row. First row is the header row.
+		for(int i=1; i<=rows.size(); i++){
+			Element row = rows.get(i);
+			Elements cols = row.select("td");
+			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
+			if(stats==null){break;} // We've reached the Total row
+			int currCol=2;
+			
+			stats.setBisWFb(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setBisWSl(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setBisWCt(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setBisWCb(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setBisWCh(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setBisWSf(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setBisWKn(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			
+			stats.setBisWFbPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setBisWSlPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setBisWCtPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setBisWCbPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setBisWChPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setBisWSfPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setBisWKnPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * @param doc
+	 * @param player
+	 * @param statsList
+	 */
+	protected void parsePitchfxPitchValues(Document doc, Player player, Map<String, PitcherStats> statsMap){
+		Element battedBallTable = doc.select("table#SeasonStats1_dgSeason19_ctl00").first();
+		Elements rows = battedBallTable.select("tr");
+		
+		// Always start from the second row. First row is the header row.
+		for(int i=1; i<=rows.size(); i++){
+			Element row = rows.get(i);
+			Elements cols = row.select("td");
+			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
+			if(stats==null){break;} // We've reached the Total row
+			int currCol=2;
+			
+			stats.setPfxWFa(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxWFt(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxWFc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxWFs(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxWFo(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxWSi(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxWSl(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxWCu(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxWKc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxWEp(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxWCh(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxWSc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+			stats.setPfxWKn(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * @param doc
+	 * @param player
+	 * @param statsList
+	 */
+	protected void parsePitchfxPitchValuesPer100(Document doc, Player player, Map<String, PitcherStats> statsMap){
+		Element battedBallTable = doc.select("table#SeasonStats1_dgSeason20_ctl00").first();
+		Elements rows = battedBallTable.select("tr");
+		
+		// Always start from the second row. First row is the header row.
+		for(int i=1; i<=rows.size(); i++){
+			Element row = rows.get(i);
+			Elements cols = row.select("td");
+			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
+			if(stats==null){break;} // We've reached the Total row
+			int currCol=2;
+			
+			stats.setPfxWFaPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setPfxWFtPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setPfxWFcPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setPfxWFsPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setPfxWFoPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setPfxWSiPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setPfxWSlPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setPfxWCuPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setPfxWKcPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setPfxWEpPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setPfxWChPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setPfxWScPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+			stats.setPfxWKnPer100(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * @param doc
+	 * @param player
+	 * @param statsList
+	 */
+	protected void parsePlateDiscipline(Document doc, Player player, Map<String, PitcherStats> statsMap){
+		Element battedBallTable = doc.select("table#SeasonStats1_dgSeason7_ctl00").first();
+		Elements rows = battedBallTable.select("tr");
+		
+		// Always start from the second row. First row is the header row.
+		for(int i=1; i<=rows.size(); i++){
+			Element row = rows.get(i);
+			Elements cols = row.select("td");
+			
+			// Skip over the league average rows
+			String team = cols.get(1).text();
+			if("Average".equals(team)){
+				continue;
+			}
+			
+			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
+			if(stats==null){break;} // We've reached the Total row
+			int currCol=2;
+			
+			stats.setBisOSwingPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setBisZSwingPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setBisSwingPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setBisOContactPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setBisZContactPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setBisContactPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setBisZonePerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setBisFStrikePerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setBisSwStrPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * @param doc
+	 * @param player
+	 * @param statsList
+	 */
+	protected void parsePitchfxPlateDiscipline(Document doc, Player player, Map<String, PitcherStats> statsMap){
+		Element battedBallTable = doc.select("table#SeasonStats1_dgSeason18_ctl00").first();
+		Elements rows = battedBallTable.select("tr");
+		
+		// Always start from the second row. First row is the header row.
+		for(int i=1; i<=rows.size(); i++){
+			Element row = rows.get(i);
+			Elements cols = row.select("td");
+
+			// Skip over the league average rows
+			String team = cols.get(1).text();
+			if("Average".equals(team)){
+				continue;
+			}
+			
+			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
+			if(stats==null){break;} // We've reached the Total row
+			int currCol=2;
+			
+			stats.setPfxOSwingPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxZSwingPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxSwingPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxOContactPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxZContactPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxContactPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxZonePerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setPfxPace(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
 		}
 	}
 	

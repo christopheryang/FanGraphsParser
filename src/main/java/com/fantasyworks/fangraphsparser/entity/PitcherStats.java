@@ -1,17 +1,8 @@
 package com.fantasyworks.fangraphsparser.entity;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
-
-import com.fantasyworks.fangraphsparser.enumeration.StatsTypeEnum;
-import com.google.common.base.MoreObjects.ToStringHelper;
 
 @MappedSuperclass
 public class PitcherStats extends PlayerStats {
@@ -155,7 +146,74 @@ public class PitcherStats extends PlayerStats {
 	protected BigDecimal pfxChVelocity;
 	protected BigDecimal pfxScVelocity;
 	protected BigDecimal pfxKnVelocity;
+	
+	// Pitch Values
+	protected BigDecimal bisWFb; // Fast ball runs above average
+	protected BigDecimal bisWSl;
+	protected BigDecimal bisWCt;
+	protected BigDecimal bisWCb;
+	protected BigDecimal bisWCh;
+	protected BigDecimal bisWSf;
+	protected BigDecimal bisWKn;
+	protected BigDecimal bisWFbPer100; // Fast ball runs above average per 100 pitches
+	protected BigDecimal bisWSlPer100;
+	protected BigDecimal bisWCtPer100;
+	protected BigDecimal bisWCbPer100;
+	protected BigDecimal bisWChPer100;
+	protected BigDecimal bisWSfPer100;
+	protected BigDecimal bisWKnPer100;
 
+	// Pitchf/x Pitch Values
+	protected BigDecimal pfxWFa; // Fast ball runs above average
+	protected BigDecimal pfxWFt;
+	protected BigDecimal pfxWFc;
+	protected BigDecimal pfxWFs;
+	protected BigDecimal pfxWFo;
+	protected BigDecimal pfxWSi;
+	protected BigDecimal pfxWSl;
+	protected BigDecimal pfxWCu;
+	protected BigDecimal pfxWKc;
+	protected BigDecimal pfxWEp;
+	protected BigDecimal pfxWCh;
+	protected BigDecimal pfxWSc;
+	protected BigDecimal pfxWKn;
+	
+	// Pitchf/x Pitch Values Per 100 pitches
+	protected BigDecimal pfxWFaPer100;
+	protected BigDecimal pfxWFtPer100;
+	protected BigDecimal pfxWFcPer100;
+	protected BigDecimal pfxWFsPer100;
+	protected BigDecimal pfxWFoPer100;
+	protected BigDecimal pfxWSiPer100;
+	protected BigDecimal pfxWSlPer100;
+	protected BigDecimal pfxWCuPer100;
+	protected BigDecimal pfxWKcPer100;
+	protected BigDecimal pfxWEpPer100;
+	protected BigDecimal pfxWChPer100;
+	protected BigDecimal pfxWScPer100;
+	protected BigDecimal pfxWKnPer100;
+	
+	// Plate Discipline
+	protected BigDecimal bisOSwingPerc;
+	protected BigDecimal bisZSwingPerc;
+	protected BigDecimal bisSwingPerc; // total percentage of pitches swung at
+	protected BigDecimal bisOContactPerc;
+	protected BigDecimal bisZContactPerc;
+	protected BigDecimal bisContactPerc;
+	protected BigDecimal bisZonePerc; // % of pitches seen inside the strike zone
+	protected BigDecimal bisFStrikePerc;
+	protected BigDecimal bisSwStrPerc; // % of strikes swung at and missed
+	
+	// Pitchf/x Plate Discipline
+	protected BigDecimal pfxOSwingPerc;
+	protected BigDecimal pfxZSwingPerc;
+	protected BigDecimal pfxSwingPerc; // total percentage of pitches swung at
+	protected BigDecimal pfxOContactPerc;
+	protected BigDecimal pfxZContactPerc;
+	protected BigDecimal pfxContactPerc;
+	protected BigDecimal pfxZonePerc; // % of pitches seen inside the strike zone
+	protected BigDecimal pfxPace; // average time between pitches
+	
 	@Override
 	public boolean equals(Object obj){
 		if(obj==null || obj instanceof PitcherStats == false){
@@ -882,5 +940,353 @@ public class PitcherStats extends PlayerStats {
 	}
 	public void setPfxKnVelocity(BigDecimal pfxKnVelocity) {
 		this.pfxKnVelocity = pfxKnVelocity;
+	}
+	public BigDecimal getpLi() {
+		return pLi;
+	}
+	public void setpLi(BigDecimal pLi) {
+		this.pLi = pLi;
+	}
+	public BigDecimal getBisWFb() {
+		return bisWFb;
+	}
+	public void setBisWFb(BigDecimal bisWFb) {
+		this.bisWFb = bisWFb;
+	}
+	public BigDecimal getBisWSl() {
+		return bisWSl;
+	}
+	public void setBisWSl(BigDecimal bisWSl) {
+		this.bisWSl = bisWSl;
+	}
+	public BigDecimal getBisWCt() {
+		return bisWCt;
+	}
+	public void setBisWCt(BigDecimal bisWCt) {
+		this.bisWCt = bisWCt;
+	}
+	public BigDecimal getBisWCb() {
+		return bisWCb;
+	}
+	public void setBisWCb(BigDecimal bisWCb) {
+		this.bisWCb = bisWCb;
+	}
+	public BigDecimal getBisWCh() {
+		return bisWCh;
+	}
+	public void setBisWCh(BigDecimal bisWCh) {
+		this.bisWCh = bisWCh;
+	}
+	public BigDecimal getBisWSf() {
+		return bisWSf;
+	}
+	public void setBisWSf(BigDecimal bisWSf) {
+		this.bisWSf = bisWSf;
+	}
+	public BigDecimal getBisWKn() {
+		return bisWKn;
+	}
+	public void setBisWKn(BigDecimal bisWKn) {
+		this.bisWKn = bisWKn;
+	}
+	public BigDecimal getBisWFbPer100() {
+		return bisWFbPer100;
+	}
+	public void setBisWFbPer100(BigDecimal bisWFbPer100) {
+		this.bisWFbPer100 = bisWFbPer100;
+	}
+	public BigDecimal getBisWSlPer100() {
+		return bisWSlPer100;
+	}
+	public void setBisWSlPer100(BigDecimal bisWSlPer100) {
+		this.bisWSlPer100 = bisWSlPer100;
+	}
+	public BigDecimal getBisWCtPer100() {
+		return bisWCtPer100;
+	}
+	public void setBisWCtPer100(BigDecimal bisWCtPer100) {
+		this.bisWCtPer100 = bisWCtPer100;
+	}
+	public BigDecimal getBisWCbPer100() {
+		return bisWCbPer100;
+	}
+	public void setBisWCbPer100(BigDecimal bisWCbPer100) {
+		this.bisWCbPer100 = bisWCbPer100;
+	}
+	public BigDecimal getBisWChPer100() {
+		return bisWChPer100;
+	}
+	public void setBisWChPer100(BigDecimal bisWChPer100) {
+		this.bisWChPer100 = bisWChPer100;
+	}
+	public BigDecimal getBisWSfPer100() {
+		return bisWSfPer100;
+	}
+	public void setBisWSfPer100(BigDecimal bisWSfPer100) {
+		this.bisWSfPer100 = bisWSfPer100;
+	}
+	public BigDecimal getBisWKnPer100() {
+		return bisWKnPer100;
+	}
+	public void setBisWKnPer100(BigDecimal bisWKnPer100) {
+		this.bisWKnPer100 = bisWKnPer100;
+	}
+	public BigDecimal getPfxWFa() {
+		return pfxWFa;
+	}
+	public void setPfxWFa(BigDecimal pfxWFa) {
+		this.pfxWFa = pfxWFa;
+	}
+	public BigDecimal getPfxWFt() {
+		return pfxWFt;
+	}
+	public void setPfxWFt(BigDecimal pfxWFt) {
+		this.pfxWFt = pfxWFt;
+	}
+	public BigDecimal getPfxWFc() {
+		return pfxWFc;
+	}
+	public void setPfxWFc(BigDecimal pfxWFc) {
+		this.pfxWFc = pfxWFc;
+	}
+	public BigDecimal getPfxWFs() {
+		return pfxWFs;
+	}
+	public void setPfxWFs(BigDecimal pfxWFs) {
+		this.pfxWFs = pfxWFs;
+	}
+	public BigDecimal getPfxWFo() {
+		return pfxWFo;
+	}
+	public void setPfxWFo(BigDecimal pfxWFo) {
+		this.pfxWFo = pfxWFo;
+	}
+	public BigDecimal getPfxWSi() {
+		return pfxWSi;
+	}
+	public void setPfxWSi(BigDecimal pfxWSi) {
+		this.pfxWSi = pfxWSi;
+	}
+	public BigDecimal getPfxWSl() {
+		return pfxWSl;
+	}
+	public void setPfxWSl(BigDecimal pfxWSl) {
+		this.pfxWSl = pfxWSl;
+	}
+	public BigDecimal getPfxWCu() {
+		return pfxWCu;
+	}
+	public void setPfxWCu(BigDecimal pfxWCu) {
+		this.pfxWCu = pfxWCu;
+	}
+	public BigDecimal getPfxWKc() {
+		return pfxWKc;
+	}
+	public void setPfxWKc(BigDecimal pfxWKc) {
+		this.pfxWKc = pfxWKc;
+	}
+	public BigDecimal getPfxWEp() {
+		return pfxWEp;
+	}
+	public void setPfxWEp(BigDecimal pfxWEp) {
+		this.pfxWEp = pfxWEp;
+	}
+	public BigDecimal getPfxWCh() {
+		return pfxWCh;
+	}
+	public void setPfxWCh(BigDecimal pfxWCh) {
+		this.pfxWCh = pfxWCh;
+	}
+	public BigDecimal getPfxWSc() {
+		return pfxWSc;
+	}
+	public void setPfxWSc(BigDecimal pfxWSc) {
+		this.pfxWSc = pfxWSc;
+	}
+	public BigDecimal getPfxWKn() {
+		return pfxWKn;
+	}
+	public void setPfxWKn(BigDecimal pfxWKn) {
+		this.pfxWKn = pfxWKn;
+	}
+	public BigDecimal getPfxWFaPer100() {
+		return pfxWFaPer100;
+	}
+	public void setPfxWFaPer100(BigDecimal pfxWFaPer100) {
+		this.pfxWFaPer100 = pfxWFaPer100;
+	}
+	public BigDecimal getPfxWFtPer100() {
+		return pfxWFtPer100;
+	}
+	public void setPfxWFtPer100(BigDecimal pfxWFtPer100) {
+		this.pfxWFtPer100 = pfxWFtPer100;
+	}
+	public BigDecimal getPfxWFcPer100() {
+		return pfxWFcPer100;
+	}
+	public void setPfxWFcPer100(BigDecimal pfxWFcPer100) {
+		this.pfxWFcPer100 = pfxWFcPer100;
+	}
+	public BigDecimal getPfxWFsPer100() {
+		return pfxWFsPer100;
+	}
+	public void setPfxWFsPer100(BigDecimal pfxWFsPer100) {
+		this.pfxWFsPer100 = pfxWFsPer100;
+	}
+	public BigDecimal getPfxWFoPer100() {
+		return pfxWFoPer100;
+	}
+	public void setPfxWFoPer100(BigDecimal pfxWFoPer100) {
+		this.pfxWFoPer100 = pfxWFoPer100;
+	}
+	public BigDecimal getPfxWSiPer100() {
+		return pfxWSiPer100;
+	}
+	public void setPfxWSiPer100(BigDecimal pfxWSiPer100) {
+		this.pfxWSiPer100 = pfxWSiPer100;
+	}
+	public BigDecimal getPfxWSlPer100() {
+		return pfxWSlPer100;
+	}
+	public void setPfxWSlPer100(BigDecimal pfxWSlPer100) {
+		this.pfxWSlPer100 = pfxWSlPer100;
+	}
+	public BigDecimal getPfxWCuPer100() {
+		return pfxWCuPer100;
+	}
+	public void setPfxWCuPer100(BigDecimal pfxWCuPer100) {
+		this.pfxWCuPer100 = pfxWCuPer100;
+	}
+	public BigDecimal getPfxWKcPer100() {
+		return pfxWKcPer100;
+	}
+	public void setPfxWKcPer100(BigDecimal pfxWKcPer100) {
+		this.pfxWKcPer100 = pfxWKcPer100;
+	}
+	public BigDecimal getPfxWEpPer100() {
+		return pfxWEpPer100;
+	}
+	public void setPfxWEpPer100(BigDecimal pfxWEpPer100) {
+		this.pfxWEpPer100 = pfxWEpPer100;
+	}
+	public BigDecimal getPfxWChPer100() {
+		return pfxWChPer100;
+	}
+	public void setPfxWChPer100(BigDecimal pfxWChPer100) {
+		this.pfxWChPer100 = pfxWChPer100;
+	}
+	public BigDecimal getPfxWScPer100() {
+		return pfxWScPer100;
+	}
+	public void setPfxWScPer100(BigDecimal pfxWScPer100) {
+		this.pfxWScPer100 = pfxWScPer100;
+	}
+	public BigDecimal getPfxWKnPer100() {
+		return pfxWKnPer100;
+	}
+	public void setPfxWKnPer100(BigDecimal pfxWKnPer100) {
+		this.pfxWKnPer100 = pfxWKnPer100;
+	}
+	public BigDecimal getBisOSwingPerc() {
+		return bisOSwingPerc;
+	}
+	public void setBisOSwingPerc(BigDecimal bisOSwingPerc) {
+		this.bisOSwingPerc = bisOSwingPerc;
+	}
+	public BigDecimal getBisZSwingPerc() {
+		return bisZSwingPerc;
+	}
+	public void setBisZSwingPerc(BigDecimal bisZSwingPerc) {
+		this.bisZSwingPerc = bisZSwingPerc;
+	}
+	public BigDecimal getBisSwingPerc() {
+		return bisSwingPerc;
+	}
+	public void setBisSwingPerc(BigDecimal bisSwingPerc) {
+		this.bisSwingPerc = bisSwingPerc;
+	}
+	public BigDecimal getBisOContactPerc() {
+		return bisOContactPerc;
+	}
+	public void setBisOContactPerc(BigDecimal bisOContactPerc) {
+		this.bisOContactPerc = bisOContactPerc;
+	}
+	public BigDecimal getBisZContactPerc() {
+		return bisZContactPerc;
+	}
+	public void setBisZContactPerc(BigDecimal bisZContactPerc) {
+		this.bisZContactPerc = bisZContactPerc;
+	}
+	public BigDecimal getBisContactPerc() {
+		return bisContactPerc;
+	}
+	public void setBisContactPerc(BigDecimal bisContactPerc) {
+		this.bisContactPerc = bisContactPerc;
+	}
+	public BigDecimal getBisZonePerc() {
+		return bisZonePerc;
+	}
+	public void setBisZonePerc(BigDecimal bisZonePerc) {
+		this.bisZonePerc = bisZonePerc;
+	}
+	public BigDecimal getBisFStrikePerc() {
+		return bisFStrikePerc;
+	}
+	public void setBisFStrikePerc(BigDecimal bisFStrikePerc) {
+		this.bisFStrikePerc = bisFStrikePerc;
+	}
+	public BigDecimal getBisSwStrPerc() {
+		return bisSwStrPerc;
+	}
+	public void setBisSwStrPerc(BigDecimal bisSwStrPerc) {
+		this.bisSwStrPerc = bisSwStrPerc;
+	}
+	public BigDecimal getPfxOSwingPerc() {
+		return pfxOSwingPerc;
+	}
+	public void setPfxOSwingPerc(BigDecimal pfxOSwingPerc) {
+		this.pfxOSwingPerc = pfxOSwingPerc;
+	}
+	public BigDecimal getPfxZSwingPerc() {
+		return pfxZSwingPerc;
+	}
+	public void setPfxZSwingPerc(BigDecimal pfxZSwingPerc) {
+		this.pfxZSwingPerc = pfxZSwingPerc;
+	}
+	public BigDecimal getPfxSwingPerc() {
+		return pfxSwingPerc;
+	}
+	public void setPfxSwingPerc(BigDecimal pfxSwingPerc) {
+		this.pfxSwingPerc = pfxSwingPerc;
+	}
+	public BigDecimal getPfxOContactPerc() {
+		return pfxOContactPerc;
+	}
+	public void setPfxOContactPerc(BigDecimal pfxOContactPerc) {
+		this.pfxOContactPerc = pfxOContactPerc;
+	}
+	public BigDecimal getPfxZContactPerc() {
+		return pfxZContactPerc;
+	}
+	public void setPfxZContactPerc(BigDecimal pfxZContactPerc) {
+		this.pfxZContactPerc = pfxZContactPerc;
+	}
+	public BigDecimal getPfxContactPerc() {
+		return pfxContactPerc;
+	}
+	public void setPfxContactPerc(BigDecimal pfxContactPerc) {
+		this.pfxContactPerc = pfxContactPerc;
+	}
+	public BigDecimal getPfxZonePerc() {
+		return pfxZonePerc;
+	}
+	public void setPfxZonePerc(BigDecimal pfxZonePerc) {
+		this.pfxZonePerc = pfxZonePerc;
+	}
+	public BigDecimal getPfxPace() {
+		return pfxPace;
+	}
+	public void setPfxPace(BigDecimal pfxPace) {
+		this.pfxPace = pfxPace;
 	}
 }

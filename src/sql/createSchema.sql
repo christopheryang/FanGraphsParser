@@ -159,6 +159,67 @@ CREATE TABLE PitcherRegularSeasonStats (
 	pfxKnPerc DECIMAL(10,3), -- knuckleball %
 	pfxKnVelocity DECIMAL(10,1),
 	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
+	-- Pitch Values
+	bisWFb DECIMAL(10,1), -- Fast ball runs above average
+	bisWFbPer100 DECIMAL(10,2), -- Fast ball runs above average per 100 pitches
+	bisWSl DECIMAL(10,1),
+	bisWSlPer100 DECIMAL(10,2),
+	bisWCt DECIMAL(10,1),
+	bisWCtPer100 DECIMAL(10,2),
+	bisWCb DECIMAL(10,1),
+	bisWCbPer100 DECIMAL(10,2),
+	bisWCh DECIMAL(10,1),
+	bisWChPer100 DECIMAL(10,2),
+	bisWSf DECIMAL(10,1),
+	bisWSfPer100 DECIMAL(10,2),
+	bisWKn DECIMAL(10,1),
+	bisWKnPer100 DECIMAL(10,2),
+	-- Pitchf/x Pitch Values
+	pfxWFa DECIMAL(10,1), -- Fast ball runs above average
+	pfxWFaPer100 DECIMAL(10,2),
+	pfxWFt DECIMAL(10,1),
+	pfxWFtPer100 DECIMAL(10,2),
+	pfxWFc DECIMAL(10,1),
+	pfxWFcPer100 DECIMAL(10,2),
+	pfxWFs DECIMAL(10,1),
+	pfxWFsPer100 DECIMAL(10,2),
+	pfxWFo DECIMAL(10,1),
+	pfxWFoPer100 DECIMAL(10,2),
+	pfxWSi DECIMAL(10,1),
+	pfxWSiPer100 DECIMAL(10,2),
+	pfxWSl DECIMAL(10,1),
+	pfxWSlPer100 DECIMAL(10,2),
+	pfxWCu DECIMAL(10,1),
+	pfxWCuPer100 DECIMAL(10,2),
+	pfxWKc DECIMAL(10,1),
+	pfxWKcPer100 DECIMAL(10,2),
+	pfxWEp DECIMAL(10,1),
+	pfxWEpPer100 DECIMAL(10,2),
+	pfxWCh DECIMAL(10,1),
+	pfxWChPer100 DECIMAL(10,2),
+	pfxWSc DECIMAL(10,1),
+	pfxWScPer100 DECIMAL(10,2),
+	pfxWKn DECIMAL(10,1),
+	pfxWKnPer100 DECIMAL(10,2),
+	-- Plate Discipline
+	bisOSwingPerc DECIMAL(10,3),
+	bisZSwingPerc DECIMAL(10,3),
+	bisSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	bisOContactPerc DECIMAL(10,3),
+	bisZContactPerc DECIMAL(10,3),
+	bisContactPerc DECIMAL(10,3),
+	bisZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	bisFStrikePerc DECIMAL(10,3),
+	bisSwStrPerc DECIMAL(10,3), -- % of strikes swung at and missed
+	-- Pitchf/x Plate Discipline
+	pfxOSwingPerc DECIMAL(10,3),
+	pfxZSwingPerc DECIMAL(10,3),
+	pfxSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	pfxOContactPerc DECIMAL(10,3),
+	pfxZContactPerc DECIMAL(10,3),
+	pfxContactPerc DECIMAL(10,3),
+	pfxZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	pfxPace DECIMAL(10,1), -- average time between pitches
 
 	
 	UNIQUE KEY UC_PitcherRegularSeasonStats1 (playerId, season, team),
@@ -304,6 +365,67 @@ CREATE TABLE PitcherRegularSeasonPartialStats (
 	pfxKnPerc DECIMAL(10,3), -- knuckleball %
 	pfxKnVelocity DECIMAL(10,1),
 	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
+	-- Pitch Values
+	bisWFb DECIMAL(10,1), -- Fast ball runs above average
+	bisWFbPer100 DECIMAL(10,2), -- Fast ball runs above average per 100 pitches
+	bisWSl DECIMAL(10,1),
+	bisWSlPer100 DECIMAL(10,2),
+	bisWCt DECIMAL(10,1),
+	bisWCtPer100 DECIMAL(10,2),
+	bisWCb DECIMAL(10,1),
+	bisWCbPer100 DECIMAL(10,2),
+	bisWCh DECIMAL(10,1),
+	bisWChPer100 DECIMAL(10,2),
+	bisWSf DECIMAL(10,1),
+	bisWSfPer100 DECIMAL(10,2),
+	bisWKn DECIMAL(10,1),
+	bisWKnPer100 DECIMAL(10,2),
+	-- Pitchf/x Pitch Values
+	pfxWFa DECIMAL(10,1), -- Fast ball runs above average
+	pfxWFaPer100 DECIMAL(10,2),
+	pfxWFt DECIMAL(10,1),
+	pfxWFtPer100 DECIMAL(10,2),
+	pfxWFc DECIMAL(10,1),
+	pfxWFcPer100 DECIMAL(10,2),
+	pfxWFs DECIMAL(10,1),
+	pfxWFsPer100 DECIMAL(10,2),
+	pfxWFo DECIMAL(10,1),
+	pfxWFoPer100 DECIMAL(10,2),
+	pfxWSi DECIMAL(10,1),
+	pfxWSiPer100 DECIMAL(10,2),
+	pfxWSl DECIMAL(10,1),
+	pfxWSlPer100 DECIMAL(10,2),
+	pfxWCu DECIMAL(10,1),
+	pfxWCuPer100 DECIMAL(10,2),
+	pfxWKc DECIMAL(10,1),
+	pfxWKcPer100 DECIMAL(10,2),
+	pfxWEp DECIMAL(10,1),
+	pfxWEpPer100 DECIMAL(10,2),
+	pfxWCh DECIMAL(10,1),
+	pfxWChPer100 DECIMAL(10,2),
+	pfxWSc DECIMAL(10,1),
+	pfxWScPer100 DECIMAL(10,2),
+	pfxWKn DECIMAL(10,1),
+	pfxWKnPer100 DECIMAL(10,2),
+	-- Plate Discipline
+	bisOSwingPerc DECIMAL(10,3),
+	bisZSwingPerc DECIMAL(10,3),
+	bisSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	bisOContactPerc DECIMAL(10,3),
+	bisZContactPerc DECIMAL(10,3),
+	bisContactPerc DECIMAL(10,3),
+	bisZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	bisFStrikePerc DECIMAL(10,3),
+	bisSwStrPerc DECIMAL(10,3), -- % of strikes swung at and missed
+	-- Pitchf/x Plate Discipline
+	pfxOSwingPerc DECIMAL(10,3),
+	pfxZSwingPerc DECIMAL(10,3),
+	pfxSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	pfxOContactPerc DECIMAL(10,3),
+	pfxZContactPerc DECIMAL(10,3),
+	pfxContactPerc DECIMAL(10,3),
+	pfxZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	pfxPace DECIMAL(10,1), -- average time between pitches
 
 	
 	UNIQUE KEY UC_PitcherRegularSeasonPartialStats1 (playerId, season, team),
@@ -449,6 +571,67 @@ CREATE TABLE PitcherRegularSeasonProjectedStats (
 	pfxKnPerc DECIMAL(10,3), -- knuckleball %
 	pfxKnVelocity DECIMAL(10,1),
 	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
+	-- Pitch Values
+	bisWFb DECIMAL(10,1), -- Fast ball runs above average
+	bisWFbPer100 DECIMAL(10,2), -- Fast ball runs above average per 100 pitches
+	bisWSl DECIMAL(10,1),
+	bisWSlPer100 DECIMAL(10,2),
+	bisWCt DECIMAL(10,1),
+	bisWCtPer100 DECIMAL(10,2),
+	bisWCb DECIMAL(10,1),
+	bisWCbPer100 DECIMAL(10,2),
+	bisWCh DECIMAL(10,1),
+	bisWChPer100 DECIMAL(10,2),
+	bisWSf DECIMAL(10,1),
+	bisWSfPer100 DECIMAL(10,2),
+	bisWKn DECIMAL(10,1),
+	bisWKnPer100 DECIMAL(10,2),
+	-- Pitchf/x Pitch Values
+	pfxWFa DECIMAL(10,1), -- Fast ball runs above average
+	pfxWFaPer100 DECIMAL(10,2),
+	pfxWFt DECIMAL(10,1),
+	pfxWFtPer100 DECIMAL(10,2),
+	pfxWFc DECIMAL(10,1),
+	pfxWFcPer100 DECIMAL(10,2),
+	pfxWFs DECIMAL(10,1),
+	pfxWFsPer100 DECIMAL(10,2),
+	pfxWFo DECIMAL(10,1),
+	pfxWFoPer100 DECIMAL(10,2),
+	pfxWSi DECIMAL(10,1),
+	pfxWSiPer100 DECIMAL(10,2),
+	pfxWSl DECIMAL(10,1),
+	pfxWSlPer100 DECIMAL(10,2),
+	pfxWCu DECIMAL(10,1),
+	pfxWCuPer100 DECIMAL(10,2),
+	pfxWKc DECIMAL(10,1),
+	pfxWKcPer100 DECIMAL(10,2),
+	pfxWEp DECIMAL(10,1),
+	pfxWEpPer100 DECIMAL(10,2),
+	pfxWCh DECIMAL(10,1),
+	pfxWChPer100 DECIMAL(10,2),
+	pfxWSc DECIMAL(10,1),
+	pfxWScPer100 DECIMAL(10,2),
+	pfxWKn DECIMAL(10,1),
+	pfxWKnPer100 DECIMAL(10,2),
+	-- Plate Discipline
+	bisOSwingPerc DECIMAL(10,3),
+	bisZSwingPerc DECIMAL(10,3),
+	bisSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	bisOContactPerc DECIMAL(10,3),
+	bisZContactPerc DECIMAL(10,3),
+	bisContactPerc DECIMAL(10,3),
+	bisZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	bisFStrikePerc DECIMAL(10,3),
+	bisSwStrPerc DECIMAL(10,3), -- % of strikes swung at and missed
+	-- Pitchf/x Plate Discipline
+	pfxOSwingPerc DECIMAL(10,3),
+	pfxZSwingPerc DECIMAL(10,3),
+	pfxSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	pfxOContactPerc DECIMAL(10,3),
+	pfxZContactPerc DECIMAL(10,3),
+	pfxContactPerc DECIMAL(10,3),
+	pfxZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	pfxPace DECIMAL(10,1), -- average time between pitches
 
 	
 	UNIQUE KEY UC_PitcherRegularSeasonProjectedStats1 (playerId, season, team),
@@ -594,6 +777,67 @@ CREATE TABLE PitcherPostSeasonStats (
 	pfxKnPerc DECIMAL(10,3), -- knuckleball %
 	pfxKnVelocity DECIMAL(10,1),
 	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
+	-- Pitch Values
+	bisWFb DECIMAL(10,1), -- Fast ball runs above average
+	bisWFbPer100 DECIMAL(10,2), -- Fast ball runs above average per 100 pitches
+	bisWSl DECIMAL(10,1),
+	bisWSlPer100 DECIMAL(10,2),
+	bisWCt DECIMAL(10,1),
+	bisWCtPer100 DECIMAL(10,2),
+	bisWCb DECIMAL(10,1),
+	bisWCbPer100 DECIMAL(10,2),
+	bisWCh DECIMAL(10,1),
+	bisWChPer100 DECIMAL(10,2),
+	bisWSf DECIMAL(10,1),
+	bisWSfPer100 DECIMAL(10,2),
+	bisWKn DECIMAL(10,1),
+	bisWKnPer100 DECIMAL(10,2),
+	-- Pitchf/x Pitch Values
+	pfxWFa DECIMAL(10,1), -- Fast ball runs above average
+	pfxWFaPer100 DECIMAL(10,2),
+	pfxWFt DECIMAL(10,1),
+	pfxWFtPer100 DECIMAL(10,2),
+	pfxWFc DECIMAL(10,1),
+	pfxWFcPer100 DECIMAL(10,2),
+	pfxWFs DECIMAL(10,1),
+	pfxWFsPer100 DECIMAL(10,2),
+	pfxWFo DECIMAL(10,1),
+	pfxWFoPer100 DECIMAL(10,2),
+	pfxWSi DECIMAL(10,1),
+	pfxWSiPer100 DECIMAL(10,2),
+	pfxWSl DECIMAL(10,1),
+	pfxWSlPer100 DECIMAL(10,2),
+	pfxWCu DECIMAL(10,1),
+	pfxWCuPer100 DECIMAL(10,2),
+	pfxWKc DECIMAL(10,1),
+	pfxWKcPer100 DECIMAL(10,2),
+	pfxWEp DECIMAL(10,1),
+	pfxWEpPer100 DECIMAL(10,2),
+	pfxWCh DECIMAL(10,1),
+	pfxWChPer100 DECIMAL(10,2),
+	pfxWSc DECIMAL(10,1),
+	pfxWScPer100 DECIMAL(10,2),
+	pfxWKn DECIMAL(10,1),
+	pfxWKnPer100 DECIMAL(10,2),
+	-- Plate Discipline
+	bisOSwingPerc DECIMAL(10,3),
+	bisZSwingPerc DECIMAL(10,3),
+	bisSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	bisOContactPerc DECIMAL(10,3),
+	bisZContactPerc DECIMAL(10,3),
+	bisContactPerc DECIMAL(10,3),
+	bisZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	bisFStrikePerc DECIMAL(10,3),
+	bisSwStrPerc DECIMAL(10,3), -- % of strikes swung at and missed
+	-- Pitchf/x Plate Discipline
+	pfxOSwingPerc DECIMAL(10,3),
+	pfxZSwingPerc DECIMAL(10,3),
+	pfxSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	pfxOContactPerc DECIMAL(10,3),
+	pfxZContactPerc DECIMAL(10,3),
+	pfxContactPerc DECIMAL(10,3),
+	pfxZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	pfxPace DECIMAL(10,1), -- average time between pitches
 	
 	
 	UNIQUE KEY UC_PitcherPostSeasonStats1 (playerId, season, team),
@@ -738,6 +982,67 @@ CREATE TABLE PitcherMinorsSeasonStats (
 	pfxKnPerc DECIMAL(10,3), -- knuckleball %
 	pfxKnVelocity DECIMAL(10,1),
 	pfxUnPerc DECIMAL(10,3), -- unknown pitch type %
+	-- Pitch Values
+	bisWFb DECIMAL(10,1), -- Fast ball runs above average
+	bisWFbPer100 DECIMAL(10,2), -- Fast ball runs above average per 100 pitches
+	bisWSl DECIMAL(10,1),
+	bisWSlPer100 DECIMAL(10,2),
+	bisWCt DECIMAL(10,1),
+	bisWCtPer100 DECIMAL(10,2),
+	bisWCb DECIMAL(10,1),
+	bisWCbPer100 DECIMAL(10,2),
+	bisWCh DECIMAL(10,1),
+	bisWChPer100 DECIMAL(10,2),
+	bisWSf DECIMAL(10,1),
+	bisWSfPer100 DECIMAL(10,2),
+	bisWKn DECIMAL(10,1),
+	bisWKnPer100 DECIMAL(10,2),
+	-- Pitchf/x Pitch Values
+	pfxWFa DECIMAL(10,1), -- Fast ball runs above average
+	pfxWFaPer100 DECIMAL(10,2),
+	pfxWFt DECIMAL(10,1),
+	pfxWFtPer100 DECIMAL(10,2),
+	pfxWFc DECIMAL(10,1),
+	pfxWFcPer100 DECIMAL(10,2),
+	pfxWFs DECIMAL(10,1),
+	pfxWFsPer100 DECIMAL(10,2),
+	pfxWFo DECIMAL(10,1),
+	pfxWFoPer100 DECIMAL(10,2),
+	pfxWSi DECIMAL(10,1),
+	pfxWSiPer100 DECIMAL(10,2),
+	pfxWSl DECIMAL(10,1),
+	pfxWSlPer100 DECIMAL(10,2),
+	pfxWCu DECIMAL(10,1),
+	pfxWCuPer100 DECIMAL(10,2),
+	pfxWKc DECIMAL(10,1),
+	pfxWKcPer100 DECIMAL(10,2),
+	pfxWEp DECIMAL(10,1),
+	pfxWEpPer100 DECIMAL(10,2),
+	pfxWCh DECIMAL(10,1),
+	pfxWChPer100 DECIMAL(10,2),
+	pfxWSc DECIMAL(10,1),
+	pfxWScPer100 DECIMAL(10,2),
+	pfxWKn DECIMAL(10,1),
+	pfxWKnPer100 DECIMAL(10,2),
+	-- Plate Discipline
+	bisOSwingPerc DECIMAL(10,3),
+	bisZSwingPerc DECIMAL(10,3),
+	bisSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	bisOContactPerc DECIMAL(10,3),
+	bisZContactPerc DECIMAL(10,3),
+	bisContactPerc DECIMAL(10,3),
+	bisZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	bisFStrikePerc DECIMAL(10,3),
+	bisSwStrPerc DECIMAL(10,3), -- % of strikes swung at and missed
+	-- Pitchf/x Plate Discipline
+	pfxOSwingPerc DECIMAL(10,3),
+	pfxZSwingPerc DECIMAL(10,3),
+	pfxSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	pfxOContactPerc DECIMAL(10,3),
+	pfxZContactPerc DECIMAL(10,3),
+	pfxContactPerc DECIMAL(10,3),
+	pfxZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	pfxPace DECIMAL(10,1), -- average time between pitches
 
 	
 	CONSTRAINT FK_PitcherMinorsSeasonStats_Player FOREIGN KEY (playerId) REFERENCES Player (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
