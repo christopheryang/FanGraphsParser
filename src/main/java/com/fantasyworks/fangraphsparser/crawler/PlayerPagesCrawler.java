@@ -87,7 +87,7 @@ public class PlayerPagesCrawler {
     			
     			// Only process if the player is active in the current season
     			String playerActivePeriod = cols.get(1).text();
-    			if(!playerActivePeriod.endsWith("2015")){
+    			if(!playerActivePeriod.endsWith("2014")){
     				continue;
     			}
     			

@@ -10,6 +10,6 @@ public class PitcherRegularSeasonProjectedStats extends PitcherStats {
 	private static final long serialVersionUID = 1L;
 
 	public PitcherRegularSeasonProjectedStats(){
-		this.statsType = StatsTypeEnum.REGULAR_SEASON_PARTIAL;
+		this.statsType = StatsTypeEnum.RSPr;
 	}
 }

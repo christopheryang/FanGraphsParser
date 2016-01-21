@@ -10,6 +10,6 @@ public class PitcherMinorsSeasonStats extends PitcherStats {
 	private static final long serialVersionUID = 1L;
 
 	public PitcherMinorsSeasonStats(){
-		statsType = StatsTypeEnum.MINORS;
+		statsType = StatsTypeEnum.MI;
 	}
 }

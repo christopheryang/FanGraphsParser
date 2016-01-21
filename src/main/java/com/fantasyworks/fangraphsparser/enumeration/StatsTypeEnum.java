@@ -1,10 +1,10 @@
 package com.fantasyworks.fangraphsparser.enumeration;
 
 public enum StatsTypeEnum {
-	REGULAR_SEASON, 
-	REGULAR_SEASON_PARTIAL,
-	REGULAR_SEASON_PROJECTED,
-	POSTSEASON, 
-	MINORS
+	RS, // REGULAR SEASON 
+	RSPa, // REGULAR SEASON PARTIAL
+	RSPr, // REGULAR SEASON PROJECTED
+	PS, // POSTSEASON 
+	MI // MINORS
 	;
 }

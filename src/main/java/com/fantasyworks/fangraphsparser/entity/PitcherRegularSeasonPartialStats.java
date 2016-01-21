@@ -10,7 +10,7 @@ public class PitcherRegularSeasonPartialStats extends PitcherStats {
 	private static final long serialVersionUID = 1L;
 
 	public PitcherRegularSeasonPartialStats(){
-		this.statsType = StatsTypeEnum.REGULAR_SEASON_PARTIAL;
+		this.statsType = StatsTypeEnum.RSPa;
 	}
 	
 }

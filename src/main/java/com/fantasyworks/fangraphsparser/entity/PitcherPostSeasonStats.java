@@ -13,6 +13,6 @@ public class PitcherPostSeasonStats extends PitcherStats {
 	private static final long serialVersionUID = 1L;
 
 	public PitcherPostSeasonStats(){
-		statsType = StatsTypeEnum.POSTSEASON;
+		statsType = StatsTypeEnum.PS;
 	}
 }

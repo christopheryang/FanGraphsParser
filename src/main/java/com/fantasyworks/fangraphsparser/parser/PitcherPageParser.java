@@ -244,9 +244,9 @@ public class PitcherPageParser extends PlayerProfileParser {
 			if(stats==null){break;} // We've reached the Total row
 			int currCol=2;
 			
-			currCol++; // GB/FB
+			stats.setGbPerFb(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
 			stats.setLdPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
-			stats.setGbPerFb(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			currCol++; // GB %
 			stats.setFbPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
 			stats.setIffbPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
 			currCol++; // HR/FB

@@ -40,14 +40,32 @@ CREATE TABLE PitcherRegularSeasonStats (
 	games INT,
 	gs INT,
 	ip DECIMAL(10,1),
+	era DECIMAL(10,2), -- from Standard section
+	whip DECIMAL(10,2), -- from Adcanced section
+	so INT, -- from Standard section
 	kPer9 DECIMAL(10,2),
+
+	kPerc DECIMAL(10,3),
+	bbPerc DECIMAL(10,3),
+
+	gbPerc DECIMAL(10,3), -- Ground ball per ball in play
+	fbPerc DECIMAL(10,3), -- from Batted Ball section
+	gbPerFb DECIMAL(10,3), -- from Batted Ball section
+	hrPerFb DECIMAL(10,3), -- HR per fly ball
+
 	bbPer9 DECIMAL(10,2),
 	hrPer9 DECIMAL(10,2),
+
+	avg DECIMAL(10,3), -- from Advanced section
+	
+	-- from pitch value and velocity sections
+	bisFbPerc DECIMAL(10,3), -- Fast ball %
+	bisFbVelocity DECIMAL(10,1),
+	pfxFaPerc DECIMAL(10,3), -- fast ball all types %
+	pfxFaVelocity DECIMAL(10,1),
+
 	babip DECIMAL(10,3),
 	lobPerc DECIMAL(10,3),
-	gbPerc DECIMAL(10,3), -- Ground ball per ball in play
-	hrPerFb DECIMAL(10,3), -- HR per fly ball
-	era DECIMAL(10,2),
 	fip DECIMAL(10,2), -- Fielder independent pitching on ERA scale
 	xFip DECIMAL(10,2), -- Expected FIP where HR/FB is set to 10.5%
 	war DECIMAL(10,1),
@@ -66,18 +84,11 @@ CREATE TABLE PitcherRegularSeasonStats (
 	hbp INT,
 	wp INT,
 	bk INT,
-	so INT,
 	-- Advanced section
-	kPerc DECIMAL(10,3),
-	bbPerc DECIMAL(10,3),
-	avg DECIMAL(10,3),
-	whip DECIMAL(10,2),
 	eraMinus INT,
 	fipMinus INT,
 	-- Batted Ball section
-	gbPerFb DECIMAL(10,3),
 	ldPerc DECIMAL(10,3),
-	fbPerc DECIMAL(10,3),
 	iffbPerc DECIMAL(10,3), -- In field fly ball %
 	ifhPerc DECIMAL(10,3), -- In field hit %
 	buhPerc DECIMAL(10,3), -- Bunt hit %
@@ -117,8 +128,6 @@ CREATE TABLE PitcherRegularSeasonStats (
 	sd INT, -- shutdowns
 	md INT, -- meltdowns
 	-- Pitch Type section
-	bisFbPerc DECIMAL(10,3), -- Fast ball %
-	bisFbVelocity DECIMAL(10,1),
 	bisSlPerc DECIMAL(10,3), -- slider %
 	bisSlVelocity DECIMAL(10,1),
 	bisCtPerc DECIMAL(10,3), -- cutter %
@@ -134,8 +143,6 @@ CREATE TABLE PitcherRegularSeasonStats (
 	bisXxPerc DECIMAL(10,3), -- unknown pitch type %
 	bisXxVelocity DECIMAL(10,1),
 	-- Pitchf/x Pitch Type and Velocity (based on Pitchf/x data)
-	pfxFaPerc DECIMAL(10,3), -- fast ball all types %
-	pfxFaVelocity DECIMAL(10,1),
 	pfxFtPerc DECIMAL(10,3), -- two-seam fast ball %
 	pfxFtVelocity DECIMAL(10,1),
 	pfxFcPerc DECIMAL(10,3), -- fast ball cutter %
