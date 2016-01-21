@@ -1,6 +1,7 @@
 package com.fantasyworks.fangraphsparser.service;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -81,7 +82,9 @@ public class PlayerSeasonStatsService {
 			return;
 		}
 		
-		player = playerRepo.save(player);
+		Optional<Player> existingPlayer = playerRepo.findPlayerByUid(player.getUid());
+		player = existingPlayer.isPresent()? existingPlayer.get(): playerRepo.save(player);
+		
 		if(PlayerTypeEnum.PITCHER.equals(player.getPlayerType())){
 			Collection<PitcherStats> statsList = pitcherPageParser.parsePitcherSeasonStats(file, player);
 			pitcherRegularSeasonStatsRepo.save(statsList.stream().filter(s->s instanceof PitcherRegularSeasonStats).map(s->(PitcherRegularSeasonStats) s).collect(Collectors.toList()));

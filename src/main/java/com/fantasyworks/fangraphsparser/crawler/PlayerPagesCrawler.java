@@ -85,9 +85,10 @@ public class PlayerPagesCrawler {
     		for(Element row: rows){
     			Elements cols = row.select("td");
     			
-    			// Only process if the player is active in the current season
+    			// Only process if the player is still active after a certain season
     			String playerActivePeriod = cols.get(1).text();
-    			if(!playerActivePeriod.endsWith("2014")){
+    			int lastActiveSeason = playerActivePeriod.endsWith("?")? 1899: Integer.parseInt(playerActivePeriod.substring(playerActivePeriod.length()-4));
+    			if(lastActiveSeason<2014){
     				continue;
     			}
     			

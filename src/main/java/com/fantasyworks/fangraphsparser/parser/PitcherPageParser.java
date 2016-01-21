@@ -237,7 +237,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 		Elements rows = battedBallTable.select("tr");
 		
 		// Always start from the second row. First row is the header row.
-		for(int i=1; i<=rows.size(); i++){
+		for(int i=1; i<rows.size(); i++){
 			Element row = rows.get(i);
 			Elements cols = row.select("td");
 			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
@@ -277,7 +277,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 		Elements rows = battedBallTable.select("tr");
 		
 		// Always start from the second row. First row is the header row.
-		for(int i=1; i<=rows.size(); i++){
+		for(int i=1; i<rows.size(); i++){
 			Element row = rows.get(i);
 			Elements cols = row.select("td");
 			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
@@ -310,7 +310,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 		Elements rows = battedBallTable.select("tr");
 		
 		// Always start from the second row. First row is the header row.
-		for(int i=1; i<=rows.size(); i++){
+		for(int i=1; i<rows.size(); i++){
 			Element row = rows.get(i);
 			Elements cols = row.select("td");
 			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
@@ -346,7 +346,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 		Elements rows = battedBallTable.select("tr");
 		
 		// Always start from the second row. First row is the header row.
-		for(int i=1; i<=rows.size(); i++){
+		for(int i=1; i<rows.size(); i++){
 			Element row = rows.get(i);
 			Elements cols = row.select("td");
 			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
@@ -422,7 +422,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 		Elements rows = battedBallTable.select("tr");
 		
 		// Always start from the second row. First row is the header row.
-		for(int i=1; i<=rows.size(); i++){
+		for(int i=1; i<rows.size(); i++){
 			Element row = rows.get(i);
 			Elements cols = row.select("td");
 			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
@@ -458,7 +458,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 		Elements rows = battedBallTable.select("tr");
 		
 		// Always start from the second row. First row is the header row.
-		for(int i=1; i<=rows.size(); i++){
+		for(int i=1; i<rows.size(); i++){
 			Element row = rows.get(i);
 			Elements cols = row.select("td");
 			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
@@ -493,7 +493,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 		Elements rows = battedBallTable.select("tr");
 		
 		// Always start from the second row. First row is the header row.
-		for(int i=1; i<=rows.size(); i++){
+		for(int i=1; i<rows.size(); i++){
 			Element row = rows.get(i);
 			Elements cols = row.select("td");
 			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
@@ -530,7 +530,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 		Elements rows = battedBallTable.select("tr");
 		
 		// Always start from the second row. First row is the header row.
-		for(int i=1; i<=rows.size(); i++){
+		for(int i=1; i<rows.size(); i++){
 			Element row = rows.get(i);
 			Elements cols = row.select("td");
 			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
@@ -565,7 +565,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 		Elements rows = battedBallTable.select("tr");
 		
 		// Always start from the second row. First row is the header row.
-		for(int i=1; i<=rows.size(); i++){
+		for(int i=1; i<rows.size(); i++){
 			Element row = rows.get(i);
 			Elements cols = row.select("td");
 			PitcherStats stats = findPitcherStats(row, cols, player, statsMap);
@@ -600,7 +600,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 		Elements rows = battedBallTable.select("tr");
 		
 		// Always start from the second row. First row is the header row.
-		for(int i=1; i<=rows.size(); i++){
+		for(int i=1; i<rows.size(); i++){
 			Element row = rows.get(i);
 			Elements cols = row.select("td");
 			
@@ -638,7 +638,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 		Elements rows = battedBallTable.select("tr");
 		
 		// Always start from the second row. First row is the header row.
-		for(int i=1; i<=rows.size(); i++){
+		for(int i=1; i<rows.size(); i++){
 			Element row = rows.get(i);
 			Elements cols = row.select("td");
 

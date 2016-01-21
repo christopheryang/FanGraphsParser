@@ -47,6 +47,16 @@ public class PlayerSeasonStatsServiceTest extends SpringEnabledTest {
 		service.downloadAndPersistPlayer(fileName);
 	}
 	
+	/**
+	 * Has an empty Batted Ball section, potential IndexOutOfBoundsException.
+	 */
+	@Test
+	public void testDownloadAndPersistPlayer_SukMinYoon(){
+		String fileName = "./download/players/2015/pitchers/Suk-Min Yoon.html";
+		service.downloadAndPersistPlayer(fileName);
+	}
+	
+	
 	@Test
 	@Rollback(false)
 	public void testDownloadAndPersistAllPlayers(){
