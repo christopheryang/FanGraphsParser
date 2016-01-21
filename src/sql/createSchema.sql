@@ -28,6 +28,8 @@ CREATE TABLE PitcherRegularSeasonStats (
 	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	
 	playerId INT(11) NOT NULL,
+	name VARCHAR(128),
+	age DECIMAL(10,1),
 	season INT NOT NULL,
 	team VARCHAR(64) NOT NULL,
 	statsType VARCHAR(32) NOT NULL,
@@ -234,6 +236,8 @@ CREATE TABLE PitcherRegularSeasonPartialStats (
 	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	
 	playerId INT(11) NOT NULL,
+	name VARCHAR(128),
+	age DECIMAL(10,1),
 	season INT NOT NULL,
 	team VARCHAR(64) NOT NULL,
 	statsType VARCHAR(32) NOT NULL,
@@ -440,6 +444,8 @@ CREATE TABLE PitcherRegularSeasonProjectedStats (
 	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	
 	playerId INT(11) NOT NULL,
+	name VARCHAR(128),
+	age DECIMAL(10,1),
 	season INT NOT NULL,
 	team VARCHAR(64) NOT NULL,
 	statsType VARCHAR(32) NOT NULL,
@@ -646,6 +652,8 @@ CREATE TABLE PitcherPostSeasonStats (
 	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	
 	playerId INT(11) NOT NULL,
+	name VARCHAR(128),
+	age DECIMAL(10,1),
 	season INT NOT NULL,
 	team VARCHAR(64) NOT NULL,
 	statsType VARCHAR(32) NOT NULL,
@@ -851,6 +859,8 @@ CREATE TABLE PitcherMinorsSeasonStats (
 	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	
 	playerId INT(11) NOT NULL,
+	name VARCHAR(128),
+	age DECIMAL(10,1),
 	season INT NOT NULL,
 	team VARCHAR(64) NOT NULL,
 	statsType VARCHAR(32) NOT NULL,
