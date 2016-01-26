@@ -82,4 +82,19 @@ public class ConversionUtilTest {
 		value = ConversionUtil.toBigDecimal("155.5E-3");
 		assertThat(value.toString(), equalTo("0.16"));
 	}
+	
+	@Test
+	public void testToPercentageStr(){
+		BigDecimal value = ConversionUtil.toBigDecimal("0.135", 3);
+		String percStr = ConversionUtil.toPercentageStr(value);
+		assertThat(percStr, equalTo("13.5%"));
+	}
+
+	@Test
+	public void testToPercentageStr2(){
+		BigDecimal value = ConversionUtil.toBigDecimal("0.1355", 3);
+		String percStr = ConversionUtil.toPercentageStr(value);
+		assertThat(percStr, equalTo("13.6%"));
+	}
+
 }
