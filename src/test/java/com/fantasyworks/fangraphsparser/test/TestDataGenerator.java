@@ -36,7 +36,7 @@ public class TestDataGenerator {
 		stats.setGames(33);
 		stats.setGs(33);
 		stats.setIp(ConversionUtil.toBigDecimal("232.2"));
-		stats.setkPer9(ConversionUtil.toBigDecimal("11.64"));
+		stats.setKPer9(ConversionUtil.toBigDecimal("11.64"));
 		stats.setBbPer9(ConversionUtil.toBigDecimal("1.62"));
 		stats.setHrPer9(ConversionUtil.toBigDecimal("0.58"));
 		stats.setBabip(ConversionUtil.toBigDecimal(".272"));
@@ -45,7 +45,7 @@ public class TestDataGenerator {
 		stats.setHrPerFb(ConversionUtil.toBigDecimal("10.1%"));
 		stats.setEra(ConversionUtil.toBigDecimal("2.13"));
 		stats.setFip(ConversionUtil.toBigDecimal("1.99"));
-		stats.setxFip(ConversionUtil.toBigDecimal("2.09"));
+		stats.setXFip(ConversionUtil.toBigDecimal("2.09"));
 		stats.setWar(ConversionUtil.toBigDecimal("8.6"));
 		return stats;
 	}

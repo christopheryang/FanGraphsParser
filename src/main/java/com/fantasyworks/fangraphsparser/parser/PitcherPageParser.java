@@ -35,6 +35,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 
 	private static final Logger logger = LoggerFactory.getLogger(PitcherPageParser.class);
 	
+	// e.g. 45.9% (91.5)
 	private static final Pattern BIS_PITCH_TYPE_STATS_STRING_PATTERN = Pattern.compile("([\\d.%]+) \\(([\\d.]+)\\)");
 	
 	/**
@@ -111,7 +112,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 			stats.setGames(ConversionUtil.toInteger(cols.get(currCol++).text()));
 			stats.setGs(ConversionUtil.toInteger(cols.get(currCol++).text()));
 			stats.setIp(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
-			stats.setkPer9(ConversionUtil.toBigDecimal(cols.get(currCol++).text()));
+			stats.setKPer9(ConversionUtil.toBigDecimal(cols.get(currCol++).text()));
 			stats.setBbPer9(ConversionUtil.toBigDecimal(cols.get(currCol++).text()));
 			stats.setHrPer9(ConversionUtil.toBigDecimal(cols.get(currCol++).text()));
 			stats.setBabip(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
@@ -120,7 +121,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 			stats.setHrPerFb(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
 			stats.setEra(ConversionUtil.toBigDecimal(cols.get(currCol++).text()));
 			stats.setFip(ConversionUtil.toBigDecimal(cols.get(currCol++).text()));
-			stats.setxFip(ConversionUtil.toBigDecimal(cols.get(currCol++).text()));
+			stats.setXFip(ConversionUtil.toBigDecimal(cols.get(currCol++).text()));
 			stats.setWar(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 1));
 			
 			statsList.add(stats);
@@ -213,7 +214,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 			currCol++;
 			currCol++;
 			currCol++;
-			stats.setkPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
+			stats.setKPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
 			stats.setBbPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
 			currCol++; // K-BB%
 			stats.setAvg(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
@@ -259,7 +260,7 @@ public class PitcherPageParser extends PlayerProfileParser {
 			stats.setMedPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
 			stats.setHardPerc(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 3));
 			stats.setSiera(ConversionUtil.toBigDecimal(cols.get(currCol++).text(), 2));
-			stats.setxFipMinus(ConversionUtil.toInteger(cols.get(currCol++).text()));
+			stats.setXFipMinus(ConversionUtil.toInteger(cols.get(currCol++).text()));
 			currCol++; // xFIP
 		}
 		

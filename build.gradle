@@ -86,6 +86,7 @@ dependencies {
 	compile 'com.opencsv:opencsv:3.6'
 	javacApt 'com.mysema.querydsl:querydsl-apt:3.7.0'
 	compile 'com.mysema.querydsl:querydsl-jpa:3.7.0'
+	compile 'org.projectlombok:lombok:1.16.6'
 	
 	// ======= Testing =======
 	testCompile 'org.springframework.boot:spring-boot-starter-test'

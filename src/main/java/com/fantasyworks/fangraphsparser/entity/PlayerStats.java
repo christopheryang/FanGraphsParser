@@ -2,7 +2,6 @@ package com.fantasyworks.fangraphsparser.entity;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.EnumType;
@@ -20,7 +19,12 @@ import org.joda.time.format.DateTimeFormatter;
 import com.fantasyworks.fangraphsparser.enumeration.StatsTypeEnum;
 import com.google.common.base.MoreObjects.ToStringHelper;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 @MappedSuperclass
+@Data
+@EqualsAndHashCode(callSuper=false, of={"season", "team", "statsType", "player"})
 public class PlayerStats extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
@@ -65,21 +69,6 @@ public class PlayerStats extends IdEntity {
 	}
 	
 	@Override
-	public boolean equals(Object obj){
-		if(obj == null || obj instanceof PlayerStats == false){
-			return false;
-		}
-		if(this == obj){
-			return true;
-		}
-		PlayerStats instance = (PlayerStats) obj;
-		return Objects.equals(this.getSeason(), instance.getSeason()) &&
-				Objects.equals(this.getTeam(), instance.getTeam()) &&
-				Objects.equals(this.getStatsType(), instance.getStatsType()) &&
-				Objects.equals(this.getPlayer(), instance.getPlayer());
-	}
-	
-	@Override
 	protected ToStringHelper toStringHelper() {
 		return super.toStringHelper()
 				.add("player", player)
@@ -93,41 +82,5 @@ public class PlayerStats extends IdEntity {
 	}
 
 	
-	public Player getPlayer() {
-		return player;
-	}
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
-	public Integer getSeason() {
-		return season;
-	}
-	public void setSeason(Integer year) {
-		this.season = year;
-	}
-	public String getTeam() {
-		return team;
-	}
-	public void setTeam(String team) {
-		this.team = team;
-	}
-	public StatsTypeEnum getStatsType() {
-		return statsType;
-	}
-	public void setStatsType(StatsTypeEnum statsType) {
-		this.statsType = statsType;
-	}
-	public BigDecimal getAge() {
-		return age;
-	}
-	public void setAge(BigDecimal age) {
-		this.age = age;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 
 }

@@ -121,10 +121,10 @@ public class PitcherStatsOutputService {
 		tuple.add(stats.getEra());
 		tuple.add(stats.getWhip());
 		tuple.add(stats.getFip());
-		tuple.add(stats.getxFip());
+		tuple.add(stats.getXFip());
 		tuple.add(stats.getSiera());
-		tuple.add(stats.getkPer9());
-		tuple.add(ConversionUtil.toPercentageStr(stats.getkPerc()));
+		tuple.add(stats.getKPer9());
+		tuple.add(ConversionUtil.toPercentageStr(stats.getKPerc()));
 		tuple.add(stats.getBbPer9());
 		tuple.add(ConversionUtil.toPercentageStr(stats.getBbPerc()));
 		tuple.add(stats.getHrPer9());
