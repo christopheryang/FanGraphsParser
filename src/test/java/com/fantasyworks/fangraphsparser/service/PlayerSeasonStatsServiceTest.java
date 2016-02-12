@@ -56,6 +56,20 @@ public class PlayerSeasonStatsServiceTest extends SpringEnabledTest {
 		service.downloadAndPersistPlayer(fileName);
 	}
 	
+	@Test
+	public void testDownloadAndPersistPlayer_BryceHarper(){
+		String fileName = "./download/players/2015/batters/Bryce Harper.html";
+		service.downloadAndPersistPlayer(fileName);
+	}
+	
+	/**
+	 * Has 2 minor league entries for 2007-Cardinals (R)
+	 */
+	@Test
+	public void testDownloadAndPersistPlayer_PeteKozma(){
+		String fileName = "./download/players/2015/batters/Pete Kozma.html";
+		service.downloadAndPersistPlayer(fileName);
+	}
 	
 	@Test
 	@Rollback(false)

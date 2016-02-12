@@ -93,7 +93,7 @@ CREATE TABLE BatterRegularSeasonStats (
 	rew DECIMAL(10,3),
 	pLi DECIMAL(10,3),
 	phLi DECIMAL(10,3),
-	ph DECIMAL(10,3),
+	ph INT,
 	wpaPerLi DECIMAL(10,3),
 	clutch DECIMAL(10,3),
 	
@@ -106,6 +106,15 @@ CREATE TABLE BatterRegularSeasonStats (
 	bisSfPerc DECIMAL(10,3),
 	bisKnPerc DECIMAL(10,3),
 	bisXxPerc DECIMAL(10,3),
+	
+	bisFbVelocity DECIMAL(10,1),
+	bisSlVelocity DECIMAL(10,1),
+	bisCtVelocity DECIMAL(10,1),
+	bisCbVelocity DECIMAL(10,1),
+	bisChVelocity DECIMAL(10,1),
+	bisSfVelocity DECIMAL(10,1),
+	bisKnVelocity DECIMAL(10,1),
+	bisXxVelocity DECIMAL(10,1),
 	
 	-- Pitch Values section
 	bisWFb DECIMAL(10,3), -- Fast ball runs above average
@@ -184,6 +193,17 @@ CREATE TABLE BatterRegularSeasonStats (
 	pfxWChPer100 DECIMAL(10,3),
 	pfxWScPer100 DECIMAL(10,3),
 	pfxWKnPer100 DECIMAL(10,3),
+
+	-- Plate Discipline
+	bisOSwingPerc DECIMAL(10,3),
+	bisZSwingPerc DECIMAL(10,3),
+	bisSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	bisOContactPerc DECIMAL(10,3),
+	bisZContactPerc DECIMAL(10,3),
+	bisContactPerc DECIMAL(10,3),
+	bisZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	bisFStrikePerc DECIMAL(10,3),
+	bisSwStrPerc DECIMAL(10,3), -- % of strikes swung at and missed
 
 	-- Pitchf/x Plate Discipline section
 	pfxOSwingPerc DECIMAL(10,3),
@@ -316,7 +336,7 @@ CREATE TABLE BatterRegularSeasonPartialStats (
 	rew DECIMAL(10,3),
 	pLi DECIMAL(10,3),
 	phLi DECIMAL(10,3),
-	ph DECIMAL(10,3),
+	ph INT,
 	wpaPerLi DECIMAL(10,3),
 	clutch DECIMAL(10,3),
 	
@@ -329,6 +349,15 @@ CREATE TABLE BatterRegularSeasonPartialStats (
 	bisSfPerc DECIMAL(10,3),
 	bisKnPerc DECIMAL(10,3),
 	bisXxPerc DECIMAL(10,3),
+	
+	bisFbVelocity DECIMAL(10,1),
+	bisSlVelocity DECIMAL(10,1),
+	bisCtVelocity DECIMAL(10,1),
+	bisCbVelocity DECIMAL(10,1),
+	bisChVelocity DECIMAL(10,1),
+	bisSfVelocity DECIMAL(10,1),
+	bisKnVelocity DECIMAL(10,1),
+	bisXxVelocity DECIMAL(10,1),
 	
 	-- Pitch Values section
 	bisWFb DECIMAL(10,3), -- Fast ball runs above average
@@ -407,6 +436,17 @@ CREATE TABLE BatterRegularSeasonPartialStats (
 	pfxWChPer100 DECIMAL(10,3),
 	pfxWScPer100 DECIMAL(10,3),
 	pfxWKnPer100 DECIMAL(10,3),
+
+	-- Plate Discipline
+	bisOSwingPerc DECIMAL(10,3),
+	bisZSwingPerc DECIMAL(10,3),
+	bisSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	bisOContactPerc DECIMAL(10,3),
+	bisZContactPerc DECIMAL(10,3),
+	bisContactPerc DECIMAL(10,3),
+	bisZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	bisFStrikePerc DECIMAL(10,3),
+	bisSwStrPerc DECIMAL(10,3), -- % of strikes swung at and missed
 
 	-- Pitchf/x Plate Discipline section
 	pfxOSwingPerc DECIMAL(10,3),
@@ -538,7 +578,7 @@ CREATE TABLE BatterRegularSeasonProjectedStats (
 	rew DECIMAL(10,3),
 	pLi DECIMAL(10,3),
 	phLi DECIMAL(10,3),
-	ph DECIMAL(10,3),
+	ph INT,
 	wpaPerLi DECIMAL(10,3),
 	clutch DECIMAL(10,3),
 	
@@ -551,6 +591,15 @@ CREATE TABLE BatterRegularSeasonProjectedStats (
 	bisSfPerc DECIMAL(10,3),
 	bisKnPerc DECIMAL(10,3),
 	bisXxPerc DECIMAL(10,3),
+	
+	bisFbVelocity DECIMAL(10,1),
+	bisSlVelocity DECIMAL(10,1),
+	bisCtVelocity DECIMAL(10,1),
+	bisCbVelocity DECIMAL(10,1),
+	bisChVelocity DECIMAL(10,1),
+	bisSfVelocity DECIMAL(10,1),
+	bisKnVelocity DECIMAL(10,1),
+	bisXxVelocity DECIMAL(10,1),
 	
 	-- Pitch Values section
 	bisWFb DECIMAL(10,3), -- Fast ball runs above average
@@ -629,6 +678,17 @@ CREATE TABLE BatterRegularSeasonProjectedStats (
 	pfxWChPer100 DECIMAL(10,3),
 	pfxWScPer100 DECIMAL(10,3),
 	pfxWKnPer100 DECIMAL(10,3),
+
+	-- Plate Discipline
+	bisOSwingPerc DECIMAL(10,3),
+	bisZSwingPerc DECIMAL(10,3),
+	bisSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	bisOContactPerc DECIMAL(10,3),
+	bisZContactPerc DECIMAL(10,3),
+	bisContactPerc DECIMAL(10,3),
+	bisZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	bisFStrikePerc DECIMAL(10,3),
+	bisSwStrPerc DECIMAL(10,3), -- % of strikes swung at and missed
 
 	-- Pitchf/x Plate Discipline section
 	pfxOSwingPerc DECIMAL(10,3),
@@ -760,7 +820,7 @@ CREATE TABLE BatterPostSeasonStats (
 	rew DECIMAL(10,3),
 	pLi DECIMAL(10,3),
 	phLi DECIMAL(10,3),
-	ph DECIMAL(10,3),
+	ph INT,
 	wpaPerLi DECIMAL(10,3),
 	clutch DECIMAL(10,3),
 	
@@ -773,6 +833,15 @@ CREATE TABLE BatterPostSeasonStats (
 	bisSfPerc DECIMAL(10,3),
 	bisKnPerc DECIMAL(10,3),
 	bisXxPerc DECIMAL(10,3),
+	
+	bisFbVelocity DECIMAL(10,1),
+	bisSlVelocity DECIMAL(10,1),
+	bisCtVelocity DECIMAL(10,1),
+	bisCbVelocity DECIMAL(10,1),
+	bisChVelocity DECIMAL(10,1),
+	bisSfVelocity DECIMAL(10,1),
+	bisKnVelocity DECIMAL(10,1),
+	bisXxVelocity DECIMAL(10,1),
 	
 	-- Pitch Values section
 	bisWFb DECIMAL(10,3), -- Fast ball runs above average
@@ -851,6 +920,17 @@ CREATE TABLE BatterPostSeasonStats (
 	pfxWChPer100 DECIMAL(10,3),
 	pfxWScPer100 DECIMAL(10,3),
 	pfxWKnPer100 DECIMAL(10,3),
+
+	-- Plate Discipline
+	bisOSwingPerc DECIMAL(10,3),
+	bisZSwingPerc DECIMAL(10,3),
+	bisSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	bisOContactPerc DECIMAL(10,3),
+	bisZContactPerc DECIMAL(10,3),
+	bisContactPerc DECIMAL(10,3),
+	bisZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	bisFStrikePerc DECIMAL(10,3),
+	bisSwStrPerc DECIMAL(10,3), -- % of strikes swung at and missed
 
 	-- Pitchf/x Plate Discipline section
 	pfxOSwingPerc DECIMAL(10,3),
@@ -982,7 +1062,7 @@ CREATE TABLE BatterMinorsSeasonStats (
 	rew DECIMAL(10,3),
 	pLi DECIMAL(10,3),
 	phLi DECIMAL(10,3),
-	ph DECIMAL(10,3),
+	ph INT,
 	wpaPerLi DECIMAL(10,3),
 	clutch DECIMAL(10,3),
 	
@@ -995,6 +1075,15 @@ CREATE TABLE BatterMinorsSeasonStats (
 	bisSfPerc DECIMAL(10,3),
 	bisKnPerc DECIMAL(10,3),
 	bisXxPerc DECIMAL(10,3),
+	
+	bisFbVelocity DECIMAL(10,1),
+	bisSlVelocity DECIMAL(10,1),
+	bisCtVelocity DECIMAL(10,1),
+	bisCbVelocity DECIMAL(10,1),
+	bisChVelocity DECIMAL(10,1),
+	bisSfVelocity DECIMAL(10,1),
+	bisKnVelocity DECIMAL(10,1),
+	bisXxVelocity DECIMAL(10,1),
 	
 	-- Pitch Values section
 	bisWFb DECIMAL(10,3), -- Fast ball runs above average
@@ -1074,6 +1163,17 @@ CREATE TABLE BatterMinorsSeasonStats (
 	pfxWScPer100 DECIMAL(10,3),
 	pfxWKnPer100 DECIMAL(10,3),
 
+	-- Plate Discipline
+	bisOSwingPerc DECIMAL(10,3),
+	bisZSwingPerc DECIMAL(10,3),
+	bisSwingPerc DECIMAL(10,3), -- total percentage of pitches swung at
+	bisOContactPerc DECIMAL(10,3),
+	bisZContactPerc DECIMAL(10,3),
+	bisContactPerc DECIMAL(10,3),
+	bisZonePerc DECIMAL(10,3), -- % of pitches seen inside the strike zone
+	bisFStrikePerc DECIMAL(10,3),
+	bisSwStrPerc DECIMAL(10,3), -- % of strikes swung at and missed
+
 	-- Pitchf/x Plate Discipline section
 	pfxOSwingPerc DECIMAL(10,3),
 	pfxZSwingPerc DECIMAL(10,3),
@@ -1105,7 +1205,7 @@ CREATE TABLE BatterMinorsSeasonStats (
 	fp DECIMAL(10,3), -- fielding %
 	tz DECIMAL(10,3), -- total zone runs above average
 	
-	UNIQUE KEY UC_BatterMinorsSeasonStats1 (playerId, season, team),
+--	UNIQUE KEY UC_BatterMinorsSeasonStats1 (playerId, season, team),
 	CONSTRAINT FK_BatterMinorsSeasonStats_Player FOREIGN KEY (playerId) REFERENCES Player (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
 	INDEX IDX_BatterMinorsSeasonStats1 (season, team, games, avg, rbi, hr, runs, sb)
 

@@ -2,6 +2,8 @@ package com.fantasyworks.fangraphsparser.entity;
 
 import java.math.BigDecimal;
 
+import javax.persistence.MappedSuperclass;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -9,6 +11,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper=true)
 @Accessors(chain=true)
+@MappedSuperclass
 public class BatterStats extends PlayerStats {
 
 	private static final long serialVersionUID = 1L;
@@ -95,7 +98,7 @@ public class BatterStats extends PlayerStats {
 	protected BigDecimal rew;
 	protected BigDecimal pLi;
 	protected BigDecimal phLi;
-	protected BigDecimal ph;
+	protected Integer ph;
 	protected BigDecimal wpaPerLi;
 	protected BigDecimal clutch;
 	
@@ -108,6 +111,15 @@ public class BatterStats extends PlayerStats {
 	protected BigDecimal bisSfPerc;
 	protected BigDecimal bisKnPerc;
 	protected BigDecimal bisXxPerc;
+	
+	protected BigDecimal bisFbVelocity;
+	protected BigDecimal bisSlVelocity;
+	protected BigDecimal bisCtVelocity;
+	protected BigDecimal bisCbVelocity;
+	protected BigDecimal bisChVelocity;
+	protected BigDecimal bisSfVelocity;
+	protected BigDecimal bisKnVelocity;
+	protected BigDecimal bisXxVelocity;
 	
 	// Pitch Values section
 	protected BigDecimal bisWFb; // Fast ball runs above average
@@ -187,6 +199,17 @@ public class BatterStats extends PlayerStats {
 	protected BigDecimal pfxWScPer100;
 	protected BigDecimal pfxWKnPer100;
 
+	// Plate Discipline
+	protected BigDecimal bisOSwingPerc;
+	protected BigDecimal bisZSwingPerc;
+	protected BigDecimal bisSwingPerc; // total percentage of pitches swung at
+	protected BigDecimal bisOContactPerc;
+	protected BigDecimal bisZContactPerc;
+	protected BigDecimal bisContactPerc;
+	protected BigDecimal bisZonePerc; // % of pitches seen inside the strike zone
+	protected BigDecimal bisFStrikePerc;
+	protected BigDecimal bisSwStrPerc; // % of strikes swung at and missed
+	
 	// Pitchf/x Plate Discipline section
 	protected BigDecimal pfxOSwingPerc;
 	protected BigDecimal pfxZSwingPerc;
