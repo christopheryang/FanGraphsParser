@@ -33,6 +33,11 @@ public class PitcherStatsOutputService {
 	@Autowired
 	protected PitcherRegularSeasonProjectedStatsRepo projRsStatsRepo;
 	
+	/**
+	 * Find players who have projected stats that meet certain criteria.
+	 * 
+	 * @return
+	 */
 	protected Set<Player> findProjectedPitchers(){
 		List<PitcherRegularSeasonProjectedStats> allProjectedStats = Lists.newArrayList(projRsStatsRepo.findAll());
 		return allProjectedStats.stream()
