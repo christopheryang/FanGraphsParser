@@ -78,15 +78,15 @@ public class BatterStatsOutputService {
 			"Name",
 			"Age",
 			"Team",
+			"Gm",
+			"AB",
+			"PA",
+			"H",
 			"R",
 			"HR",
 			"RBI",
 			"SB",
 			"AVG",
-			"Gm",
-			"AB",
-			"PA",
-			"H",
 			"2B",
 			"BB",
 			"SO",
@@ -134,15 +134,15 @@ public class BatterStatsOutputService {
 		tuple.add(stats.getName());
 		tuple.add(stats.getAge().add(BigDecimal.ONE));
 		tuple.add(stats.getTeam());
+		tuple.add(stats.getGames());
+		tuple.add(stats.getAb());
+		tuple.add(stats.getPa());
+		tuple.add(stats.getHits());
 		tuple.add(stats.getRuns());
 		tuple.add(stats.getHr());
 		tuple.add(stats.getRbi());
 		tuple.add(stats.getSb());
 		tuple.add(stats.getAvg());
-		tuple.add(stats.getGames());
-		tuple.add(stats.getAb());
-		tuple.add(stats.getPa());
-		tuple.add(stats.getHits());
 		tuple.add(stats.getDoubles());
 		tuple.add(stats.getBb());
 		tuple.add(stats.getSo());

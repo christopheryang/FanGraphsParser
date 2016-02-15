@@ -14,25 +14,11 @@ apply plugin: 'spring-boot'
 //apply plugin: 'org.liquibase.gradle'
 
 // =============== For Microservice =============
-/*
 jar {
-	baseName = 'finance-tool-api'
-	version =  '1.144-SNAPSHOT'
+	baseName = 'FanGraphsParser'
+	version =  '1.0.0'
 }
-*/
 // ==============================================
-
-// =============== For Java EE Servers =============
-apply plugin: 'war'
-war {
-	//baseName = 'finance-tool-api'
-	//version =  '1.141-SNAPSHOT'
-	archiveName 'fangraphsparser.war'
-}
-configurations {
-	providedRuntime
-}
-// =================================================
 
 configurations {
   javacApt
@@ -63,10 +49,6 @@ dependencies {
 	//compile 'org.springframework.boot:spring-boot-starter-tomcat'
 	// ==================================
 	
-	// ========= For Java EE Servers =======
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-	// =====================================
-	
 	// ======= Spring boot managed dependencies =======
 	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 	compile 'joda-time:joda-time'
@@ -90,8 +72,6 @@ dependencies {
 	
 	// ======= Testing =======
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
-	testCompile 'com.jayway.jsonpath:json-path:1.1.0'
-	testCompile 'com.jayway.jsonpath:json-path-assert:1.1.0'
 
 	// ======= Liquibase =======
 	//classpath 'gradle.plugin.org.liquibase:liquibase-gradle-plugin:1.1.1'
